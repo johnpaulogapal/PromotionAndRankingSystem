@@ -11,22 +11,22 @@
             </div>
         @else
             <div class="flex flex-col items-center text-center">
-                <a href="" class="w-full py-3 font-bold text-white border-l-4 transition ease-in-out hover:scale-110 hover:bg-white hover:text-gray-900 duration-300">
+                <a href="" class="w-full py-3 font-bold text-white transition ease-in-out hover:scale-110 hover:bg-white hover:text-gray-900 duration-300">
                     <span class="text-sm tracking-tighter">Dashboard</span>
                 </a>
-                <a href="" class="w-full py-3 font-bold text-white/25 transition ease-in-out hover:scale-110 hover:bg-white hover:text-gray-900 duration-300">
+                <a href="{{route('profile.show', auth()->user()->id)}}" class="{{ Route::is('profile.show') ? 'border-l-4 text-white' : 'text-white/60 '}} w-full py-3 font-bold transition ease-in-out hover:scale-110 hover:bg-white hover:text-gray-900 duration-300">
                     <span class="text-sm tracking-tighter">My Information</span>
                 </a>
-                <a href="" class="w-full py-3 font-bold text-white/25 transition ease-in-out hover:scale-110 hover:bg-white hover:text-gray-900 duration-300">
+                <a href="" class="w-full py-3 font-bold text-white/60 transition ease-in-out hover:scale-110 hover:bg-white hover:text-gray-900 duration-300">
                     <span class="text-sm tracking-tighter">Educational Background</span>
                 </a>
-                <a href="" class="w-full py-3 font-bold text-white/25 transition ease-in-out hover:scale-110 hover:bg-white hover:text-gray-900 duration-300">
+                <a href="" class="w-full py-3 font-bold text-white/60 transition ease-in-out hover:scale-110 hover:bg-white hover:text-gray-900 duration-300">
                     <span class="text-sm tracking-tighter">PRC License</span>
                 </a>
-                <a href="" class="w-full py-3 font-bold text-white/25 transition ease-in-out hover:scale-110 hover:bg-white hover:text-gray-900 duration-300">
+                <a href="" class="w-full py-3 font-bold text-white/60 transition ease-in-out hover:scale-110 hover:bg-white hover:text-gray-900 duration-300">
                     <span class="text-sm tracking-tighter">Membership in Professional Organization</span>
                 </a>
-                <a href="" class="w-full py-3 font-bold text-white/25 transition ease-in-out hover:scale-110 hover:bg-white hover:text-gray-900 duration-300">
+                <a href="" class="w-full py-3 font-bold text-white/60 transition ease-in-out hover:scale-110 hover:bg-white hover:text-gray-900 duration-300">
                     <span class="text-sm tracking-tighter">Trainings/Seminars/Webinars</span>
                 </a>
             </div>
@@ -41,7 +41,6 @@
 
     {{-- Main Content --}}
     <div class="pl-60">
-        <p class="m-5 absolute top-0 left-1/4 right-1/4 font-bold text-gray-900 text-lg tracking-wide">Hello, {{ Auth::user()->first_name ? Auth::user()->first_name : 'Guest. Please fill in the forms before proceeding.' }}</p>
         {{ $slot }}
     </div>
 </section>

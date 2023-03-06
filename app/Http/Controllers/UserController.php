@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Application;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -15,11 +16,17 @@ class UserController extends Controller
         return view('faculty.profile.create');
    }
 
+   public function show(User $user)
+   {
+        return view('faculty.profile.show', [
+            'user' => $user
+        ]);
+   }
 
    public function store(Request $request, User $user)
    {
-      // dd($request->all());
-      $formFields = $request->validate([
+
+      $userInfo = $request->validate([
          'emp_num' => 'required',
          'first_name' => 'required',
          'middle_name' => 'required',
@@ -27,14 +34,23 @@ class UserController extends Controller
          'birth_date' => 'required',
          'sex' => 'required',
          'department' => 'required',
-     ]);  
-       
-     $formFields['age'] = $this->getAge($request->birth_date);
-     
-   //   dd($formFields);
-     $user->update($formFields);
+         'faculty' => 'required',
+     ]);
 
-     return redirect('/')->with('message', 's Created Successfully');
+     $userInfo['age'] = $this->getAge($request->birth_date);
+
+     $user->update($userInfo);
+
+     $appInfo = $request->validate([
+         'date_hired' => 'required',
+         'current_rank' => 'required',
+         'date_last_prom' => 'required',
+         'proposed_rank' => 'required',
+     ]);
+
+     Application::create($appInfo);
+
+     return redirect('/')->with('message', 'Fill in Successfully. Welcome');
    }
 
    public function getAge($date) 
