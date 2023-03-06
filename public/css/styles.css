@@ -1,0 +1,31 @@
+* {
+    font-family: 'Nunito', sans-serif;
+}
+
+.text-hau {
+    color: #710E1D;
+}
+
+.bg-hau {
+    background-color: #710E1D;
+}
+
+.border-hau {
+    border-color: #710E1D;
+}
+
+.caret-hau {
+    caret-color: #710E1D;
+}
+
+.border-color-hau{
+    border-color: #710E1D;
+}
+
+.outline-hau:focus {
+    outline-color: #710E1D;
+}
+
+a:hover {
+    color: white;
+}
