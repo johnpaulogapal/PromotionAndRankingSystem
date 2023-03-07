@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Undergrad;
 use Illuminate\Http\Request;
 
 class UndergradController extends Controller
@@ -23,7 +24,7 @@ class UndergradController extends Controller
      */
     public function create()
     {
-        //
+        return view('faculty.edubg.undergrad.create');
     }
 
     /**
@@ -34,7 +35,17 @@ class UndergradController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $undergradInfo = $request->validate([
+            'school' => 'required',
+            'course' => 'required',
+            'graduation_date' => 'required',
+        ]);
+   
+        $undergradInfo['user_id'] = auth()->user()->id;
+   
+        Undergrad::create($undergradInfo);
+
+        return redirect(route('edubg'))->with('message', 'Undergrad Information Successfully Added');
     }
 
     /**
@@ -54,9 +65,11 @@ class UndergradController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Undergrad $undergrad)
     {
-        //
+        return view('faculty.edubg.undergrad.edit', [
+            'undergrad' => $undergrad,
+        ]);
     }
 
     /**
@@ -66,9 +79,17 @@ class UndergradController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Undergrad $undergrad)
     {
-        //
+        $undergradInfo = $request->validate([
+            'school' => 'required',
+            'course' => 'required',
+            'graduation_date' => 'required',
+        ]);
+   
+        $undergrad->update($undergradInfo);
+
+        return redirect(route('edubg'))->with('message', 'Undergrad Information Successfully Updated');
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Phd;
 use Illuminate\Http\Request;
 
 class PHDController extends Controller
@@ -23,7 +24,7 @@ class PHDController extends Controller
      */
     public function create()
     {
-        //
+        return view('faculty.edubg.phd.create');
     }
 
     /**
@@ -34,7 +35,17 @@ class PHDController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $phdInfo = $request->validate([
+            'school' => 'required',
+            'course' => 'required',
+            'graduation_date' => 'required',
+        ]);
+   
+        $phdInfo['user_id'] = auth()->user()->id;
+   
+        Phd::create($phdInfo);
+
+        return redirect(route('edubg'))->with('message', 'PHD Information Successfully Added');
     }
 
     /**
@@ -54,9 +65,11 @@ class PHDController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Phd $phd)
     {
-        //
+        return view('faculty.edubg.phd.edit', [
+            'phd' => $phd,
+        ]);
     }
 
     /**
@@ -66,9 +79,17 @@ class PHDController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Phd $phd)
     {
-        //
+        $phdInfo = $request->validate([
+            'school' => 'required',
+            'course' => 'required',
+            'graduation_date' => 'required',
+        ]);
+   
+        $phd->update($phdInfo);
+
+        return redirect(route('edubg'))->with('message', 'PHD Information Successfully Updated');
     }
 
     /**

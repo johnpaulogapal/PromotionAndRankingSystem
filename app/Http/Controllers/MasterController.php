@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Master;
 use Illuminate\Http\Request;
 
 class MasterController extends Controller
@@ -23,7 +24,7 @@ class MasterController extends Controller
      */
     public function create()
     {
-        //
+        return view('faculty.edubg.master.create');
     }
 
     /**
@@ -34,7 +35,17 @@ class MasterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $masterInfo = $request->validate([
+            'school' => 'required',
+            'course' => 'required',
+            'graduation_date' => 'required',
+        ]);
+   
+        $masterInfo['user_id'] = auth()->user()->id;
+   
+        Master::create($masterInfo);
+
+        return redirect(route('edubg'))->with('message', 'Masters Information Successfully Added');
     }
 
     /**
@@ -54,9 +65,11 @@ class MasterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Master $master)
     {
-        //
+        return view('faculty.edubg.master.edit', [
+            'master' => $master,
+        ]);
     }
 
     /**
@@ -66,9 +79,17 @@ class MasterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Master $master)
     {
-        //
+        $masterInfo = $request->validate([
+            'school' => 'required',
+            'course' => 'required',
+            'graduation_date' => 'required',
+        ]);
+   
+        $master->update($masterInfo);
+
+        return redirect(route('edubg'))->with('message', 'Masters Information Successfully Updated');
     }
 
     /**

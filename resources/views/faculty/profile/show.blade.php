@@ -56,7 +56,7 @@
                         </div>
                     </div>
                     <div class="py-10 px-5 border-t-4 border-hau rounded-b shadow-2xl space-y-5">
-                        <p class="font-bold text-hau text-xl tracking-widest">Application Information</p>
+                        <p class="font-bold text-hau text-xl tracking-widest">Application Information:</p>
                         <div class="px-5 grid grid-rows-4 gap-y-8">
                             <div class="flex flex-col justify-start gap-1">
                                 <b class="text-hau text-sm tracking-wide">Date Hired</b>
@@ -77,7 +77,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="mt-12 flex justify-center gap-x-4">
+                <div class="mt-8 p-5 flex justify-center gap-x-4">
                     <a href="{{route('profile.edit', $user->id)}}" class="py-1.5 px-4 text-xl text-white tracking-widest bg-yellow-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-yellow-600 duration-300">
                         <i class="fa-solid fa-pen-to-square mr-1"></i>Edit
                     </a>

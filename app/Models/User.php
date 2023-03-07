@@ -45,4 +45,16 @@ class User extends Authenticatable
     public function application() {
         return $this->hasOne(Application::class, 'user_id');
     }
+
+    public function undergrads() {
+        return $this->hasMany(Undergrad::class, 'user_id');
+    }
+
+    public function masters() {
+        return $this->hasMany(Master::class, 'user_id');
+    }
+
+    public function phds() {
+        return $this->hasMany(PHD::class, 'user_id');
+    }
 }

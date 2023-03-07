@@ -17,7 +17,7 @@
                 <a href="{{route('profile.show', auth()->user()->id)}}" class="{{ Route::is('profile.show') ? 'border-l-4 text-white' : 'text-white/60 '}} w-full py-3 font-bold transition ease-in-out hover:scale-110 hover:bg-white hover:text-gray-900 duration-300">
                     <span class="text-sm tracking-tighter">My Information</span>
                 </a>
-                <a href="{{route('educbg')}}" class="{{ Route::is('educbg') ? 'border-l-4 text-white' : 'text-white/60 '}} w-full py-3 font-bold transition ease-in-out hover:scale-110 hover:bg-white hover:text-gray-900 duration-300">
+                <a href="{{route('edubg')}}" class="{{ Route::is('edubg') ? 'border-l-4 text-white' : 'text-white/60 '}} w-full py-3 font-bold transition ease-in-out hover:scale-110 hover:bg-white hover:text-gray-900 duration-300">
                     <span class="text-sm tracking-tighter">Educational Background</span>
                 </a>
                 <a href="" class="w-full py-3 font-bold text-white/60 transition ease-in-out hover:scale-110 hover:bg-white hover:text-gray-900 duration-300">
