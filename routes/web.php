@@ -17,7 +17,11 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('faculty/index');
-})->middleware('auth');
+})->middleware('auth')->name('home');
+
+Route::get('/educational-background', function () {
+    return view('faculty/educbg/index');
+})->middleware('auth')->name('educbg');
 
 
 Route::controller(UserController::class)->group(function () {
