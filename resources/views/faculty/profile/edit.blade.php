@@ -2,8 +2,9 @@
     <x-faculty.navigation>
         
         <section>
-            <form method="POST" action="{{route('profile.store', auth()->user()->id)}}" class="pt-16 p-8 h-screen w-full">
+            <form method="POST" action="{{route('profile.update', ['user' => $user->id, 'application' => $application->id])}}" class="pt-16 p-8 h-screen w-full">
             @csrf
+            @method('PUT')
                 <div class="grid grid-cols-3 gap-x-12">
                     <div class="col-span-2 py-10 px-5 border-t-4 border-hau rounded-b shadow-2xl space-y-5">
                         <p class="font-bold text-hau text-lg tracking-widest">Employee Information</p>

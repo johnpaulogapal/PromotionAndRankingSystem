@@ -25,6 +25,7 @@ Route::controller(UserController::class)->group(function () {
     Route::post('profile/store/{user}', 'store')->name('profile.store');
 
     Route::get('profile/edit/{user}', 'edit')->name('profile.edit');
+    Route::put('profile/update/{user}/{application}', 'update')->name('profile.update');
 
     Route::get('profile/{user}', 'show')->name('profile.show');
 });

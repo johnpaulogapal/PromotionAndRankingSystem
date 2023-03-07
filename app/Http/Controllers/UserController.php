@@ -55,6 +55,36 @@ class UserController extends Controller
         ]);
    }
 
+   public function update(Request $request, User $user, Application $application)
+   {
+
+      $userInfo = $request->validate([
+         'emp_num' => 'required',
+         'first_name' => 'required',
+         'middle_name' => 'required',
+         'last_name' => 'required',
+         'birth_date' => 'required',
+         'sex' => 'required',
+         'department' => 'required',
+         'faculty' => 'required',
+     ]);
+
+     $userInfo['age'] = $this->getAge($request->birth_date);
+
+     $user->update($userInfo);
+
+     $appInfo = $request->validate([
+         'date_hired' => 'required',
+         'current_rank' => 'required',
+         'date_last_prom' => 'required',
+         'proposed_rank' => 'required',
+     ]);
+
+     $application->update($appInfo);
+
+     return redirect()->route('profile.show', auth()->user()->id)->with('message', 'Updated Successfully');
+   }
+
    public function show(User $user)
    {
         return view('faculty.profile.show', [
