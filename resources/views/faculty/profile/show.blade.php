@@ -6,7 +6,7 @@
                 <div class="grid grid-cols-3 gap-x-12">
                     <div class="col-span-2 py-10 px-5 border-t-4 border-hau rounded-b shadow-2xl space-y-5">
                         <p class="font-bold text-hau text-xl tracking-widest">My Information:</p>
-                        <div class="grid grid-rows-3 gap-8">
+                        <div class="grid grid-rows-3 gap-y-8">
                             <div class="grid grid-cols-3 gap-4">
                                 <div class="flex flex-col justify-center gap-1">
                                     <b class="text-hau text-sm tracking-wide">Faculty</b>
@@ -56,33 +56,31 @@
                         </div>
                     </div>
                     <div class="py-10 px-5 border-t-4 border-hau rounded-b shadow-2xl space-y-5">
-                        <p class="font-bold text-hau text-lg tracking-widest">Application Information</p>
-                        <div class="px-5 grid grid-rows-1 gap-4">
+                        <p class="font-bold text-hau text-xl tracking-widest">Application Information</p>
+                        <div class="px-5 grid grid-rows-4 gap-y-8">
                             <div class="flex flex-col justify-center gap-1">
-                                <label for="" class="font-bold text-hau text-sm tracking-wider">Date Hired</label>
-                                <input name="date_hired" type="date" class="py-0.5 px-2 border border-hau rounded caret-hau outline-hau">
+                                <b class="text-hau text-sm tracking-wide">Date Hired</b>
+                                <p class="text-hau text-lg tracking-widest underline underline-offset-8">  {{date('F d, Y', strtotime($application->date_hired))}}</p>
                             </div>
                             <div class="flex flex-col justify-center gap-1">
-                                <label for="" class="font-bold text-hau text-sm tracking-wider">Current Rank</label>
-                                <input name="current_rank" type="text" class="py-0.5 px-2 border border-hau rounded caret-hau outline-hau">
+                                <b class="text-hau text-sm tracking-wide">Current Rank</b>
+                                <p class="text-hau text-lg tracking-widest underline underline-offset-8">  {{$application->current_rank}}</p>
                             </div>
                             <div class="flex flex-col justify-center gap-1">
-                                <label for="" class="font-bold text-hau text-sm tracking-wider">Date of Last Promotion</label>
-                                <input name="date_last_prom" type="date" class="py-0.5 px-2 border border-hau rounded caret-hau outline-hau">
+                                <b class="text-hau text-sm tracking-wide">Date of Last Promotion</b>
+                                <p class="text-hau text-lg tracking-widest underline underline-offset-8">  {{date('F d, Y', strtotime($user->date_last_prom))}}</p>
                             </div>
                             <div class="flex flex-col justify-center gap-1">
-                                <label for="" class="font-bold text-hau text-sm tracking-wider">Proposed Rank</label>
-                                <input name="proposed_rank" type="text" class="py-0.5 px-2 border border-hau rounded caret-hau outline-hau">
+                                <b class="text-hau text-sm tracking-wide">Proposed Rank</b>
+                                <p class="text-hau text-lg tracking-widest underline underline-offset-8">  {{$application->proposed_rank}}</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="mt-12 flex justify-center gap-x-4">
-                   
-                    <button class="py-1 px-2 text-lg text-white tracking-widest bg-yellow-600 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-yellow-700 duration-300">
-                        <i class="fa-regular fa-circle-check mr-1"></i>Edit
-                    </button>
-                   
+                    <a href="{{route('profile.edit', $user->id)}}" class="py-1.5 px-4 text-xl text-white tracking-widest bg-yellow-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-yellow-600 duration-300">
+                        <i class="fa-solid fa-pen-to-square mr-1"></i>Edit
+                    </a>
                 </div>
             </form>
         </section>

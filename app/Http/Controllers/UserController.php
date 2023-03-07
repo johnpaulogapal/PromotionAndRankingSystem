@@ -10,17 +10,9 @@ use Illuminate\Support\Carbon;
 class UserController extends Controller
 {
 
-
    public function create()
    {
         return view('faculty.profile.create');
-   }
-
-   public function show(User $user)
-   {
-        return view('faculty.profile.show', [
-            'user' => $user
-        ]);
    }
 
    public function store(Request $request, User $user)
@@ -48,11 +40,30 @@ class UserController extends Controller
          'proposed_rank' => 'required',
      ]);
 
+     $appInfo['user_id'] = auth()->user()->id;
+
      Application::create($appInfo);
 
      return redirect('/')->with('message', 'Fill in Successfully. Welcome');
    }
 
+   public function edit(User $user)
+   {
+        return view('faculty.profile.edit', [
+            'user' => $user,
+            'application' => $user->application
+        ]);
+   }
+
+   public function show(User $user)
+   {
+        return view('faculty.profile.show', [
+            'user' => $user,
+            'application' => $user->application
+        ]);
+   }
+
+   // Functions
    public function getAge($date) 
    {
 
