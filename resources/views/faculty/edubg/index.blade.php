@@ -22,7 +22,7 @@
                             <p class="text-center tracking-widest">Please submit your Undergrad information</p>
                         @else
                             @foreach ($undergrads as $undergrad)
-                                <div class="w-full mb-2 p-5 border-t-4 border-rose-900 rounded-b-lg shadow-2xl space-y-4">
+                                <div class="w-full mb-2 p-5 border-t-4 border-hau rounded-b-lg shadow-2xl space-y-4">
                                     <div class="flex flex-col justify-start">
                                         <b class="text-hau text-xs tracking-wide">School</b>
                                         <p class="text-hau tracking-widest">{{$undergrad->school}}</p>
@@ -55,7 +55,7 @@
                             <p class="text-center tracking-widest">Please submit your Master information</p>
                         @else
                             @foreach ($masters as $master)
-                                <div class="w-full mb-2 p-5 border-t-4 border-indigo-900 rounded-b-lg shadow-2xl space-y-4">
+                                <div class="w-full mb-2 p-5 border-t-4 border-hau rounded-b-lg shadow-2xl space-y-4">
                                     <div class="flex flex-col justify-start">
                                         <b class="text-hau text-xs tracking-wide">School</b>
                                         <p class="text-hau tracking-widest">{{$master->school}}</p>
@@ -88,7 +88,7 @@
                             <p class="text-center tracking-widest">Please submit your PHD information</p>
                         @else
                             @foreach ($phds as $phd)
-                                <div class="w-full mb-2 p-5 border-t-4 border-purple-900 rounded-b-lg shadow-2xl space-y-4">
+                                <div class="w-full mb-2 p-5 border-t-4 border-hau rounded-b-lg shadow-2xl space-y-4">
                                     <div class="flex flex-col justify-start">
                                         <b class="text-hau text-xs tracking-wide">School</b>
                                         <p class="text-hau tracking-widest">{{$phd->school}}</p>

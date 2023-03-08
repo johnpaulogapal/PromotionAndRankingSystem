@@ -61,4 +61,8 @@ class User extends Authenticatable
     public function prcs() {
         return $this->hasMany(Prc::class, 'user_id');
     }
+
+    public function mpos() {
+        return $this->hasMany(Mpo::class, 'user_id');
+    }
 }

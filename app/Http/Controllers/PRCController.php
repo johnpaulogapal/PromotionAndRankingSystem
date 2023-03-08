@@ -91,7 +91,7 @@ class PRCController extends Controller
 
         $prc->update($prcInfo);
 
-        return redirect()->route('prc.index')->with('message', 'PRC Information Updated Added');
+        return redirect()->route('prc.index')->with('message', 'PRC Information Successfully Updated');
     }
 
     /**

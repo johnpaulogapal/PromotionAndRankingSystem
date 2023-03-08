@@ -5,6 +5,7 @@ use App\Http\Controllers\MasterController;
 use App\Http\Controllers\PHDController;
 use App\Http\Controllers\UndergradController;
 use App\Http\Controllers\PRCController;
+use App\Http\Controllers\MPOController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -76,4 +77,14 @@ Route::controller(PRCController::class)->group(function () {
     Route::get('prc/edit/{prc}', 'edit')->name('prc.edit');
     Route::put('prc/update/{prc}', 'update')->name('prc.update');
    
+});
+
+Route::controller(MPOController::class)->group(function () {
+    Route::get('mpo', 'index')->name('mpo.index');
+
+    Route::get('mpo/create', 'create')->name('mpo.create');
+    Route::post('mpo/create', 'store')->name('mpo.store');
+
+    Route::get('mpo/edit/{mpo}', 'edit')->name('mpo.edit');
+    Route::put('mpo/update/{mpo}', 'update')->name('mpo.update');
 });
