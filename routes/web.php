@@ -6,6 +6,7 @@ use App\Http\Controllers\PHDController;
 use App\Http\Controllers\UndergradController;
 use App\Http\Controllers\PRCController;
 use App\Http\Controllers\MPOController;
+use App\Http\Controllers\TrainingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -87,4 +88,14 @@ Route::controller(MPOController::class)->group(function () {
 
     Route::get('mpo/edit/{mpo}', 'edit')->name('mpo.edit');
     Route::put('mpo/update/{mpo}', 'update')->name('mpo.update');
+});
+
+Route::controller(TrainingController::class)->group(function () {
+    Route::get('training', 'index')->name('training.index');
+
+    Route::get('training/create', 'create')->name('training.create');
+    Route::post('training/create', 'store')->name('training.store');
+
+    Route::get('training/edit/{training}', 'edit')->name('training.edit');
+    Route::put('training/update/{training}', 'update')->name('training.update');
 });

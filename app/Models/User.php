@@ -65,4 +65,8 @@ class User extends Authenticatable
     public function mpos() {
         return $this->hasMany(Mpo::class, 'user_id');
     }
+
+    public function trainings() {
+        return $this->hasMany(Training::class, 'user_id');
+    }
 }

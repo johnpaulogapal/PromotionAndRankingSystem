@@ -53,7 +53,7 @@ class UserController extends Controller
 
         Application::create($appInfo);
 
-        return redirect('/')->with('message', 'Fill in Successfully. Welcome');
+        return redirect('/')->with('message', 'Welcome to our Ranking and Promotion Portal. Please Submit the Needed Information');
     }
 
     public function edit(User $user)
@@ -91,7 +91,7 @@ class UserController extends Controller
 
         $application->update($appInfo);
 
-        return redirect()->route('profile.show', auth()->user()->id)->with('message', 'Updated Successfully');
+        return redirect()->route('profile.show', auth()->user()->id)->with('message', 'Your Personal and Application Information Successfully Updated');
     }
 
     public function show(User $user)

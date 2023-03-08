@@ -18,10 +18,10 @@ class CreateTrainingsTable extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->date('from');
             $table->date('to');
-            $table->date('title');
-            $table->date('speaker');
-            $table->date('venue');
-            $table->date('institution');
+            $table->string('title');
+            $table->string('speaker');
+            $table->string('venue');
+            $table->string('institution');
             $table->timestamps();
         });
     }
