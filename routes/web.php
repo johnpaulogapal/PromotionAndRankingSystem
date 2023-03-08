@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\PHDController;
 use App\Http\Controllers\UndergradController;
+use App\Http\Controllers\PRCController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -64,4 +65,15 @@ Route::controller(PHDController::class)->group(function () {
 
     Route::get('phd/edit/{phd}', 'edit')->name('phd.edit');
     Route::put('phd/update/{phd}', 'update')->name('phd.update');
+});
+
+Route::controller(PRCController::class)->group(function () {
+    Route::get('prc', 'index')->name('prc.index');
+
+    Route::get('prc/create', 'create')->name('prc.create');
+    Route::post('prc/create', 'store')->name('prc.store');
+
+    Route::get('prc/edit/{prc}', 'edit')->name('prc.edit');
+    Route::put('prc/update/{prc}', 'update')->name('prc.update');
+   
 });

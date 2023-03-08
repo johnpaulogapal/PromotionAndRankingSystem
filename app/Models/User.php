@@ -55,6 +55,10 @@ class User extends Authenticatable
     }
 
     public function phds() {
-        return $this->hasMany(PHD::class, 'user_id');
+        return $this->hasMany(Phd::class, 'user_id');
+    }
+
+    public function prcs() {
+        return $this->hasMany(Prc::class, 'user_id');
     }
 }

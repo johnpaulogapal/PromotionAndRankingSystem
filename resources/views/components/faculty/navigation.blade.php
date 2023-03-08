@@ -20,7 +20,7 @@
                 <a href="{{route('edubg')}}" class="{{ Route::is('edubg') ? 'border-l-4 text-white' : 'text-white/60 '}} w-full py-3 font-bold transition ease-in-out hover:scale-110 hover:bg-white hover:text-gray-900 duration-300">
                     <span class="text-sm tracking-tighter">Educational Background</span>
                 </a>
-                <a href="" class="w-full py-3 font-bold text-white/60 transition ease-in-out hover:scale-110 hover:bg-white hover:text-gray-900 duration-300">
+                <a href="{{route('prc.index')}}" class="{{ Route::is('prc.index') ? 'border-l-4 text-white' : 'text-white/60 '}} w-full py-3 font-bold transition ease-in-out hover:scale-110 hover:bg-white hover:text-gray-900 duration-300">
                     <span class="text-sm tracking-tighter">PRC License</span>
                 </a>
                 <a href="" class="w-full py-3 font-bold text-white/60 transition ease-in-out hover:scale-110 hover:bg-white hover:text-gray-900 duration-300">
