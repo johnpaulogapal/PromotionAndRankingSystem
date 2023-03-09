@@ -1,5 +1,5 @@
 <section>
-    <div class="h-screen w-52 fixed flex flex-col justify-between bg-hau text-white">
+    <div class="h-screen w-60 fixed flex flex-col justify-between bg-hau text-white">
         <div class="space-y-4">
             <div class="p-5 flex flex-col items-center gap-y-2">
                 <a href="">

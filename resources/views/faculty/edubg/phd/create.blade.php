@@ -4,7 +4,7 @@
         <section>
             <div class="h-screen w-full">
                 
-                    <form method="POST" action="{{route('undergrad.store')}}"  class="pt-10 mx-5 h-full flex flex-col items-center gap-y-4">
+                    <form method="POST" action="{{route('phd.store')}}"  class="pt-10 mx-5 h-full flex flex-col items-center gap-y-4">
                         @csrf
                         <p class="uppercase text-xl tracking-widest"><span class="py-1 px-2 bg-hau text-white rounded shadow-lg"><i class="fa-solid fa-plus mr-2"></i>Add</span> PHD Information</p>
                         <div class="w-1/2 p-10 border-t-2 border-hau rounded-b-lg shadow-2xl space-y-5">

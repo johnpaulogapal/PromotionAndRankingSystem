@@ -15,9 +15,7 @@ class PRCController extends Controller
      */
     public function index()
     {
-        return view('faculty.prc.index', [
-            'prcs' => auth()->user()->prcs,
-        ]);
+        return view('faculty.prc.index');
     }
 
     /**
@@ -100,8 +98,10 @@ class PRCController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Prc $prc)
     {
-        //
+        $prc->delete();
+
+        return redirect(route('prc.index'))->with('message', 'Prc Information Successfully Deleted');
     }
 }

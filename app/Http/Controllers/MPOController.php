@@ -9,9 +9,7 @@ class MPOController extends Controller
 {
     public function index()
     {
-        return view('faculty.mpo.index', [
-            'mpos' => auth()->user()->mpos,
-        ]);
+        return view('faculty.mpo.index');
     }
 
     public function create()
@@ -52,5 +50,12 @@ class MPOController extends Controller
         $mpo->update($mpoInfo);
 
         return redirect()->route('mpo.index')->with('message', 'Membership In Professional Organization Information Successfully Updated');
+    }
+
+    public function destroy(Mpo $mpo)
+    {
+        $mpo->delete();
+
+        return redirect(route('mpo.index'))->with('message', 'Membership In Professional Organization Information Successfully Deleted');
     }
 }

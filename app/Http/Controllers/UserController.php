@@ -12,11 +12,7 @@ class UserController extends Controller
 {
 
     public function edubg(){
-        return view('faculty/edubg/index', [
-            'undergrads' => auth()->user()->undergrads,
-            'masters' => auth()->user()->masters,
-            'phds' => auth()->user()->phds,
-        ]);
+        return view('faculty/edubg/index');
     }
 
     public function create()

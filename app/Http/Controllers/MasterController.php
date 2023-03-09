@@ -98,8 +98,10 @@ class MasterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Master $master)
     {
-        //
+        $master->delete();
+
+        return redirect(route('edubg'))->with('message', 'Masters Information Successfully Deleted');
     }
 }

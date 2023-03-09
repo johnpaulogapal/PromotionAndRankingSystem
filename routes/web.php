@@ -27,7 +27,7 @@ Route::get('/', function () {
 
 
 Route::controller(UserController::class)->group(function () {
-
+ 
     Route::get('educational-background', 'edubg')->name('edubg');
 
     Route::get('profile/create', 'create')->name('profile.create');
@@ -51,6 +51,8 @@ Route::controller(UndergradController::class)->group(function () {
 
     Route::get('undergrad/edit/{undergrad}', 'edit')->name('undergrad.edit');
     Route::put('undergrad/update/{undergrad}', 'update')->name('undergrad.update');
+
+    Route::delete('undergrad/destroy/{undergrad}', 'destroy')->name('undergrad.destroy');
 });
 
 Route::controller(MasterController::class)->group(function () {
@@ -59,6 +61,8 @@ Route::controller(MasterController::class)->group(function () {
 
     Route::get('master/edit/{master}', 'edit')->name('master.edit');
     Route::put('master/update/{master}', 'update')->name('master.update');
+
+    Route::delete('master/destroy/{master}', 'destroy')->name('master.destroy');
 });
 
 Route::controller(PHDController::class)->group(function () {
@@ -67,6 +71,8 @@ Route::controller(PHDController::class)->group(function () {
 
     Route::get('phd/edit/{phd}', 'edit')->name('phd.edit');
     Route::put('phd/update/{phd}', 'update')->name('phd.update');
+
+    Route::delete('phd/destroy/{phd}', 'destroy')->name('phd.destroy');
 });
 
 Route::controller(PRCController::class)->group(function () {
@@ -77,7 +83,8 @@ Route::controller(PRCController::class)->group(function () {
 
     Route::get('prc/edit/{prc}', 'edit')->name('prc.edit');
     Route::put('prc/update/{prc}', 'update')->name('prc.update');
-   
+    
+    Route::delete('prc/destroy/{prc}', 'destroy')->name('prc.destroy');
 });
 
 Route::controller(MPOController::class)->group(function () {
@@ -88,6 +95,8 @@ Route::controller(MPOController::class)->group(function () {
 
     Route::get('mpo/edit/{mpo}', 'edit')->name('mpo.edit');
     Route::put('mpo/update/{mpo}', 'update')->name('mpo.update');
+
+    Route::delete('mpo/destroy/{mpo}', 'destroy')->name('mpo.destroy');
 });
 
 Route::controller(TrainingController::class)->group(function () {
@@ -98,4 +107,6 @@ Route::controller(TrainingController::class)->group(function () {
 
     Route::get('training/edit/{training}', 'edit')->name('training.edit');
     Route::put('training/update/{training}', 'update')->name('training.update');
+
+    Route::delete('training/destroy/{training}', 'destroy')->name('training.destroy');
 });

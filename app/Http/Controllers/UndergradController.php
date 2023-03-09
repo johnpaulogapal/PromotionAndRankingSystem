@@ -98,8 +98,10 @@ class UndergradController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Undergrad $undergrad)
     {
-        //
+        $undergrad->delete();
+
+        return redirect(route('edubg'))->with('message', 'Undergrad Information Successfully Deleted');
     }
 }
