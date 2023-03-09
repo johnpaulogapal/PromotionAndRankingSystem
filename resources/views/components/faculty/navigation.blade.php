@@ -11,23 +11,23 @@
             </div>
         @else
             <div class="flex flex-col items-center text-center">
-                <a href="{{route('home')}}" class="{{ Route::is('home') ? 'border-l-4 text-white' : 'text-white/60 '}} w-full py-3 font-bold text-white transition ease-in-out hover:scale-110 hover:bg-white hover:text-gray-900 duration-300">
-                    <span class="text-sm tracking-tighter">Dashboard</span>
+                <a href="{{route('home')}}" class="{{ Route::is('home') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:scale-110 hover:bg-white hover:text-gray-900 '}} w-full py-3 font-bold text-white transition ease-in-out duration-300">
+                    <span class="text-sm">Dashboard</span>
                 </a>
-                <a href="{{route('profile.show', auth()->user()->id)}}" class="{{ Route::is('profile.show') ? 'border-l-4 text-white' : 'text-white/60 '}} w-full py-3 font-bold transition ease-in-out hover:scale-110 hover:bg-white hover:text-gray-900 duration-300">
-                    <span class="text-sm tracking-tighter">My Information</span>
+                <a href="{{route('profile.show', auth()->user()->id)}}" class="{{ Route::is('profile.show') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:scale-110 hover:bg-white hover:text-gray-900 '}} w-full py-3 font-bold transition ease-in-out duration-300">
+                    <span class="text-sm">My Information</span>
                 </a>
-                <a href="{{route('edubg')}}" class="{{ Route::is('edubg') ? 'border-l-4 text-white' : 'text-white/60 '}} w-full py-3 font-bold transition ease-in-out hover:scale-110 hover:bg-white hover:text-gray-900 duration-300">
-                    <span class="text-sm tracking-tighter">Educational Background</span>
+                <a href="{{route('edubg')}}" class="{{ Route::is('edubg') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:scale-110 hover:bg-white hover:text-gray-900'}} w-full py-3 font-bold transition ease-in-out duration-300">
+                    <span class="text-sm">Educational Background</span>
                 </a>
-                <a href="{{route('prc.index')}}" class="{{ Route::is('prc.index') ? 'border-l-4 text-white' : 'text-white/60 '}} w-full py-3 font-bold transition ease-in-out hover:scale-110 hover:bg-white hover:text-gray-900 duration-300">
-                    <span class="text-sm tracking-tighter">PRC License</span>
+                <a href="{{route('prc.index')}}" class="{{ Route::is('prc.index') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:scale-110 hover:bg-white hover:text-gray-900'}} w-full py-3 font-bold transition ease-in-out duration-300">
+                    <span class="text-sm">PRC License</span>
                 </a>
-                <a href="{{route('mpo.index')}}" class="{{ Route::is('mpo.index') ? 'border-l-4 text-white' : 'text-white/60 '}} w-full py-3 font-bold transition ease-in-out hover:scale-110 hover:bg-white hover:text-gray-900 duration-300">
-                    <span class="text-sm tracking-tighter">Membership in Professional Organization</span>
+                <a href="{{route('mpo.index')}}" class="{{ Route::is('mpo.index') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:scale-110 hover:bg-white hover:text-gray-900'}} w-full py-3 font-bold transition ease-in-out duration-300">
+                    <span class="text-sm">Membership in Professional Organization</span>
                 </a>
-                <a href="{{route('training.index')}}" class="{{ Route::is('training.index') ? 'border-l-4 text-white' : 'text-white/60 '}} w-full py-3 font-bold transition ease-in-out hover:scale-110 hover:bg-white hover:text-gray-900 duration-300">
-                    <span class="text-sm tracking-tighter">Trainings/Seminars/Webinars</span>
+                <a href="{{route('training.index')}}" class="{{ Route::is('training.index') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:scale-110 hover:bg-white hover:text-gray-900'}} w-full py-3 font-bold transition ease-in-out duration-300">
+                    <span class="text-sm">Trainings/Seminars/Webinars</span>
                 </a>
             </div>
         </div>

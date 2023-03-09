@@ -20,14 +20,16 @@ use App\Http\Controllers\UserController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('faculty/index');
-})->middleware('auth')->name('home');
-
+Route::controller(AuthController::class)->group(function () {
+    Route::get('login', 'login')->name('login');
+    Route::post('logout', 'logout')->name('logout');
+    Route::post('authenticate', 'authenticate')->name('authenticate');
+});
 
 Route::controller(UserController::class)->group(function () {
- 
+    
+    Route::get('/', 'index')->name('home');
+
     Route::get('educational-background', 'edubg')->name('edubg');
 
     Route::get('profile/create', 'create')->name('profile.create');
@@ -37,12 +39,6 @@ Route::controller(UserController::class)->group(function () {
     Route::put('profile/update/{user}/{application}', 'update')->name('profile.update');
 
     Route::get('profile/{user}', 'show')->name('profile.show');
-});
-
-Route::controller(AuthController::class)->group(function () {
-    Route::get('login', 'login')->name('login');
-    Route::post('logout', 'logout')->name('logout');
-    Route::post('authenticate', 'authenticate')->name('authenticate');
 });
 
 Route::controller(UndergradController::class)->group(function () {

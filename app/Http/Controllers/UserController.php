@@ -11,6 +11,10 @@ use Illuminate\Support\Carbon;
 class UserController extends Controller
 {
 
+    public function index(){
+        return view('faculty.profile.index');
+    }
+
     public function edubg(){
         return view('faculty/edubg/index');
     }

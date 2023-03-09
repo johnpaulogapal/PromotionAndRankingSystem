@@ -35,7 +35,7 @@
                                         <b class="text-hau text-xs tracking-wide">Graduation Date</b>
                                         <p class="text-hau tracking-widest">{{date('F d, Y', strtotime($undergrad->graduation_date))}}</p>
                                     </div>
-                                    <div class="flex pt-5 gap-x-4">
+                                    <div class="border-t border-hau flex justify-end pt-5 gap-x-4">
                                         <form action="{{route('undergrad.edit', $undergrad->id)}}">
                                             <button class="py-1 px-2 text-white tracking-widest bg-yellow-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-yellow-400 duration-300">
                                                 <i class="fa-solid fa-pen-to-square mr-1"></i>Edit
@@ -147,7 +147,7 @@
                                         <b class="text-hau text-xs tracking-wide">Graduation Date</b>
                                         <p class="text-hau tracking-widest">{{date('F d, Y', strtotime($master->graduation_date))}}</p>
                                     </div>
-                                    <div class="flex pt-5 gap-x-4">
+                                    <div class="border-t border-hau flex justify-end pt-5 gap-x-4">
                                         <form action="{{route('master.edit', $master->id)}}">
                                             <button class="py-1 px-2 text-white tracking-widest bg-yellow-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-yellow-400 duration-300">
                                                 <i class="fa-solid fa-pen-to-square mr-1"></i>Edit
@@ -259,7 +259,7 @@
                                         <b class="text-hau text-xs tracking-wide">Graduation Date</b>
                                         <p class="text-hau tracking-widest">{{date('F d, Y', strtotime($phd->graduation_date))}}</p>
                                     </div>
-                                    <div class="flex pt-5 gap-x-4">
+                                    <div class="border-t border-hau flex justify-end pt-5 gap-x-4">
                                         <form action="{{route('phd.edit', $phd->id)}}">
                                             <button class="py-1 px-2 text-white tracking-widest bg-yellow-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-yellow-400 duration-300">
                                                 <i class="fa-solid fa-pen-to-square mr-1"></i>Edit
