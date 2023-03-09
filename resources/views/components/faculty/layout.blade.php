@@ -37,5 +37,56 @@
 
      {{-- Alphine Js --}}
      <script src="//unpkg.com/alpinejs"></script>
+
+     {{-- Anime Js Cdn --}}
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+     <script>
+        let edubgOpen = document.getElementById("edubgOpen");
+        let edubgClose = document.getElementById("edubgClose");
+        let edubgContent = document.getElementById("edubgContent");
+
+        edubgOpen.onclick = function() {edubgDropDown()};
+        edubgClose.onclick = function() {edubgDropUp()};
+
+        function edubgDropDown() {
+            anime({
+                targets: '#edubg',
+                paddingBottom: 200,
+                duration: 1000
+            });
+
+            anime({
+                targets: '#edubgContent',
+                opacity: 1,
+                easing: 'easeInOutExpo',
+                delay: 300,
+                duration: 1000
+            });
+
+            edubgOpen.classList.add('hidden');
+            edubgClose.classList.remove('hidden');
+        }
+
+        function edubgDropUp() {
+            anime({
+                targets: '#edubg',
+                paddingBottom: 0,
+                duration: 1000,
+                delay: 100
+            });
+
+            anime({
+                targets: '#edubgContent',
+                opacity: 0,
+            });
+
+            edubgOpen.classList.remove('hidden');
+            edubgClose.classList.add('hidden');
+        }
+        
+        
+            
+    </script>
+
 </body>
 </html>

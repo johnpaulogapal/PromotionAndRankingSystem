@@ -10,8 +10,8 @@
         <section>
             <form method="POST" action="{{route('profile.store', auth()->user()->id)}}" class="pt-16 p-8 h-screen w-full">
             @csrf
-                <div class="grid grid-cols-3 gap-x-12">
-                    <div class="col-span-2 py-10 px-5 border-t-4 border-hau rounded-b shadow-2xl space-y-5">
+                <div class="px-10 grid grid-cols-3 gap-x-12">
+                    <div class="col-span-2 py-10 px-5 border-t-4 border-hau rounded-b-lg shadow-2xl space-y-5">
                         <p class="font-bold text-hau text-xl tracking-widest">My Information:</p>
                         <div class="grid grid-rows-3 gap-y-8">
                             <div class="grid grid-cols-3 gap-4">
@@ -62,7 +62,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="py-10 px-5 border-t-4 border-hau rounded-b shadow-2xl space-y-5">
+                    <div class="py-10 px-5 border-t-4 border-hau rounded-b-lg shadow-2xl space-y-5">
                         <p class="font-bold text-hau text-xl tracking-widest">Application Information:</p>
                         <div class="px-5 grid grid-rows-4 gap-y-8">
                             <div class="flex flex-col justify-start gap-1">
