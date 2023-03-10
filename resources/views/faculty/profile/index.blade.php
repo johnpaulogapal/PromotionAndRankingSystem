@@ -10,11 +10,10 @@
     <section>
         <div class="p-5 h-screen w-full">
            <div class="h-full grid grid-cols-2 gap-x-4 justify-items-center">
-                <div class="">
-                    1
-                </div>
-                <div class="p-10 w-full">
-                    <div class="p-10  border-l-2 border-dashed">
+
+                {{-- Column 1 --}}
+                <div class="p-10 h-full w-full">
+                    <div class="p-10 h-full border-r-2 border-dashed">
                         <p class="mb-5 text-sm uppercase tracking-widest">{{date('D - F d, Y', strtotime(now()))}}</p>
                         <p class="mb-5 text-xl uppercase tracking-widest">Requirements to be submitted</p>
                         <p class="mb-1 text-sm uppercase tracking-widest">Progress</p>
@@ -141,6 +140,47 @@
                                 </a>
                             </div>
 
+                        </div>
+                    </div>
+                </div>
+                
+                {{-- Column 2 --}}
+                <div class="p-20 h-full w-full">
+                    <p class="mb-5 text-sm uppercase tracking-widest">User - {{auth()->user()->first_name}}</p>
+                    <p class="mb-5 text-xl uppercase tracking-widest">Your Application Status</p>
+
+                    <div class="grid grid-cols-2 gap-8">
+                        <div class="h-48 p-5 rounded-lg shadow-2xl space-y-4">                    
+                            <span class="py-1 px-2 bg-orange-500 text-sm text-white tracking-widest rounded-lg">Pending</span>
+                            <div class="flex flex-col gap-y-2">
+                                <p class="text-sm tracking-widest">Educational Background</p>
+                                <p class="text-xs tracking-widest">Submitted on:</p>
+                                <p class="text-xs tracking-widest">Checked on:</p>
+                            </div>
+                        </div>
+                        <div class="h-48 p-5 rounded-lg shadow-2xl space-y-4">                    
+                            <span class="py-1 px-2 bg-orange-500 text-sm text-white tracking-widest rounded-lg">Pending</span>
+                            <div class="flex flex-col gap-y-2">
+                                <p class="text-sm tracking-widest">PRC License</p>
+                                <p class="text-xs tracking-widest">Submitted on:</p>
+                                <p class="text-xs tracking-widest">Checked on:</p>
+                            </div>
+                        </div>
+                        <div class="h-48 p-5 rounded-lg shadow-2xl space-y-4">                    
+                            <span class="py-1 px-2 bg-orange-500 text-sm text-white tracking-widest rounded-lg">Pending</span>
+                            <div class="flex flex-col gap-y-2">
+                                <p class="text-sm tracking-widest">Membership in Profressional Organization</p>
+                                <p class="text-xs tracking-widest">Submitted on:</p>
+                                <p class="text-xs tracking-widest">Checked on:</p>
+                            </div>
+                        </div>
+                        <div class="h-48 p-5 rounded-lg shadow-2xl space-y-4">                    
+                            <span class="py-1 px-2 bg-orange-500 text-sm text-white tracking-widest rounded-lg">Pending</span>
+                            <div class="flex flex-col gap-y-2">
+                                <p class="text-sm tracking-widest">Trainings/Seminars/Webinars</p>
+                                <p class="text-xs tracking-widest">Submitted on:</p>
+                                <p class="text-xs tracking-widest">Checked on:</p>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -82,10 +82,7 @@
 
             edubgOpen.classList.remove('hidden');
             edubgClose.classList.add('hidden');
-        }
-        
-        
-            
+        }  
     </script>
 
 </body>
