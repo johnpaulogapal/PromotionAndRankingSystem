@@ -22,6 +22,7 @@ class CreateTrainingsTable extends Migration
             $table->string('speaker');
             $table->string('venue');
             $table->string('institution');
+            $table->string('status');
             $table->timestamps();
         });
     }

@@ -42,6 +42,7 @@ class PRCController extends Controller
             'validity' => 'required',
         ]);
 
+        $prcInfo['status'] = 'pending';
         $prcInfo['user_id'] = auth()->user()->id;
 
         Prc::create($prcInfo);

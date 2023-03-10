@@ -9,7 +9,7 @@
         @endif
         <section class="h-screen w-full p-8">
             <div class="flex flex-col jusfity-center items-center gap-y-4">
-                <p class="uppercase text-xl text-center tracking-widest">Trainings/Seminars/Webinars Information</p>
+                <p class="uppercase text-xl text-center tracking-widest"><i class="fa-solid fa-chalkboard-user text-hau mr-2"></i>Trainings/Seminars/Webinars Information</p>
                 <a href="{{route('training.create')}}" class="py-1.5 px-4 text-xl text-white tracking-widest bg-cyan-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-cyan-600 duration-300 mb-5">
                     <i class="fa-solid fa-circle-plus mr-1"></i>Add Info
                 </a>

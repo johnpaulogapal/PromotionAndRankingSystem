@@ -25,6 +25,7 @@ class MPOController extends Controller
             'validity' => 'required',
         ]);
 
+        $mpoInfo['status'] = 'pending';
         $mpoInfo['user_id'] = auth()->user()->id;
 
         Mpo::create($mpoInfo);

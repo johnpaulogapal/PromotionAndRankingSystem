@@ -40,7 +40,8 @@ class MasterController extends Controller
             'course' => 'required',
             'graduation_date' => 'required',
         ]);
-   
+        
+        $masterInfo['status'] = 'pending';
         $masterInfo['user_id'] = auth()->user()->id;
    
         Master::create($masterInfo);

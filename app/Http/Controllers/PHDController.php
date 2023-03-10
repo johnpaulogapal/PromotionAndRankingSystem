@@ -40,7 +40,8 @@ class PHDController extends Controller
             'course' => 'required',
             'graduation_date' => 'required',
         ]);
-   
+        
+        $phdInfo['status'] = 'pending';
         $phdInfo['user_id'] = auth()->user()->id;
    
         Phd::create($phdInfo);

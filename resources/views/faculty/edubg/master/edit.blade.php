@@ -31,7 +31,7 @@
                                 @enderror
                             </div>
                             <div class="flex justify-end gap-x-4">
-                                <a href="{{route('edubg')}}" class="py-1 px-2 text-white tracking-widest bg-red-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-red-600 duration-300 mb-10">
+                                <a href="{{route('edubg')}}" class="py-1 px-2 text-white tracking-widest bg-gray-400 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-gray-500 duration-300 mb-10">
                                     <i class="fa-regular fa-circle-xmark mr-1"></i>Cancel
                                 </a>
                                 <button class="py-1 px-2 text-white tracking-widest bg-green-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-green-600 duration-300 mb-10">

@@ -30,6 +30,7 @@ class TrainingController extends Controller
             'institution' => 'required',
         ]);
 
+        $trainingInfo['status'] = 'pending';
         $trainingInfo['user_id'] = auth()->user()->id;
 
         Training::create($trainingInfo);

@@ -14,7 +14,7 @@
 
                     {{-- UNDERGRAD --}}
                     <div class="w-full py-10 px-5 h-full flex flex-col items-center gap-y-4 border-dashed border-x-2 border-gray-200">
-                        <p class="uppercase text-xl tracking-widest">Undergrad Information</p>
+                        <p class="uppercase text-xl tracking-widest"><i class="fa-solid fa-graduation-cap text-hau mr-2"></i>Undergrad Information</p>
                         <a href="{{route('undergrad.create')}}" class="py-1.5 px-4 text-xl text-white tracking-widest bg-cyan-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-cyan-600 duration-300 mb-5">
                             <i class="fa-solid fa-circle-plus mr-1"></i>Add Info
                         </a>
@@ -126,7 +126,7 @@
                     
                     {{-- MASTERS --}}
                     <div class="w-full py-10 px-5 h-full flex flex-col items-center gap-y-4 border-dashed border-x-2 border-gray-200">
-                        <p class="uppercase text-xl tracking-widest">Masters Information</p>
+                        <p class="uppercase text-xl tracking-widest"><i class="fa-solid fa-graduation-cap text-hau mr-2"></i>Masters Information</p>
                         <a href="{{route('master.create')}}" class="py-1.5 px-4 text-xl text-white tracking-widest bg-cyan-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-cyan-600 duration-300 mb-5">
                             <i class="fa-solid fa-circle-plus mr-1"></i>Add Info
                         </a>
@@ -238,7 +238,7 @@
 
                     {{-- PHD --}}
                     <div class="w-full py-10 px-5 h-full flex flex-col items-center gap-y-4 border-dashed border-x-2 border-gray-200">
-                        <p class="uppercase text-xl tracking-widest">PHD Information</p>
+                        <p class="uppercase text-xl tracking-widest"><i class="fa-solid fa-graduation-cap text-hau mr-2"></i>PHD Information</p>
                         <a href="{{route('phd.create')}}" class="py-1.5 px-4 text-xl text-white tracking-widest bg-cyan-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-cyan-600 duration-300 mb-5">
                             <i class="fa-solid fa-circle-plus mr-1"></i>Add Info
                         </a>

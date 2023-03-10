@@ -40,7 +40,8 @@ class UndergradController extends Controller
             'course' => 'required',
             'graduation_date' => 'required',
         ]);
-   
+        
+        $undergradInfo['status'] = 'pending';
         $undergradInfo['user_id'] = auth()->user()->id;
    
         Undergrad::create($undergradInfo);

@@ -18,6 +18,7 @@ class CreatePrcsTable extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('prc_num');
             $table->date('validity');
+            $table->string('status');
             $table->timestamps();
         });
     }

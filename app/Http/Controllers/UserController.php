@@ -49,6 +49,7 @@ class UserController extends Controller
             'proposed_rank' => 'required',
         ]);
 
+        $appInfo['status'] = 'pending';
         $appInfo['user_id'] = auth()->user()->id;
 
         Application::create($appInfo);
