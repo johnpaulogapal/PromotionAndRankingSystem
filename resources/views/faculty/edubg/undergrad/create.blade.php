@@ -2,7 +2,7 @@
     <x-faculty.navigation>
         
         <section>
-            <div class="h-screen w-full">
+            <div class="h-screen w-full pt-20">
                 
                     <form method="POST" action="{{route('undergrad.store')}}"  class="pt-10 mx-5 h-full flex flex-col items-center gap-y-4">
                     @csrf
@@ -33,7 +33,7 @@
                             
                         </div>
                         <div class="mt-5 flex justify-center gap-x-4">
-                            <a href="{{route('edubg')}}" class="py-1.5 px-4 text-xl text-white tracking-widest bg-red-600 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-red-700 duration-300">
+                            <a href="{{route('edubg')}}" class="py-1.5 px-4 text-xl text-white tracking-widest bg-gray-400 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-gray-500 duration-300">
                                 <i class="fa-regular fa-circle-xmark mr-1"></i>Cancel
                             </a>
                             <button class="py-1.5 px-4 text-xl text-white tracking-widest bg-green-600 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-green-700 duration-300">

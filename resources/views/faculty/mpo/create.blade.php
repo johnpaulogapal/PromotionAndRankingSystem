@@ -1,7 +1,7 @@
 <x-faculty.layout>
     <x-faculty.navigation>
         
-        <section class="h-screen w-full p-8">
+        <section class="h-screen w-full pt-20 p-8">
             <div class="flex flex-col jusfity-center items-center gap-y-4">
                 <p class="uppercase text-xl text-center tracking-widest"><span class="py-1 px-2 bg-hau text-white rounded shadow-lg"><i class="fa-solid fa-plus mr-2"></i>Add</span> Membership in Professional Organiztion Information</p>
             </div>

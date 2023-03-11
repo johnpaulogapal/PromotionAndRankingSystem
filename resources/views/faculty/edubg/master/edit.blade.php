@@ -2,7 +2,7 @@
     <x-faculty.navigation>
         
         <section>
-            <div class="h-screen w-full">
+            <div class="h-screen w-full pt-20">
                 
                     <div class="pt-10 mx-5 h-full flex flex-col items-center gap-y-4">
                         <p class="uppercase text-xl tracking-widest"><span class="py-1 px-2 bg-hau text-white rounded shadow-lg"><i class="fa-solid fa-pen-to-square mr-2"></i>Edit</span> Masters Information</p>
