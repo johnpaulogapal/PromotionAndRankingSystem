@@ -51,7 +51,7 @@
         function edubgDropDown() {
             anime({
                 targets: '#edubg',
-                paddingBottom: 200,
+                paddingBottom: 220,
                 duration: 1000
             });
 

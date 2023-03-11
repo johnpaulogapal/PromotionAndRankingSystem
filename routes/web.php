@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\PHDController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\MPOController;
 use App\Http\Controllers\TrainingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Models\Application;
 
 /*
 |--------------------------------------------------------------------------
@@ -108,6 +110,12 @@ Route::middleware(['auth'])->group(function () {
         Route::put('training/update/{training}', 'update')->name('training.update');
 
         Route::delete('training/destroy/{training}', 'destroy')->name('training.destroy');
+    });
+
+    Route::controller(ApplicationController::class)->group(function () {
+        Route::get('application', 'index')->name('application.index');
+
+        
     });
 
 });

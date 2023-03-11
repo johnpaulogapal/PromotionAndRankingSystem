@@ -1,5 +1,5 @@
 <section>
-    <div class="h-screen w-60 fixed flex flex-col justify-between bg-hau text-white">
+    <div class="h-screen w-60 fixed flex flex-col justify-between bg-hau text-white z-50">
         <div class="space-y-4">
             <div class="p-5 flex flex-col items-center gap-y-2">
                 <a href="">
@@ -41,6 +41,18 @@
 
     {{-- Main Content --}}
     <div class="pl-60">
+        <div class="w-full absolute top-0 right-0 flex justify-end items-center border-b-4 border-dashed border-gray-200">
+            <a href="{{route('application.index')}}" class="py-2 px-3 my-2 mr-8 rounded transition ease-in-out hover:scale-110 hover:text-gray-900 duration-300">
+         
+                <span class="uppercase text-xl tracking-widest">
+                    <i class="fa-regular fa-bell mr-1"></i>
+                    View Applications Status
+                    <i class="fa-solid fa-arrow-right ml-1"></i>
+                </span>
+          
+            </a>
+        </div>
+        
         {{ $slot }}
     </div>
 </section>

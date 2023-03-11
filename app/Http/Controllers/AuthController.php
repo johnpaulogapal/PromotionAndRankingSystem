@@ -18,7 +18,7 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/')->with('message', 'You are now logged out');
+        return redirect('/login')->with('message', 'You are now Signed out');
     }
 
     public function authenticate(Request $request)
@@ -33,9 +33,9 @@ class AuthController extends Controller
         if(auth()->attempt($formFields)) {
             $request->session()->regenerate();
             if(auth()->user()->first_name == '')
-                return redirect()->route('profile.create')->with('message', 'You are now logged in');
+                return redirect()->route('profile.create')->with('message', 'You may now pass the needed requirements. Thank you');
             else
-                return redirect('/')->with('message', 'You are now logged in');
+                return redirect('/')->with('message', 'You are now Signed as');
         }
         else {
             return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');

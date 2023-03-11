@@ -1,13 +1,13 @@
 <x-faculty.layout>
     <x-faculty.navigation>
         @if(session()->has('message'))
-            <div x-data="{show: true}" x-init="setTimeout(() => show = false, 3000)" x-show="show" class="fixed m-10 bottom-0 right-0 bg-gray-100 border-l-4 border-green-700 text-green-700 px-5 py-2 shadow-lg">
+            <div x-data="{show: true}" x-init="setTimeout(() => show = false, 3000)" x-show="show" class="fixed m-10 bottom-0 right-0 bg-gray-200 border-l-8 border-green-700 text-green-700 px-5 py-2 shadow-lg">
                 <p class="text-lg tracking-widest">
                     <i class="fa-solid fa-check mr-2"></i>{{session('message')}}
                 </p>
             </div>
         @endif
-        <section class="h-screen w-full p-8">
+        <section class="h-screen w-full pt-20 p-8">
             <div class="flex flex-col jusfity-center items-center gap-y-4">
                 <p class="uppercase text-xl text-center tracking-widest"><i class="fa-solid fa-sitemap text-hau mr-2"></i>Membership in Professional Organization Information</p>
                 <a href="{{route('mpo.create')}}" class="py-1.5 px-4 text-xl text-white tracking-widest bg-cyan-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-cyan-600 duration-300 mb-5">

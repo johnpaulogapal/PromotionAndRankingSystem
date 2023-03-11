@@ -1,9 +1,9 @@
 <x-faculty.layout>
     <x-faculty.navigation>
     @if(session()->has('message'))
-        <div x-data="{show: true}" x-init="setTimeout(() => show = false, 5000)" x-show="show" class="fixed m-10 bottom-0 right-0 bg-gray-100 border-l-4 border-green-700 text-green-700 px-5 py-2 shadow-lg">
+        <div x-data="{show: true}" x-init="setTimeout(() => show = false, 5000)" x-show="show" class="fixed m-10 bottom-0 right-0 bg-gray-200 border-l-8 border-green-700 text-green-700 px-5 py-2 shadow-lg">
             <p class="text-lg tracking-widest">
-                <i class="fa-solid fa-check mr-2"></i>{{session('message')}}
+                <i class="fa-solid fa-check mr-2"></i>{{session('message') . " " . auth()->user()->email}}
             </p>
         </div>
     @endif
@@ -18,6 +18,7 @@
                         <p class="mb-5 text-xl uppercase tracking-widest"><i class="fa-solid fa-list-check text-hau mr-2"></i>Requirements to be submitted</p>
                         <p class="mb-1 text-sm uppercase tracking-widest">Progress</p>
                         <div class="mb-5 h-1 w-full bg-neutral-200"> 
+                            {{-- Code for Progress bar --}}
                             @php
                                 $progress = '';
                                 $undergrads = 0;
@@ -69,7 +70,7 @@
                             <div class="py-3 px-5 flex justify-between items-center gap-x-2 bg-white rounded-lg shadow-2xl">
                                 <div class="flex items-center">
                                     <i class="fa-solid fa-circle-check text-xl text-green-500 mr-5"></i>
-                                    <p class="tracking-widest">Personal Information</p>
+                                    <p class="font-bold tracking-widest">Personal Information</p>
                                 </div>
                                 <a href="{{route('profile.show', auth()->user()->id)}}" class="py-1 px-2 text-white tracking-widest bg-cyan-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-cyan-600 duration-300">
                                     View
@@ -88,10 +89,13 @@
                                     @else
                                         <i class="fa-solid fa-circle-xmark text-xl text-red-500 mr-5"></i>
                                     @endif
-                                    <p class="tracking-widest">Educational Background</p>
+                                    <p class="font-bold tracking-widest">Educational Background</p>
                                 </div>
+
+                                {{-- Buttons to Open and CLose the Content of Educational Background --}}
                                 <i id="edubgOpen" class="fa-solid fa-chevron-down mr-2 cursor-pointer"></i>
-                                <i id="edubgClose" class="self-end fa-solid fa-chevron-up mr-2 cursor-pointer hidden"></i>
+                                <i id="edubgClose" class="hidden self-end fa-solid fa-chevron-up mr-2 cursor-pointer"></i>
+
                                 <div id="edubgContent" class="absolute mt-5 flex flex-col gap-y-2 opacity-0">
                                     <div class="ml-16 py-2 px-5 flex justify-between items-center gap-x-2">
                                         <div class="flex items-center">
@@ -111,14 +115,18 @@
                                             <p class="tracking-widest">PHD</p>
                                         </div>
                                     </div>
+                                    <a href="{{route('edubg')}}" class="mt-2 self-center py-1 px-2 text-white tracking-widest bg-cyan-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-cyan-600 duration-300">
+                                        Submit
+                                    </a>
                                 </div>
+                                
                             </div>
                             
                             
                             <div class="py-3 px-5 flex justify-between items-center gap-x-2 bg-white rounded-lg shadow-2xl">
                                 <div class="flex items-center ">
                                     <i class="fa-solid fa-circle-{{ count(auth()->user()->prcs) > 0 ? 'check text-green-500' : 'xmark text-red-500' }}  text-xl mr-5"></i>
-                                    <p class="tracking-widest">PRC License</p>
+                                    <p class="font-bold tracking-widest">PRC License</p>
                                 </div>
                                 <a href="{{route('prc.index')}}" class="py-1 px-2 text-white tracking-widest bg-cyan-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-cyan-600 duration-300">
                                     Submit
@@ -127,7 +135,7 @@
                             <div class="py-3 px-5 flex justify-between items-center gap-x-2 bg-white rounded-lg shadow-2xl">
                                 <div class="flex items-center ">
                                     <i class="fa-solid fa-circle-{{ count(auth()->user()->mpos) > 0 ? 'check text-green-500' : 'xmark text-red-500' }} text-xl mr-5"></i>
-                                    <p class="tracking-widest">Membership in Professional Organiztion</p>
+                                    <p class="font-bold tracking-widest">Membership in Professional Organiztion</p>
                                 </div>
                                 <a href="{{route('mpo.index')}}" class="py-1 px-2 text-white tracking-widest bg-cyan-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-cyan-600 duration-300">
                                     Submit
@@ -136,7 +144,7 @@
                             <div class="ww py-3 px-5 flex justify-between items-center gap-x-2 bg-white rounded-lg shadow-2xl">
                                 <div class="flex items-center ">
                                     <i class="fa-solid fa-circle-{{ count(auth()->user()->trainings) > 0 ? 'check text-green-500' : 'xmark text-red-500' }} text-xl mr-5"></i>
-                                    <p class="tracking-widest">Trainings/Seminars/Webinars</p>
+                                    <p class="font-bold tracking-widest">Trainings/Seminars/Webinars</p>
                                 </div>
                                 <a href="{{route('training.index')}}" class="py-1 px-2 text-white tracking-widest bg-cyan-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-cyan-600 duration-300">
                                     Submit
@@ -149,28 +157,24 @@
                 
                 {{-- Column 2 --}}
                 <div class="p-20 h-full w-full">
-                    <p class="mb-5 text-sm uppercase tracking-widest">User - {{auth()->user()->first_name . " " . auth()->user()->last_name}}</p>
-                    <p class="mb-5 text-xl uppercase tracking-widest"><i class="fa-solid fa-envelope-open text-hau mr-2"></i>Your Application Status - {{auth()->user()->application->status}}</p>
+                    <p class="mb-5 text-sm uppercase tracking-widest">User: {{auth()->user()->first_name . " " . auth()->user()->last_name}}</p>
+                    <p class="mb-5 text-xl uppercase tracking-widest">
+                        <i class="fa-solid fa-envelope-open text-hau mr-1"></i>
+                        Your Application Status:
+                        <span class="py-1 px-2 bg-orange-500 text-white rounded">{{auth()->user()->application->status}}</span>
+                    </p>
 
-                    <div class="grid grid-cols-2 gap-8">
-                        <div class="h-48 p-5 rounded-lg shadow-2xl space-y-4">                    
-                            <span class="py-1 px-2 bg-orange-500 uppercase text-sm text-white tracking-widest rounded">{{auth()->user()->undergrads->first->status->status}}</span>
-                            <div class="h-1 w-full bg-neutral-200 dark:bg-neutral-600">
-                                <div class="h-1 bg-green-500 w-1/2"></div>
-                            </div>
-                            <div class="flex flex-col gap-y-2 ">
-                                <p class="text-sm tracking-widest">Undergrad</p>
-                                <p class="text-xs tracking-widest">Submitted on: {{date('F d, Y', strtotime(auth()->user()->undergrads->first->created_at->created_at))}}</p>
-                                <p class="text-xs tracking-widest">Checked on:</p>
-                            </div>
-                            <hr class="border-b border-dashed border-gray-200">
+                    <div class="h-full mt-8 grid grid-rows-2 gap-4">
+                        <div class="">
+                            <p class="uppercase text-lg tracking-widest">Recently Reviewed</p>
                         </div>
-                       
-                       
+                        
+                        <div class="">
+                            <p class="uppercase text-lg tracking-widest">Recently Checked</p>
+                        </div>
                     </div>
                 </div>
-           </div>
-        </div>
+
     </x-faculty.navigation>
 
     

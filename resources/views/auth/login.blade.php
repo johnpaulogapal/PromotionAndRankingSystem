@@ -1,12 +1,18 @@
 <x-auth.layout>
-
+    @if(session()->has('message'))
+        <div x-data="{show: true}" x-init="setTimeout(() => show = false, 5000)" x-show="show" class="fixed m-10 bottom-0 right-0 bg-gray-200 border-l-8 border-green-700 text-green-700 px-5 py-2 shadow-lg">
+            <p class="text-lg tracking-widest">
+                <i class="fa-solid fa-check mr-2"></i>{{session('message')}}
+            </p>
+        </div>
+    @endif
     <div class="p-10 md:p-48 h-screen w-full grid grid-cols-1 md:grid-cols-2 gap-x-8 justify-items-center content-center">
         <div class="hidden md:flex flex-col justify-center items-center">
             <img src="{{asset('images/hau-logo.png')}}" alt="" class="w-full object-cover">
             <h1 class="font-bold text-4xl tracking-widest">Holy Angel University</h1>
         </div>
         <div class="flex flex-col justify-center items-center">
-            <div class="py-10 px-5 border-t-4 border-color-hau rounded-b shadow-2xl space-y-8">
+            <div class="py-12 px-6 border-t-4 border-color-hau rounded-b shadow-2xl space-y-8">
                 <div class="flex flex-col font-bold text-xl text-center text-hau tracking-widest">
                     <span>Faculty Ranking</span>
                     <span class="text-sm">and</span>
@@ -14,7 +20,7 @@
                 </div>
                 
                 {{-- Login Form --}}
-                <form method="POST" action="{{route('authenticate')}}" class="w-full space-y-4">
+                <form method="POST" action="{{route('authenticate')}}" class="w-full space-y-8">
                 @csrf
                     
                     {{-- Username --}}
@@ -34,12 +40,12 @@
                     </div>
                     
                     <div class="flex justify-center">
-                        <button class="py-1 px-2 bg-hau font-bold text-gray-100 text-sm tracking-wider rounded transition ease-in-out delay-150 hover:scale-125 hover:text-hau focus:outline-gray-700 duration-300">LOG IN</button>
+                        <button class="py-1 px-2 bg-hau font-bold text-gray-100 text-sm tracking-wider rounded transition ease-in-out delay-150 hover:scale-125 hover:text-hau focus:outline-gray-700 duration-300">SIGN IN</button>
                     </div>
                 </form>
                 
                 {{-- Terms --}}
-                <div class="flex flex-col items-center text-gray-700 text-xs tracking-wide">
+                <div class="flex flex-col items-center text-gray-700 text-sm">
                     <span>by logging in to our site.</span>  
                     <span>You agree to our</span>
                     <span>
