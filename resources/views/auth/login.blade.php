@@ -6,17 +6,16 @@
             </p>
         </div>
     @endif
-    <div class="p-10 md:p-48 h-screen w-full grid grid-cols-1 md:grid-cols-2 gap-x-8 justify-items-center content-center">
+    <div class="bg-gray-200 p-10 md:p-48 h-screen w-full grid grid-cols-1 md:grid-cols-2 gap-x-8 justify-items-center content-center">
         <div class="hidden md:flex flex-col justify-center items-center">
             <img src="{{asset('images/hau-logo.png')}}" alt="" class="w-full object-cover">
             <h1 class="font-bold text-4xl tracking-widest">Holy Angel University</h1>
         </div>
-        <div class="flex flex-col justify-center items-center">
-            <div class="py-12 px-6 border-t-4 border-color-hau rounded-b shadow-2xl space-y-8">
-                <div class="flex flex-col font-bold text-xl text-center text-hau tracking-widest">
-                    <span>Faculty Ranking</span>
-                    <span class="text-sm">and</span>
-                    <span> Promotion Portal</span>
+        <div class="w-3/5 flex flex-col justify-center items-center">
+            <div class="bg-white py-8 px-6 border-t-4 border-color-hau rounded-b shadow-2xl space-y-8">
+                <div class="flex flex-col items-center text-hau gap-y-4">
+                    <p class="font-bold uppercase text-center text-sm tracking-widest">Welcome to our</p>
+                    <p class="font-bold uppercase text-center text-xl tracking-widest">Faculty Promotion and Ranking System</p>    
                 </div>
                 
                 {{-- Login Form --}}

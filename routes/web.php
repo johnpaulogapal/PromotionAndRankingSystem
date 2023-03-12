@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MasterController;
@@ -23,13 +24,13 @@ use App\Models\Application;
 |
 */
 Route::controller(AuthController::class)->group(function () {
-    Route::get('login', 'login')->name('login');
+    Route::get('login', 'login')->name('login')->middleware('guest');
     Route::post('logout', 'logout')->name('logout');
     Route::post('authenticate', 'authenticate')->name('authenticate');
 });
 
 // Middleware for authentication
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'faculty', 'prevent-back-history'])->group(function () {
     
     Route::controller(UserController::class)->group(function () {
         
@@ -118,4 +119,8 @@ Route::middleware(['auth'])->group(function () {
         
     });
 
+});
+
+Route::controller(AdminController::class)->group(function () {
+    Route::get('admin', 'index')->name('admin.index')->middleware(['admin', 'prevent-back-history']); 
 });

@@ -24,23 +24,25 @@
             </button>
         </div>
     </div>
-    <div class="h-full bg-gray-200">
-    <div class="pt-24 h-screen">
+    <div class="bg-gray-200">
+    <div class="pt-24">
         <p class="uppercase text-center text-3xl text-orange-600 tracking-widest">
             <i class="fa-solid fa-gear mr-1"></i>
             Processing
         </p>
-        <div class="p-12 w-full grid grid-cols-3 gap-12">
-
-            <div class="p-5 bg-white rounded-2xl shadow-2xl">
-                <p class="font-bold uppercase text-center text-lg tracking-widest">Personal Information</p>
-                <div class="">
-                    asdasdasd
-                </div>
+        <div class="m-10 p-10 bg-gray-100 rounded-2xl shadow-2xl">
+            <div class="grid grid-cols-4 gap-8">
+                
+                    <div class="flex flex-col justify-between items-center gap-y-2 py-5 px-2 border-t-4 border-hau rounded-b-lg shadow-2xl">
+                        <p class="font-bold uppercase text-center text-lg tracking-widest">Personal Info</p>
+                        <p class="font-bold">Submitted on: December 25, 1900</p>
+                        <form action="">
+                            <button href="" class="self-end py-1 px-2 text-white tracking-widest bg-cyan-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-cyan-600 duration-300">View</button>
+                        </form>
+                    </div>
+ 
             </div>
-            
-            
-            
+
         </div>
     </div>
     </div>   

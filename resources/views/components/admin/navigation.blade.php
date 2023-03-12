@@ -15,19 +15,10 @@
                     <span class="text-sm tracking-wider">Dashboard</span>
                 </a>
                 <a href="{{route('profile.show', auth()->user()->id)}}" class="{{ Route::is('profile.show') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:scale-110 hover:bg-white hover:text-gray-900 '}} w-full py-3 font-bold transition ease-in-out duration-300">
-                    <span class="text-sm tracking-wider">My Information</span>
+                    <span class="text-sm tracking-wider">Applications</span>
                 </a>
                 <a href="{{route('edubg')}}" class="{{ Route::is('edubg') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:scale-110 hover:bg-white hover:text-gray-900'}} w-full py-3 font-bold transition ease-in-out duration-300">
-                    <span class="text-sm tracking-wider">Educational Background</span>
-                </a>
-                <a href="{{route('prc.index')}}" class="{{ Route::is('prc.index') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:scale-110 hover:bg-white hover:text-gray-900'}} w-full py-3 font-bold transition ease-in-out duration-300">
-                    <span class="text-sm tracking-wider">PRC License</span>
-                </a>
-                <a href="{{route('mpo.index')}}" class="{{ Route::is('mpo.index') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:scale-110 hover:bg-white hover:text-gray-900'}} w-full py-3 font-bold transition ease-in-out duration-300">
-                    <span class="text-sm tracking-wider">Membership in Professional Organization</span>
-                </a>
-                <a href="{{route('training.index')}}" class="{{ Route::is('training.index') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:scale-110 hover:bg-white hover:text-gray-900'}} w-full py-3 font-bold transition ease-in-out duration-300">
-                    <span class="text-sm tracking-wider">Trainings /Seminars /Webinars</span>
+                    <span class="text-sm tracking-wider">Accounts</span>
                 </a>
             </div>
         </div>
@@ -41,16 +32,11 @@
 
     {{-- Main Content --}}
     <div class="pl-60">
-        <div class="w-full absolute top-0 right-0 flex justify-end items-center border-b-4 border-dashed border-gray-200">
-            <a href="{{route('application.index')}}" class="py-2 px-3 my-2 mr-8 rounded transition ease-in-out hover:scale-110 hover:text-gray-900 duration-300">
-         
-                <span class="uppercase text-xl tracking-widest">
-                    <i class="fa-regular fa-bell mr-1"></i>
-                    View Applications Status
-                    <i class="fa-solid fa-arrow-right ml-1"></i>
-                </span>
-          
-            </a>
+        <div class="w-full absolute top-0 right-0 py-2 px-3 my-2 mr-8 flex justify-end items-center border-b-4 border-dashed border-gray-200">
+            <span class="uppercase text-xl tracking-widest">
+                <i class="fa-regular fa-user mr-1"></i>
+                Admin User: {{auth()->user()->email}}
+            </span>  
         </div>
         
         {{ $slot }}

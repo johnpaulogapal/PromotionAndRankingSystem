@@ -13,11 +13,11 @@
 
                 {{-- Column 1 --}}
                 <div class="p-10 h-full w-full">
-                    <div class="p-10 h-full border-r-2 border-dashed">
-                        <p class="mb-5 text-sm uppercase tracking-widest">{{date('D - F d, Y', strtotime(now()))}}</p>
+                    <div class="p-10 h-full">
+                        <p class="mb-5 font-bold text-sm uppercase tracking-widest">{{date('D - F d, Y', strtotime(now()))}}</p>
                         <p class="mb-5 text-xl uppercase tracking-widest"><i class="fa-solid fa-list-check text-hau mr-2"></i>Requirements to be submitted</p>
                         <p class="mb-1 text-sm uppercase tracking-widest">Progress</p>
-                        <div class="mb-5 h-1 w-full bg-neutral-200"> 
+                        <div class="mb-5 h-2 w-full bg-gray-300 rounded-2xl"> 
                             {{-- Code for Progress bar --}}
                             @php
                                 $progress = '';
@@ -63,7 +63,7 @@
                                 else
                                     $progress = '';
                             @endphp
-                            <div class="h-1 {{$progress}}"></div>
+                            <div class="h-2 {{$progress}}"></div>
                         </div>
                         <div class="flex flex-col gap-y-4">
 
@@ -157,20 +157,31 @@
                 
                 {{-- Column 2 --}}
                 <div class="p-20 h-full w-full">
-                    <p class="mb-5 text-sm uppercase tracking-widest">User: {{auth()->user()->first_name . " " . auth()->user()->last_name}}</p>
+                    <p class="mb-5 font-bold text-sm uppercase tracking-widest">User: {{auth()->user()->first_name . " " . auth()->user()->last_name}}</p>
                     <p class="mb-5 text-xl uppercase tracking-widest">
                         <i class="fa-solid fa-envelope-open text-hau mr-1"></i>
-                        Your Application Status:
+                        Application Status:
                         <span class="py-1 px-2 bg-orange-500 text-white rounded">{{auth()->user()->application->status}}</span>
                     </p>
-
-                    <div class="h-full mt-8 grid grid-rows-2 gap-4">
-                        <div class="">
-                            <p class="uppercase text-lg tracking-widest">Recently Reviewed</p>
+                    <p class="mb-1 text-sm uppercase tracking-widest">Progress</p>
+                    <div class="mb-5 h-2 w-full bg-gray-300 rounded-2xl"> 
+                        {{-- Code for Progress bar --}}
+                        
+                        <div class="h-2 bg-green-500 w-full"></div>
+                    </div>
+                    <div class="mt-12 grid grid-rows-2 gap-12">
+                        <div class="flex items-end gap-x-4">
+                            <p class="uppercase text-lg tracking-widest">Rejected - 3 </p>
+                            <a href="{{route('profile.show', auth()->user()->id)}}" class="py-1 px-2 text-white tracking-widest bg-cyan-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-cyan-600 duration-300">
+                                View
+                            </a>
                         </div>
                         
-                        <div class="">
-                            <p class="uppercase text-lg tracking-widest">Recently Checked</p>
+                        <div class="flex items-end gap-x-4">
+                            <p class="uppercase text-lg tracking-widest">Approved - 3</p>
+                            <a href="{{route('profile.show', auth()->user()->id)}}" class="py-1 px-2 text-white tracking-widest bg-cyan-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-cyan-600 duration-300">
+                                View
+                            </a>
                         </div>
                     </div>
                 </div>
