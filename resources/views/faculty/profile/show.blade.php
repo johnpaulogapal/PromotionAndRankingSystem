@@ -13,19 +13,25 @@
                 <p class="px-10 mb-2 uppercase text-xl tracking-widest"><i class="fa-solid fa-id-badge text-hau mr-2"></i>Personal and Application Information</p>
                 <div class="px-10 grid grid-cols-3 gap-x-12">
                     <div class="col-span-2 py-10 px-5 border-t-4 border-hau rounded-b-lg shadow-2xl space-y-5">
-                        <div class="grid grid-rows-3 gap-y-8">
-                            <div class="grid grid-cols-3 gap-4">
+                        <div class="space-y-8">
+                            <div class="grid grid-cols-2 gap-4">
                                 <div class="flex flex-col justify-start gap-1">
-                                    <b class="text-hau text-sm tracking-wide">Faculty</b>
-                                    <p class="text-hau text-lg tracking-widest underline underline-offset-8">  {{$user->faculty}}</p>
+                                    <img src="{{asset('uploads/' . $user->avatar)}}" alt="" class="w-3/4 object-cover border-2 border-hau">
                                 </div>
-                                <div class="flex flex-col justify-start gap-1">
-                                    <b class="text-hau text-sm tracking-wide">Department</b>
-                                    <p class="text-hau text-lg tracking-widest underline underline-offset-8">  {{$user->department}}</p>
-                                </div>
-                                <div class="flex flex-col justify-start gap-1">
-                                    <b class="text-hau text-sm tracking-wide">Employee No.</b>
-                                    <p class="text-hau text-lg tracking-widest underline underline-offset-8">  {{$user->emp_num}}</p>
+                                <div class="grid grid-cols-2">
+                                    <div class="flex flex-col justify-start gap-1">
+                                        <b class="text-hau text-sm tracking-wide">Employee No.</b>
+                                        <p class="text-hau text-lg tracking-widest underline underline-offset-8">  {{$user->emp_num}}</p>
+                                    </div>
+                                    <div class="flex flex-col justify-start gap-1">
+                                        <b class="text-hau text-sm tracking-wide">Faculty</b>
+                                        <p class="text-hau text-lg tracking-widest underline underline-offset-8">  {{$user->faculty}}</p>
+                                    </div>
+                                    <div class="flex flex-col justify-start gap-1">
+                                        <b class="text-hau text-sm tracking-wide">Department</b>
+                                        <p class="text-hau text-lg tracking-widest underline underline-offset-8">  {{$user->department}}</p>
+                                    </div>
+                                    
                                 </div>
                             </div>
         
