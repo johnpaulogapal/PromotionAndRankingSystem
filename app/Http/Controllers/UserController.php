@@ -7,6 +7,7 @@ use App\Models\Undergrad;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -39,7 +40,11 @@ class UserController extends Controller
         ]);
 
         $userInfo['age'] = $this->getAge($request->birth_date);
-
+        
+        if($request->hasFile('avatar')){
+            $userInfo['avatar'] = $request->file('avatar')->store('uploads', 'public');
+        }
+      
         $user->update($userInfo);
 
         $appInfo = $request->validate([
@@ -51,6 +56,8 @@ class UserController extends Controller
 
         $appInfo['status'] = 'pending';
         $appInfo['user_id'] = auth()->user()->id;
+
+        
 
         Application::create($appInfo);
 

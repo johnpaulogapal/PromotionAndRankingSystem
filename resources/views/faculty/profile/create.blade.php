@@ -13,7 +13,7 @@
                     <img src="{{asset('images/hau-logo.png')}}" alt="" class="w-10 mr-2">
                     <span class="uppercase text-xl tracking-widest">Please Fill in this Form to proceed. Thank you</span> 
                 </div>
-                <form method="POST" action="{{route('logout')}}" class="p-5 text-center">
+                <form method="POST" action="{{route('logout')}}" class="p-5 px-0 text-center">
                     @csrf
                         <button class="py-2 px-4 text-xl text-white tracking-widest bg-red-600 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-red-700 duration-300">
                             <i class="fa-solid fa-power-off mr-1"></i>
@@ -21,7 +21,7 @@
                         </button>
                 </form>
             </div>
-            <form method="POST" action="{{route('profile.store', auth()->user()->id)}}" class="py-5 px-40 w-full">
+            <form method="POST" action="{{route('profile.store', auth()->user()->id)}}" enctype="multipart/form-data" class="py-5 px-40 w-full">
             @csrf
                 <div class="grid grid-cols-3 gap-x-12">
                     <div class="col-span-2 py-10 px-5 border-t-4 border-hau rounded-b shadow-2xl space-y-5">
@@ -102,6 +102,14 @@
                                         </div> 
                                     </div>
                                     @error('sex')
+                                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                    @enderror
+                                </div>
+
+                                <div class="flex flex-col justify-center gap-1">
+                                    <label for="" class="font-bold text-hau text-sm tracking-wider">Upload your image</label>
+                                    <input name="avatar" type="file"  class="py-0.5 px-2 aret-hau outline-hau">
+                                    @error('avatar')
                                         <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                                     @enderror
                                 </div>

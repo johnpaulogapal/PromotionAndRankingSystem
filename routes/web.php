@@ -8,6 +8,7 @@ use App\Http\Controllers\PHDController;
 use App\Http\Controllers\UndergradController;
 use App\Http\Controllers\PRCController;
 use App\Http\Controllers\MPOController;
+use App\Http\Controllers\PendingController;
 use App\Http\Controllers\TrainingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -120,7 +121,17 @@ Route::middleware(['auth', 'faculty', 'prevent-back-history'])->group(function (
     });
 
 });
+// END OF FACULTY ROUTES
 
-Route::controller(AdminController::class)->group(function () {
-    Route::get('admin', 'index')->name('admin.index')->middleware(['admin', 'prevent-back-history']); 
+Route::middleware(['auth', 'admin', 'prevent-back-history'])->group(function () {
+
+    Route::controller(AdminController::class)->group(function () {
+        Route::get('admin', 'index')->name('admin.index'); 
+    });
+
+    Route::controller(PendingController::class)->group(function () {
+        Route::get('admin/pending-applications', 'index')->name('pending.index'); 
+       
+    });
+
 });

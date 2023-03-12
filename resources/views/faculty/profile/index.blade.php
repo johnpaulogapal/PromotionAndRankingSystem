@@ -161,7 +161,7 @@
                     <p class="mb-5 text-xl uppercase tracking-widest">
                         <i class="fa-solid fa-envelope-open text-hau mr-1"></i>
                         Application Status:
-                        <span class="py-1 px-2 bg-orange-500 text-white rounded">{{auth()->user()->application->status}}</span>
+                        {{-- <span class="py-1 px-2 bg-orange-500 text-white rounded">{{auth()->user()->application->status}}</span> --}}
                     </p>
                     <p class="mb-1 text-sm uppercase tracking-widest">Progress</p>
                     <div class="mb-5 h-2 w-full bg-gray-300 rounded-2xl"> 
