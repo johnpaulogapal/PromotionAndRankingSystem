@@ -39,10 +39,20 @@ class UndergradController extends Controller
             'school' => 'required',
             'course' => 'required',
             'graduation_date' => 'required',
+            'diploma' => 'required',
+            'research' => 'required',
         ]);
         
         $undergradInfo['status'] = 'pending';
         $undergradInfo['user_id'] = auth()->user()->id;
+
+        if($request->hasFile('diploma')){
+            $undergradInfo['diploma'] = $request->file('diploma')->store('images', 'public');
+        }
+
+        if($request->hasFile('research')){
+            $undergradInfo['research'] = $request->file('research')->store('images', 'public');
+        }
    
         Undergrad::create($undergradInfo);
 
@@ -86,7 +96,17 @@ class UndergradController extends Controller
             'school' => 'required',
             'course' => 'required',
             'graduation_date' => 'required',
+            'diploma' => 'required',
+            'research' => 'required',
         ]);
+
+        if($request->hasFile('diploma')){
+            $undergradInfo['diploma'] = $request->file('diploma')->store('images', 'public');
+        }
+
+        if($request->hasFile('research')){
+            $undergradInfo['research'] = $request->file('research')->store('images', 'public');
+        }
    
         $undergrad->update($undergradInfo);
 

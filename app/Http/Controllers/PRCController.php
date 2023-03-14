@@ -40,10 +40,20 @@ class PRCController extends Controller
         $prcInfo = $request->validate([
             'prc_num' => 'required',
             'validity' => 'required',
+            'prc_front' => 'required',
+            'prc_back' => 'required',
         ]);
 
         $prcInfo['status'] = 'pending';
         $prcInfo['user_id'] = auth()->user()->id;
+
+        if($request->hasFile('prc_front')){
+            $prcInfo['prc_front'] = $request->file('prc_front')->store('images', 'public');
+        }
+
+        if($request->hasFile('prc_back')){
+            $prcInfo['prc_back'] = $request->file('prc_back')->store('images', 'public');
+        }
 
         Prc::create($prcInfo);
 
@@ -86,7 +96,18 @@ class PRCController extends Controller
         $prcInfo = $request->validate([
             'prc_num' => 'required',
             'validity' => 'required',
+            'prc_front' => 'required',
+            'prc_back' => 'required',
         ]);
+
+        if($request->hasFile('prc_front')){
+            $prcInfo['prc_front'] = $request->file('prc_front')->store('images', 'public');
+        }
+
+        if($request->hasFile('prc_back')){
+            $prcInfo['prc_back'] = $request->file('prc_back')->store('images', 'public');
+        }
+
 
         $prc->update($prcInfo);
 

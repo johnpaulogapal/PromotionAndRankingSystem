@@ -39,10 +39,20 @@ class PHDController extends Controller
             'school' => 'required',
             'course' => 'required',
             'graduation_date' => 'required',
+            'diploma' => 'required',
+            'research' => 'required',
         ]);
         
         $phdInfo['status'] = 'pending';
         $phdInfo['user_id'] = auth()->user()->id;
+
+        if($request->hasFile('diploma')){
+            $phdInfo['diploma'] = $request->file('diploma')->store('images', 'public');
+        }
+
+        if($request->hasFile('research')){
+            $phdInfo['research'] = $request->file('research')->store('images', 'public');
+        }
    
         Phd::create($phdInfo);
 
@@ -86,7 +96,17 @@ class PHDController extends Controller
             'school' => 'required',
             'course' => 'required',
             'graduation_date' => 'required',
+            'diploma' => 'required',
+            'research' => 'required',
         ]);
+
+        if($request->hasFile('diploma')){
+            $phdInfo['diploma'] = $request->file('diploma')->store('images', 'public');
+        }
+
+        if($request->hasFile('research')){
+            $phdInfo['research'] = $request->file('research')->store('images', 'public');
+        }
    
         $phd->update($phdInfo);
 

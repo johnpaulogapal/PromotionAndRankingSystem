@@ -19,6 +19,8 @@ class CreateMastersTable extends Migration
             $table->string('school');
             $table->string('course');
             $table->date('graduation_date');
+            $table->string('diploma');
+            $table->string('research');
             $table->string('status');
             $table->timestamps();
         });

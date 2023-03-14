@@ -39,10 +39,20 @@ class MasterController extends Controller
             'school' => 'required',
             'course' => 'required',
             'graduation_date' => 'required',
+            'diploma' => 'required',
+            'research' => 'required',
         ]);
         
         $masterInfo['status'] = 'pending';
         $masterInfo['user_id'] = auth()->user()->id;
+
+        if($request->hasFile('diploma')){
+            $masterInfo['diploma'] = $request->file('diploma')->store('images', 'public');
+        }
+
+        if($request->hasFile('research')){
+            $masterInfo['research'] = $request->file('research')->store('images', 'public');
+        }
    
         Master::create($masterInfo);
 
@@ -86,7 +96,17 @@ class MasterController extends Controller
             'school' => 'required',
             'course' => 'required',
             'graduation_date' => 'required',
+            'diploma' => 'required',
+            'research' => 'required',
         ]);
+
+        if($request->hasFile('diploma')){
+            $masterInfo['diploma'] = $request->file('diploma')->store('images', 'public');
+        }
+
+        if($request->hasFile('research')){
+            $masterInfo['research'] = $request->file('research')->store('images', 'public');
+        }
    
         $master->update($masterInfo);
 

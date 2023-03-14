@@ -88,6 +88,10 @@ class UserController extends Controller
 
         $userInfo['age'] = $this->getAge($request->birth_date);
 
+        if($request->hasFile('avatar')){
+            $userInfo['avatar'] = $request->file('avatar')->store('images', 'public');
+        }
+
         $user->update($userInfo);
 
         $appInfo = $request->validate([

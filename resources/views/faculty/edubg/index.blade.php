@@ -24,26 +24,41 @@
                             @foreach (auth()->user()->undergrads as $undergrad)
                                 <div class="w-full mb-2 p-5 border-t-4 border-hau rounded-b-lg shadow-2xl space-y-4">
                                     <div class="flex flex-col justify-start">
-                                        <b class="text-hau text-xs tracking-wide">School</b>
+                                        <b class="text-hau tracking-wide">School</b>
                                         <p class="text-hau tracking-widest">{{$undergrad->school}}</p>
                                     </div>
                                     <div class="flex flex-col justify-start">
-                                        <b class="text-hau text-xs tracking-wide">Course</b>
+                                        <b class="text-hau tracking-wide">Course</b>
                                         <p class="text-hau tracking-widest">{{$undergrad->course}}</p>
                                     </div>
                                     <div class="flex flex-col justify-start">
-                                        <b class="text-hau text-xs tracking-wide">Graduation Date</b>
+                                        <b class="text-hau tracking-wide">Graduation Date</b>
                                         <p class="text-hau tracking-widest">{{date('F d, Y', strtotime($undergrad->graduation_date))}}</p>
                                     </div>
+                                    
+                                    <div class="">
+                                        <b class="text-hau tracking-wide">Diploma</b>
+                                        <a href="{{asset('uploads/' . $undergrad->diploma)}}" class="py-1 px-2 text-sm text-white tracking-widest bg-cyan-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-cyan-600 duration-300" download>
+                                            Download
+                                        </a>
+                                    </div>
+                                   
+                                    <div class="">
+                                        <b class="text-hau tracking-wide">Research</b>
+                                        <a href="{{asset('uploads/' . $undergrad->research)}}" class="py-1 px-2 text-sm text-white tracking-widest bg-cyan-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-cyan-600 duration-300" download>
+                                            Download
+                                        </a>
+                                    </div>
+
                                     <div class="border-t border-hau flex justify-end pt-5 gap-x-4">
                                         <form action="{{route('undergrad.edit', $undergrad->id)}}">
-                                            <button class="py-1 px-2 text-white tracking-widest bg-yellow-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-yellow-400 duration-300">
+                                            <button class="py-1.5 px-4 text-white text-xl tracking-widest bg-yellow-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-yellow-400 duration-300">
                                                 <i class="fa-solid fa-pen-to-square mr-1"></i>Edit
                                             </button>
                                         </form>
                                         <button 
                                             type="submit"
-                                            class="py-1 px-2 text-white tracking-widest bg-red-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-red-600 duration-300"
+                                            class="py-1.5 px-4 text-white text-xl tracking-widest bg-red-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-red-600 duration-300"
                                             data-te-toggle="modal"
                                             data-te-target="#undergrad{{$undergrad->id}}"
                                             data-te-ripple-init
@@ -136,26 +151,41 @@
                             @foreach (auth()->user()->masters as $master)
                                 <div class="w-full mb-2 p-5 border-t-4 border-hau rounded-b-lg shadow-2xl space-y-4">
                                     <div class="flex flex-col justify-start">
-                                        <b class="text-hau text-xs tracking-wide">School</b>
+                                        <b class="text-hau tracking-wide">School</b>
                                         <p class="text-hau tracking-widest">{{$master->school}}</p>
                                     </div>
                                     <div class="flex flex-col justify-start">
-                                        <b class="text-hau text-xs tracking-wide">Course</b>
+                                        <b class="text-hau tracking-wide">Course</b>
                                         <p class="text-hau tracking-widest">{{$master->course}}</p>
                                     </div>
                                     <div class="flex flex-col justify-start">
-                                        <b class="text-hau text-xs tracking-wide">Graduation Date</b>
+                                        <b class="text-hau tracking-wide">Graduation Date</b>
                                         <p class="text-hau tracking-widest">{{date('F d, Y', strtotime($master->graduation_date))}}</p>
                                     </div>
+
+                                    <div class="">
+                                        <b class="text-hau tracking-wide">Diploma</b>
+                                        <a href="{{asset('uploads/' . $master->diploma)}}" class="py-1 px-2 text-sm text-white tracking-widest bg-cyan-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-cyan-600 duration-300" download>
+                                            Download
+                                        </a>
+                                    </div>
+                                   
+                                    <div class="">
+                                        <b class="text-hau tracking-wide">Research</b>
+                                        <a href="{{asset('uploads/' . $master->research)}}" class="py-1 px-2 text-sm text-white tracking-widest bg-cyan-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-cyan-600 duration-300" download>
+                                            Download
+                                        </a>
+                                    </div>
+
                                     <div class="border-t border-hau flex justify-end pt-5 gap-x-4">
                                         <form action="{{route('master.edit', $master->id)}}">
-                                            <button class="py-1 px-2 text-white tracking-widest bg-yellow-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-yellow-400 duration-300">
+                                            <button class="py-1.5 px-4 text-white text-xl tracking-widest bg-yellow-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-yellow-400 duration-300">
                                                 <i class="fa-solid fa-pen-to-square mr-1"></i>Edit
                                             </button>
                                         </form>
                                         <button 
                                             type="submit"
-                                            class="py-1 px-2 text-white tracking-widest bg-red-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-red-600 duration-300"
+                                            class="py-1.5 px-4 text-white text-xl tracking-widest bg-red-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-red-600 duration-300"
                                             data-te-toggle="modal"
                                             data-te-target="#master{{$master->id}}"
                                             data-te-ripple-init
@@ -248,26 +278,41 @@
                             @foreach (auth()->user()->phds as $phd)
                                 <div class="w-full mb-2 p-5 border-t-4 border-hau rounded-b-lg shadow-2xl space-y-4">
                                     <div class="flex flex-col justify-start">
-                                        <b class="text-hau text-xs tracking-wide">School</b>
+                                        <b class="text-hau tracking-wide">School</b>
                                         <p class="text-hau tracking-widest">{{$phd->school}}</p>
                                     </div>
                                     <div class="flex flex-col justify-start">
-                                        <b class="text-hau text-xs tracking-wide">Course</b>
+                                        <b class="text-hau tracking-wide">Course</b>
                                         <p class="text-hau tracking-widest">{{$phd->course}}</p>
                                     </div>
                                     <div class="flex flex-col justify-start">
-                                        <b class="text-hau text-xs tracking-wide">Graduation Date</b>
+                                        <b class="text-hau tracking-wide">Graduation Date</b>
                                         <p class="text-hau tracking-widest">{{date('F d, Y', strtotime($phd->graduation_date))}}</p>
                                     </div>
+
+                                    <div class="">
+                                        <b class="text-hau tracking-wide">Diploma</b>
+                                        <a href="{{asset('uploads/' . $phd->diploma)}}" class="py-1 px-2 text-sm text-white tracking-widest bg-cyan-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-cyan-600 duration-300" download>
+                                            Download
+                                        </a>
+                                    </div>
+                                   
+                                    <div class="">
+                                        <b class="text-hau tracking-wide">Research</b>
+                                        <a href="{{asset('uploads/' . $phd->research)}}" class="py-1 px-2 text-sm text-white tracking-widest bg-cyan-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-cyan-600 duration-300" download>
+                                            Download
+                                        </a>
+                                    </div>
+
                                     <div class="border-t border-hau flex justify-end pt-5 gap-x-4">
                                         <form action="{{route('phd.edit', $phd->id)}}">
-                                            <button class="py-1 px-2 text-white tracking-widest bg-yellow-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-yellow-400 duration-300">
+                                            <button class="py-1.5 px-4 text-white text-xl tracking-widest bg-yellow-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-yellow-400 duration-300">
                                                 <i class="fa-solid fa-pen-to-square mr-1"></i>Edit
                                             </button>
                                         </form>
                                         <button 
                                             type="submit"
-                                            class="py-1 px-2 text-white tracking-widest bg-red-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-red-600 duration-300"
+                                            class="py-1.5 px-4 text-white text-xl tracking-widest bg-red-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-red-600 duration-300"
                                             data-te-toggle="modal"
                                             data-te-target="#phd{{$phd->id}}"
                                             data-te-ripple-init

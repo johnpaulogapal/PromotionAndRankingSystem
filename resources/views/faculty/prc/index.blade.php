@@ -15,11 +15,12 @@
                 </a>
             </div>
 
-            <div class="pt-5 grid justify-items-center content-start gap-y-8">
+            <div class="pt-5 px-8 grid justify-items-center content-start gap-y-8">
                 @foreach (auth()->user()->prcs as $prc)
-                    <div class="w-1/2 p-5 border-t-4 border-hau grid grid-cols-2 gap-4 rounded-b shadow-2xl">
-                        <div class="justify-self-center flex items-center">
-                            qwe
+                    <div class="w-full p-8 border-t-4 border-hau grid grid-cols-3 gap-4 rounded-b shadow-2xl">
+                        <div class="col-span-2 grid grid-cols-2 gap-x-4">
+                          <img src="{{asset('uploads/' . $prc->prc_front)}}" alt="" class="aspect-video">
+                          <img src="{{asset('uploads/' . $prc->prc_back)}}" alt="" class="aspect-video">
                         </div>
                         <div class="grid grid-rows-3 gap-y-4">
                             <div class="flex flex-col justify-start">
@@ -30,15 +31,15 @@
                                 <b class="text-hau text-sm tracking-wide">Validity</b>
                                 <p class="text-hau text-lg tracking-widest">{{date('F d, Y', strtotime($prc->prc_num))}}</p>
                             </div>
-                            <div class="border-t border-hau flex justify-end pt-5 gap-x-4">
+                            <div class="flex items-center justify-center gap-x-4">
                                 <form action="{{route('prc.edit', $prc->id)}}">
-                                    <button class="py-1 px-2 text-white tracking-widest bg-yellow-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-yellow-400 duration-300">
+                                    <button class="py-1.5 px-4 text-white text-xl tracking-widest bg-yellow-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-yellow-400 duration-300">
                                         <i class="fa-solid fa-pen-to-square mr-1"></i>Edit
                                     </button>
                                 </form>
                                 <button 
                                     type="submit"
-                                    class="py-1 px-2 text-white tracking-widest bg-red-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-red-600 duration-300"
+                                    class="py-1.5 px-4 text-white text-xl tracking-widest bg-red-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-red-600 duration-300"
                                     data-te-toggle="modal"
                                     data-te-target="#prc{{$prc->id}}"
                                     data-te-ripple-init
