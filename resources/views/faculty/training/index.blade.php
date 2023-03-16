@@ -18,7 +18,7 @@
             <div class="pt-5 px-10 grid justify-items-center content-start gap-y-8">
                 @foreach (auth()->user()->trainings as $training)
                     <div class="w-full py-5 px-10 border-t-4 border-hau rounded-b shadow-2xl">
-                        <div class="grid grid-cols-7 justify-items-center content-center gap-x-5">
+                        <div class="grid grid-cols-7 gap-3">
                             <div class="p-2 border-l-2 border-dashed border-gray-200 flex flex-col justify-start">
                                 <b class="text-hau text-xs tracking-wide">From</b>
                                 <p class="text-hau tracking-widest">{{date('F d, Y', strtotime($training->from))}}</p>
@@ -43,15 +43,15 @@
                                 <b class="text-hau text-xs tracking-wide">Institution</b>
                                 <p class="text-hau tracking-widest">{{$training->institution}}</p>
                             </div>
-                            <div class="border-l border-hau flex flex-col p-2 gap-y-2">
+                            <div class="border-l border-hau">
                                 <form action="{{route('training.edit', $training->id)}}">
-                                    <button class="py-1 px-2 text-white tracking-widest bg-yellow-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-yellow-400 duration-300">
+                                    <button class="mx-3 mb-4 py-1 px-2 text-white tracking-widest bg-yellow-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-yellow-400 duration-300">
                                         <i class="fa-solid fa-pen-to-square mr-1"></i>Edit
                                     </button>
                                 </form>
                                 <button 
                                     type="submit"
-                                    class="py-1 px-2 text-white tracking-widest bg-red-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-red-600 duration-300"
+                                    class="mx-3 py-1 px-2 text-white tracking-widest bg-red-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-red-600 duration-300"
                                     data-te-toggle="modal"
                                     data-te-target="#training{{$training->id}}"
                                     data-te-ripple-init

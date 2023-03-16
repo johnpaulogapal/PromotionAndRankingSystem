@@ -37,6 +37,7 @@ class UserController extends Controller
             'sex' => 'required',
             'department' => 'required',
             'faculty' => 'required',
+            'avatar' => 'required',
         ]);
 
         $userInfo['age'] = $this->getAge($request->birth_date);

@@ -9,6 +9,7 @@ use App\Http\Controllers\UndergradController;
 use App\Http\Controllers\PRCController;
 use App\Http\Controllers\MPOController;
 use App\Http\Controllers\PendingController;
+use App\Http\Controllers\ReceivedController;
 use App\Http\Controllers\TrainingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -131,6 +132,20 @@ Route::middleware(['auth', 'admin', 'prevent-back-history'])->group(function () 
 
     Route::controller(PendingController::class)->group(function () {
         Route::get('admin/pending-applications', 'index')->name('pending.index'); 
+        Route::put('admin/pending-applications/{application}', 'receive')->name('pending.receive');
+    });
+
+    Route::controller(ReceivedController::class)->group(function () {
+        Route::get('admin/received-applications', 'index')->name('received.index'); 
+        Route::get('admin/received-applications/{user}', 'show')->name('received.show'); 
+        Route::get('admin/profile-verify/{user}', 'profile')->name('received.profile'); 
+        Route::get('admin/application-verify/{application}', 'application')->name('received.application'); 
+        Route::get('admin/undergrad-verify/{undergrad}', 'undergrad')->name('received.undergrad'); 
+        Route::get('admin/masters-verify/{master}', 'masters')->name('received.masters'); 
+        Route::get('admin/phd-verify/{phd}', 'phd')->name('received.phd'); 
+        Route::get('admin/prc-license-verify/{prc}', 'prc')->name('received.prc'); 
+        Route::get('admin/membership-in-professional-organization-verify/{mpo}', 'mpo')->name('received.mpo'); 
+        Route::get('admin/trainings-seminars-webinars-verify/{training}', 'training')->name('received.training'); 
        
     });
 

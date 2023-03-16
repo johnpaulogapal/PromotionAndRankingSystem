@@ -8,8 +8,8 @@
             <form method="POST" action="{{route('training.store')}}" class="pt-5 grid justify-items-center content-start gap-y-8">
             @csrf
                 <div class="w-full py-5 px-10 border-t-4 border-hau rounded-b shadow-2xl">
-                    <div class="grid grid-cols-7 justify-items-center content-center gap-x-4">
-                        <div class="flex flex-col justify-start gy-1">
+                    <div class="grid grid-cols-7 gap-8 ">
+                        <div class="flex flex-col justify-start">
                             <b class="text-hau text-sm tracking-wide">From</b>
                             <input name="from" type="date" class="py-0.5 px-2 border border-hau rounded caret-hau outline-hau">
                             @error('from')
