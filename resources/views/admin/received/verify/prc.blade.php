@@ -26,7 +26,8 @@
             <a href="{{route('received.show', $prc->user_id)}}" class="py-1.5 px-4 text-xl text-white tracking-widest bg-gray-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-gray-600 duration-300">
                 <i class="fa-solid fa-arrow-left mr-1"></i>Back
             </a>
-
+            
+            @if($prc->status == 'processing')
             {{-- Button Checked Modal--}}
             <button 
                 type="button" 
@@ -192,6 +193,8 @@
                 </div>
             </div>
             {{-- End Resubmit Modal --}} 
+            @endif
+            
         </div> 
 
     </div>

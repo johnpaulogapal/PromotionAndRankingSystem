@@ -39,6 +39,8 @@
                 <i class="fa-solid fa-arrow-left mr-1"></i>Back
             </a> 
 
+
+            @if($training->status == 'processing')
             {{-- Button Checked Modal--}}
             <button 
                 type="button" 
@@ -204,6 +206,7 @@
                 </div>
             </div>
             {{-- End Resubmit Modal --}}  
+            @endif
 
         </div>  
 

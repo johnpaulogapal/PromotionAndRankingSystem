@@ -50,11 +50,13 @@
                     </div>
                 </div>
             </div>
+           
             <div class="flex justify-center items-center gap-x-12">
                 <a href="{{route('received.show', $user->id)}}" class="py-1.5 px-4 text-xl text-white tracking-widest bg-gray-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-gray-600 duration-300">
                     <i class="fa-solid fa-arrow-left mr-1"></i>Back
                 </a>
 
+                @if($user->status == 'processing')
                 {{-- Button Checked Modal--}}
                 <button 
                     type="button" 
@@ -220,9 +222,10 @@
                     </div>
                 </div>
                 {{-- End Resubmit Modal --}}
-
+                @endif
 
             </div>
+            
         </div>
 
         

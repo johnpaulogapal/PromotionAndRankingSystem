@@ -29,15 +29,13 @@ class ReceivedController extends Controller
     // VERIFY
     public function profile(User $user){
 
-        
-        if($user->status == 'pending'){
-            $userInfo['status'] = 'processing';
-        }
-        else {
+        if($user->status == 'resubmit')
+            $userInfo['status'] = 'resubmit';
+        elseif($user->status == 'approved')
             $userInfo['status'] = 'approved';
-        }
+        else
+            $userInfo['status'] = 'processing';
             
-
         $user->update($userInfo);
 
         return view('admin.received.verify.profile', [
@@ -47,12 +45,14 @@ class ReceivedController extends Controller
 
     public function application(Application $application){
 
-        if($application->status == 'pending'){
-            $applicationInfo['status'] = 'processing';
-        }
-        else {
+        if($application->status == 'resubmit')
+            $applicationInfo['status'] = 'resubmit';
+        elseif($application->status == 'approved')
             $applicationInfo['status'] = 'approved';
-        }
+        else
+            $applicationInfo['status'] = 'processing';
+
+        $application->update($applicationInfo);
 
         return view('admin.received.verify.application', [
             'application' => $application,
@@ -61,7 +61,12 @@ class ReceivedController extends Controller
 
     public function undergrad(Undergrad $undergrad){
 
-        $undergradInfo['status'] = 'processing';
+        if($undergrad->status == 'resubmit')
+            $undergradInfo['status'] = 'resubmit';
+        elseif($undergrad->status == 'approved')
+            $undergradInfo['status'] = 'approved';
+        else
+            $undergradInfo['status'] = 'processing';
 
         $undergrad->update($undergradInfo);
 
@@ -72,7 +77,12 @@ class ReceivedController extends Controller
 
     public function masters(Master $master){
 
-        $masterInfo['status'] = 'processing';
+        if($master->status == 'resubmit')
+            $masterInfo['status'] = 'resubmit';
+        elseif($master->status == 'approved')
+            $masterInfo['status'] = 'approved';
+        else
+            $masterInfo['status'] = 'processing';
 
         $master->update($masterInfo);
 
@@ -83,7 +93,12 @@ class ReceivedController extends Controller
 
     public function phd(Phd $phd){
 
-        $phdInfo['status'] = 'processing';
+        if($phd->status == 'resubmit')
+            $phdInfo['status'] = 'resubmit';
+        elseif($phd->status == 'approved')
+            $phdInfo['status'] = 'approved';
+        else
+            $phdInfo['status'] = 'processing';
 
         $phd->update($phdInfo);
 
@@ -94,7 +109,12 @@ class ReceivedController extends Controller
 
     public function prc(Prc $prc){
 
-        $prcInfo['status'] = 'processing';
+        if($prc->status == 'resubmit')
+            $prcInfo['status'] = 'resubmit';
+        elseif($prc->status == 'approved')
+            $prcInfo['status'] = 'approved';
+        else
+            $prcInfo['status'] = 'processing';
 
         $prc->update($prcInfo);
 
@@ -105,7 +125,12 @@ class ReceivedController extends Controller
 
     public function mpo(Mpo $mpo){
 
-        $mpoInfo['status'] = 'processing';
+        if($mpo->status == 'resubmit')
+            $mpoInfo['status'] = 'resubmit';
+        elseif($mpo->status == 'approved')
+            $mpoInfo['status'] = 'approved';
+        else
+            $mpoInfo['status'] = 'processing';
 
         $mpo->update($mpoInfo);
 
@@ -116,7 +141,12 @@ class ReceivedController extends Controller
 
     public function training(Training $training){
 
-        $trainingInfo['status'] = 'processing';
+        if($training->status == 'resubmit')
+            $trainingInfo['status'] = 'resubmit';
+        elseif($training->status == 'approved')
+            $trainingInfo['status'] = 'approved';
+        else
+            $trainingInfo['status'] = 'processing';
 
         $training->update($trainingInfo);
         
