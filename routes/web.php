@@ -147,13 +147,35 @@ Route::middleware(['auth', 'admin', 'prevent-back-history'])->group(function () 
         Route::get('admin/prc-license-verify/{prc}', 'prc')->name('received.prc'); 
         Route::get('admin/membership-in-professional-organization-verify/{mpo}', 'mpo')->name('received.mpo'); 
         Route::get('admin/trainings-seminars-webinars-verify/{training}', 'training')->name('received.training'); 
-       
+    
     });
 
-    // Route::controller(VerifyController::class)->group(function () {
+    Route::controller(VerifyController::class)->group(function () {
          
-    //     Route::put('admin/profile/verify/{user}', 'profile')->name('verify.profile'); 
+        Route::put('admin/profile-resubmit/{user}', 'profileResubmit')->name('verify.resubmit.profile');
+        Route::put('admin/profile-approved/{user}', 'profileApproved')->name('verify.approved.profile'); 
 
-    // });
+        Route::put('admin/application-resubmit/{application}', 'applicationResubmit')->name('verify.resubmit.application');
+        Route::put('admin/application-approved/{application}', 'applicationApproved')->name('verify.approved.application'); 
+
+        Route::put('admin/undergrad-resubmit/{undergrad}', 'undergradResubmit')->name('verify.resubmit.undergrad');
+        Route::put('admin/undergrad-approved/{undergrad}', 'undergradApproved')->name('verify.approved.undergrad');
+        
+        Route::put('admin/masters-resubmit/{master}', 'masterResubmit')->name('verify.resubmit.master');
+        Route::put('admin/masters-approved/{master}', 'masterApproved')->name('verify.approved.master'); 
+
+        Route::put('admin/phd-resubmit/{phd}', 'phdResubmit')->name('verify.resubmit.phd');
+        Route::put('admin/phd-approved/{phd}', 'phdApproved')->name('verify.approved.phd'); 
+
+        Route::put('admin/prc-resubmit/{prc}', 'prcResubmit')->name('verify.resubmit.prc');
+        Route::put('admin/prc-approved/{prc}', 'prcApproved')->name('verify.approved.prc'); 
+
+        Route::put('admin/mpo-resubmit/{mpo}', 'mpoResubmit')->name('verify.resubmit.mpo');
+        Route::put('admin/mpo-approved/{mpo}', 'mpoApproved')->name('verify.approved.mpo'); 
+
+        Route::put('admin/training-resubmit/{training}', 'trainingResubmit')->name('verify.resubmit.training');
+        Route::put('admin/training-approved/{training}', 'trainingApproved')->name('verify.approved.training'); 
+
+    });
 
 });

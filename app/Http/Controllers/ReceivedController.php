@@ -16,7 +16,7 @@ class ReceivedController extends Controller
 {
     public function index(){
         return view('admin.received.index', [
-            'receivedApplications' => Application::where('status', 'received')->get(),
+            'receivedApplications' => Application::where('received', 1)->get(),
         ]);
     }
 
@@ -29,7 +29,14 @@ class ReceivedController extends Controller
     // VERIFY
     public function profile(User $user){
 
-        $userInfo['status'] = 'processing';
+        
+        if($user->status == 'pending'){
+            $userInfo['status'] = 'processing';
+        }
+        else {
+            $userInfo['status'] = 'approved';
+        }
+            
 
         $user->update($userInfo);
 
@@ -40,9 +47,12 @@ class ReceivedController extends Controller
 
     public function application(Application $application){
 
-        $applicationInfo['status'] = 'processing';
-
-        $application->update($applicationInfo);
+        if($application->status == 'pending'){
+            $applicationInfo['status'] = 'processing';
+        }
+        else {
+            $applicationInfo['status'] = 'approved';
+        }
 
         return view('admin.received.verify.application', [
             'application' => $application,

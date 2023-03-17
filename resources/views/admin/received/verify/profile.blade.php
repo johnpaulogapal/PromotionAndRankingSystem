@@ -82,7 +82,7 @@
                 {{-- Start Checked Modal --}}
                 <div
                 data-te-modal-init
-                class="fixed top-0 left-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
+                class="fixed pl-60 top-0 left-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
                 id="checkedProfileModal"
                 tabindex="-1"
                 aria-labelledby="exampleModalLabel"
@@ -118,26 +118,30 @@
                                 </svg>
                             </button>
                             </div>
+                            <form method="POST" action="{{route('verify.approved.profile', $user->id)}}">
+                            @csrf
+                            @method('PUT')
                             <div class="relative flex-auto p-4" data-te-modal-body-ref>
-                                <p class="font-bold text-lg tracking-widest">Are you sure you have checked this information?</p>
+                                <p class="font-bold text-lg tracking-widest">Are you sure you have approved this information?</p>
                             </div>
                             <div
                             class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 gap-x-4">
-                            <button
-                                type="button"
-                                class="py-1 px-2 text-white tracking-widest bg-gray-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-gray-600 duration-300"
-                                data-te-modal-dismiss
-                                data-te-ripple-init
-                                data-te-ripple-color="light">
-                                Cancel
-                            </button>
-                            <a
-                                href=""
-                                class="py-1 px-2 text-white tracking-widest bg-green-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-green-600 duration-300"
-                                data-te-ripple-init
-                                data-te-ripple-color="light">
-                                Confirm
-                            </a>
+                                <button
+                                    type="button"
+                                    class="py-1 px-2 text-white tracking-widest bg-gray-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-gray-600 duration-300"
+                                    data-te-modal-dismiss
+                                    data-te-ripple-init
+                                    data-te-ripple-color="light">
+                                    Cancel
+                                </button>
+                                <button
+                                    type="submit"
+                                    class="py-1 px-2 text-white tracking-widest bg-green-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-green-600 duration-300"
+                                    data-te-ripple-init
+                                    data-te-ripple-color="light">
+                                    Confirm
+                                </button>
+                            </form>
                             </div>
                         </div>
                     </div>
@@ -147,7 +151,7 @@
                 {{-- Resubmit Checked Modal --}}
                 <div
                 data-te-modal-init
-                class="fixed top-0 left-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
+                class="fixed pl-60 top-0 left-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
                 id="resubmitProfileModal"
                 tabindex="-1"
                 aria-labelledby="exampleModalLabel"
@@ -183,30 +187,34 @@
                                 </svg>
                             </button>
                             </div>
+                            <form method="POST" action="{{route('verify.resubmit.profile', $user->id)}}">
+                            @csrf
+                            @method('PUT')
                             <div class="relative flex-auto p-4" data-te-modal-body-ref>
                                 <p class="font-bold text-lg tracking-widest">Are you sure you want the user to resubmit this information?</p>
                                 <div class="flex flex-col p-5">
-                                    <label class="font-bold text-hau text-sm tracking-wider">Please add a comment</label>
-                                    <textarea name="" id="" cols="30" rows="5" class="py-0.5 px-2 border border-hau caret-hau outline-hau resize-none"></textarea>
+                                    <label class="font-bold text-hau text-sm tracking-wider">Please add a comment <span class="text-red-500">(It is required)</span></label>
+                                    <textarea name="comment" id="" cols="30" rows="5" class="py-0.5 px-2 border border-hau caret-hau outline-hau resize-none"></textarea>
                                 </div>
                             </div>
                             <div
                             class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 gap-x-4">
-                            <button
-                                type="button"
-                                class="py-1 px-2 text-white tracking-widest bg-gray-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-gray-600 duration-300"
-                                data-te-modal-dismiss
-                                data-te-ripple-init
-                                data-te-ripple-color="light">
-                                Cancel
-                            </button>
-                            <a
-                                href=""
-                                class="py-1 px-2 text-white tracking-widest bg-green-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-green-600 duration-300"
-                                data-te-ripple-init
-                                data-te-ripple-color="light">
-                                Confirm
-                            </a>
+                                <button
+                                    type="button"
+                                    class="py-1 px-2 text-white tracking-widest bg-gray-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-gray-600 duration-300"
+                                    data-te-modal-dismiss
+                                    data-te-ripple-init
+                                    data-te-ripple-color="light">
+                                    Cancel
+                                </button>
+                                <button
+                                    type="submit"
+                                    class="py-1 px-2 text-white tracking-widest bg-green-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-green-600 duration-300"
+                                    data-te-ripple-init
+                                    data-te-ripple-color="light">
+                                    Confirm
+                                </button>
+                            </form>
                             </div>
                         </div>
                     </div>

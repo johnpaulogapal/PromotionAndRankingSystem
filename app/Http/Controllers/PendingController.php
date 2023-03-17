@@ -10,15 +10,15 @@ class PendingController extends Controller
     
     public function index(){
         return view('admin.pending.index', [
-            'pendingApplications' => Application::where('status', 'pending')->get(),
+            'pendingApplications' => Application::where('received', 0)->get(),
         ]);
     }
 
     public function receive(Application $application){
         
-        $pendingInfo['status'] = 'received';
+        $pendingInfo['received'] = 1;
         $application->update($pendingInfo);
 
-        return redirect()->route('pending.index')->with('message', 'Application Received Successfully');
+        return redirect()->route('received.index')->with('message', 'Application Received Successfully');
     }
 }

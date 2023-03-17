@@ -20,6 +20,7 @@ class CreateApplicationsTable extends Migration
             $table->string('proposed_rank');
             $table->date('date_last_prom');
             $table->date('date_hired');
+            $table->boolean('received');
             $table->string('status');
             $table->string('comment')->nullable();
             $table->timestamps();
