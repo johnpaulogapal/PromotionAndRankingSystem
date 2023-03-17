@@ -41,6 +41,7 @@ class UserController extends Controller
         ]);
 
         $userInfo['age'] = $this->getAge($request->birth_date);
+        $userInfo['status'] = 'pending';
         
         if($request->hasFile('avatar')){
             $userInfo['avatar'] = $request->file('avatar')->store('images', 'public');

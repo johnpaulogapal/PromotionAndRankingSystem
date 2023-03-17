@@ -34,7 +34,7 @@
                                 <label for="" class="font-bold text-hau text-sm tracking-wider">Upload your diploma</label>
                                 <input name="diploma" type="file"  class="py-0.5 px-2 aret-hau outline-hau">
                                 @error('diploma')
-                                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                    <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                                 @enderror
                             </div>
                             <div class="flex flex-col justify-center gap-1">

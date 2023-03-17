@@ -40,7 +40,8 @@ class UndergradController extends Controller
             'course' => 'required',
             'graduation_date' => 'required',
             'diploma' => 'required',
-            'research' => 'required',
+            'research' => 'required'
+            // 'research' => ['required', 'mimes:docx'],
         ]);
         
         $undergradInfo['status'] = 'pending';
@@ -97,6 +98,7 @@ class UndergradController extends Controller
             'course' => 'required',
             'graduation_date' => 'required',
             'diploma' => 'required',
+            // 'diploma' => ['required', 'zip'],
             'research' => 'required',
         ]);
 

@@ -29,6 +29,8 @@ class CreateUsersTable extends Migration
             $table->string('department')->nullable();
             $table->string('faculty')->nullable();
             $table->string('avatar')->nullable();    
+            $table->string('status')->nullable(); 
+            $table->string('comment')->nullable();  
             $table->rememberToken();
             $table->timestamps();
         });

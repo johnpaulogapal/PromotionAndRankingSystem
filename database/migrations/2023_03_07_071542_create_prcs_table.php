@@ -21,6 +21,7 @@ class CreatePrcsTable extends Migration
             $table->string('prc_front');
             $table->string('prc_back');
             $table->string('status');
+            $table->string('comment')->nullable();
             $table->timestamps();
         });
     }

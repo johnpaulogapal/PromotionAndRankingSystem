@@ -53,6 +53,9 @@
             $('#dataTable').DataTable();
 
         });
+
+        const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-te-toggle="popover"]'));
+        popoverTriggerList.map((popoverTriggerEl) => new te.Popover(popoverTriggerEl));
     </script>
     
 </body>

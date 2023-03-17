@@ -21,7 +21,7 @@
                 </form>
             </div>
 
-            <hr>
+            <hr class="p-1 border-t-4 border-gray-200 border-dashed">
 
             @if ($user->application->status == 'received')
                 <div class="p-3 flex justify-between items-center border-l-4 border-hau rounded-r-lg shadow-2xl">
@@ -33,6 +33,8 @@
                     </form>
                 </div>
             @endif
+
+            <hr class="p-1 border-t-4 border-gray-200 border-dashed">
 
             <div class="p-3 border-l-4 border-hau rounded-r-lg shadow-2xl">
                 <p class="font-bold uppercase tracking-widest mb-2">Educational Background</p>
@@ -98,6 +100,8 @@
                 </div>
             </div>
 
+            <hr class="p-1 border-t-4 border-gray-200 border-dashed">
+
             <div class="p-3 border-l-4 border-hau rounded-r-lg shadow-2xl">
                 <p class="font-bold uppercase tracking-widest mb-2">PRC License</p>
                 <div class="mt-4 grid grid-cols-3 gap-8">
@@ -123,6 +127,8 @@
 
                 </div>
             </div>
+
+            <hr class="p-1 border-t-4 border-gray-200 border-dashed">
             
             <div class="p-3 border-l-4 border-hau rounded-r-lg shadow-2xl">
                 <p class="font-bold uppercase tracking-widest mb-2">Membership in Professional Organization</p>
@@ -149,6 +155,8 @@
 
                 </div>
             </div>
+
+            <hr class="p-1 border-t-4 border-gray-200 border-dashed">
             
             <div class="p-3 border-l-4 border-hau rounded-r-lg shadow-2xl">
                 <p class="font-bold uppercase tracking-widest mb-2">Trainings/Seminars/Webinars</p>
@@ -176,7 +184,7 @@
                 </div>
             </div>
 
-           
+            <hr class="p-1 border-t-4 border-gray-200 border-dashed">
 
         </div>
     </div>

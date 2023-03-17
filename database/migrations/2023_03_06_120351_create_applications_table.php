@@ -21,6 +21,7 @@ class CreateApplicationsTable extends Migration
             $table->date('date_last_prom');
             $table->date('date_hired');
             $table->string('status');
+            $table->string('comment')->nullable();
             $table->timestamps();
         });
     }

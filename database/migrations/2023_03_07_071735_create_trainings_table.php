@@ -23,6 +23,7 @@ class CreateTrainingsTable extends Migration
             $table->string('venue');
             $table->string('institution');
             $table->string('status');
+            $table->string('comment')->nullable();
             $table->timestamps();
         });
     }

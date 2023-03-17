@@ -19,6 +19,7 @@ class CreateMposTable extends Migration
             $table->string('org_name');
             $table->date('validity');
             $table->string('status');
+            $table->string('comment')->nullable();
             $table->timestamps();
         });
     }

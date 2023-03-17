@@ -22,6 +22,7 @@ class CreateUndergradsTable extends Migration
             $table->string('diploma');
             $table->string('research');
             $table->string('status');
+            $table->string('comment')->nullable();
             $table->timestamps();
         });
     }

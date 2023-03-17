@@ -13,6 +13,7 @@ use App\Http\Controllers\ReceivedController;
 use App\Http\Controllers\TrainingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VerifyController;
 use App\Models\Application;
 
 /*
@@ -148,5 +149,11 @@ Route::middleware(['auth', 'admin', 'prevent-back-history'])->group(function () 
         Route::get('admin/trainings-seminars-webinars-verify/{training}', 'training')->name('received.training'); 
        
     });
+
+    // Route::controller(VerifyController::class)->group(function () {
+         
+    //     Route::put('admin/profile/verify/{user}', 'profile')->name('verify.profile'); 
+
+    // });
 
 });
