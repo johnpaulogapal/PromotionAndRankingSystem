@@ -23,6 +23,7 @@ class MPOController extends Controller
         $mpoInfo = $request->validate([
             'org_name' => 'required',
             'validity' => 'required',
+            'certificate' => ['required', 'mimes:jpg, jpeg, png', 'max:2048'],
         ]);
 
         $mpoInfo['status'] = 'pending';
@@ -46,6 +47,7 @@ class MPOController extends Controller
         $mpoInfo = $request->validate([
             'org_name' => 'required',
             'validity' => 'required',
+            'certificate' => ['mimes:jpg, jpeg, png', 'max:2048'],
         ]);
 
         $mpo->update($mpoInfo);

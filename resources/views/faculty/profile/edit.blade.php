@@ -17,21 +17,21 @@
                                 <label for="" class="font-bold text-hau text-sm tracking-wider">Employee No.</label>
                                 <input name="emp_num" type="number" class="py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{$user->emp_num}}">
                                 @error('emp_num')
-                                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                        <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                                 @enderror
                             </div>
                             <div class="flex flex-col justify-center gap-1">
                                 <label for="" class="font-bold text-hau text-sm tracking-wider">Faculty</label>
                                 <input name="faculty" type="text" class="py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{$user->faculty}}" >
                                 @error('faculty')
-                                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                        <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                                 @enderror
                             </div>
                             <div class="flex flex-col justify-center gap-1">
                                 <label for="" class="font-bold text-hau text-sm tracking-wider">Department</label>
                                 <input name="department" type="text" class="py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{$user->department}}" >
                                 @error('department')
-                                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                        <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                                 @enderror
                             </div>
                             
@@ -39,21 +39,21 @@
                                 <label for="" class="font-bold text-hau text-sm tracking-wider">First Name</label>
                                 <input name="first_name" type="text" class="py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{$user->first_name}}">
                                 @error('first_name')
-                                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                        <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                                 @enderror
                             </div>
                             <div class="flex flex-col justify-center gap-1">
                                 <label for="" class="font-bold text-hau text-sm tracking-wider">Middle Name</label>
                                 <input name="middle_name" type="text" class="py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{$user->middle_name}}">
                                 @error('middle_name')
-                                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                        <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                                 @enderror
                             </div>
                             <div class="flex flex-col justify-center gap-1">
                                 <label for="" class="font-bold text-hau text-sm tracking-wider">Last Name</label>
                                 <input name="last_name" type="text" class="py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{$user->last_name}}">
                                 @error('last_name')
-                                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                        <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                                 @enderror
                             </div>
 
@@ -61,7 +61,7 @@
                                 <label for="" class="font-bold text-hau text-sm tracking-wider">Update your image</label>
                                 <input name="avatar" type="file"  class="py-0.5 px-2 aret-hau outline-hau">
                                 @error('avatar')
-                                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                    <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                                 @enderror
                             </div>
                            
@@ -69,7 +69,7 @@
                                 <label for="" class="font-bold text-hau text-sm tracking-wider">Birthdate</label>
                                 <input name="birth_date" type="date" class="py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{$user->birth_date}}">
                                 @error('birth_date')
-                                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                        <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                                 @enderror
                             </div>
                            
@@ -86,7 +86,7 @@
                                     </div> 
                                 </div>
                                 @error('sex')
-                                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                        <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                                 @enderror
                             </div>
 
@@ -100,37 +100,37 @@
                             <label for="" class="font-bold text-hau text-sm tracking-wider">Date Hired</label>
                             <input name="date_hired" type="date" class="py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{$application->date_hired}}">
                             @error('date_hired')
-                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                             @enderror
                         </div>
                         <div class="flex flex-col justify-center gap-1">
                             <label for="" class="font-bold text-hau text-sm tracking-wider">Current Rank</label>
                             <input name="current_rank" type="text" class="py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{$application->current_rank}}">
                             @error('current_rank')
-                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                             @enderror
                         </div>
                         <div class="flex flex-col justify-center gap-1">
                             <label for="" class="font-bold text-hau text-sm tracking-wider">Date of Last Promotion</label>
                             <input name="date_last_prom" type="date" class="py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{$application->date_last_prom}}">
                             @error('date_last_prom')
-                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                             @enderror
                         </div>
                         <div class="flex flex-col justify-center gap-1">
                             <label for="" class="font-bold text-hau text-sm tracking-wider">Proposed Rank</label>
                             <input name="proposed_rank" type="text" class="py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{$application->proposed_rank}}">
                             @error('proposed_rank')
-                                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                             @enderror
                         </div>
                     </div>
                     <div class="flex justify-center items-center gap-x-4">
-                        <a href="{{route('profile.show', auth()->user()->id)}}" class="py-1.5 px-4 text-xl text-white tracking-widest bg-gray-400 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-gray-500 duration-300">
-                            <i class="fa-regular fa-circle-xmark mr-1"></i>Cancel
+                        <a href="{{route('profile.show', auth()->user()->id)}}" class="py-1 px-2 uppercase text-white tracking-widest bg-red-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-red-600 duration-300">
+                            <i class="fa-solid fa-xmark mr-1"></i>Cancel
                         </a>
-                        <button class="py-1.5 px-4 text-xl text-white tracking-widest bg-green-600 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-green-700 duration-300">
-                            <i class="fa-regular fa-circle-check mr-1"></i>Save
+                        <button class="py-1 px-2 uppercase text-white tracking-widest bg-green-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-green-600 duration-300">
+                            <i class="fa-solid fa-check mr-1"></i>Save
                         </button>
                     </div>
                 </div>

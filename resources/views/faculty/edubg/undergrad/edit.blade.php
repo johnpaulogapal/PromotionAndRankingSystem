@@ -4,11 +4,12 @@
         <section>
             <div class="h-screen w-full pt-20">
                 
-                    <div class="pt-10 mx-5 h-full flex flex-col items-center gap-y-4">
+                    <form method="POST" action="{{route('undergrad.update', $undergrad->id)}}" enctype="multipart/form-data" class="pt-10 mx-5 h-full flex flex-col items-center gap-y-4">
+                    @csrf
+                    @method('PUT')
                         <p class="uppercase text-xl tracking-widest"><span class="py-1 px-2 bg-hau text-white rounded shadow-lg"><i class="fa-solid fa-pen-to-square mr-2"></i>Edit</span> Undergrad Information</p>
-                        <form method="POST" action="{{route('undergrad.update', $undergrad->id)}}" enctype="multipart/form-data" class="w-1/2 py-5 px-10 border-t-2 border-hau rounded-b-lg shadow-2xl space-y-5">
-                        @csrf
-                        @method('PUT')
+                        <div  class="w-1/2 py-5 px-10 border-t-2 border-hau rounded-b-lg shadow-2xl space-y-5">
+                        
                             <div class="flex flex-col justify-start gap-y-1">
                                 <b class="text-hau text-sm tracking-wide">School</b>
                                 <input name="school" type="text" class="py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{$undergrad->school}}">
@@ -30,43 +31,39 @@
                                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                                 @enderror
                             </div>
-                           
-                            <div class="flex items-center gap-x-2">
-                                <a href="{{asset('uploads/' . $undergrad->diploma)}}" class="py-1 px-2 text-sm text-white tracking-widest bg-cyan-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-cyan-600 duration-300" download>
-                                    Download
-                                </a>
+                            
+                            <div class="flex justify-between">
                                 <div class="flex flex-col justify-center gap-1">
-                                    <label for="" class="font-bold text-hau text-sm tracking-wider">Update your diploma</label>
+                                    <a href="{{asset('uploads/' . $undergrad->diploma)}}" class="font-bold text-blue-700 tracking-widest underline underline-offset-2 transition hover:text-blue-600 ease-in-out delay-150 duration-300" download>
+                                       Download Diploma
+                                    </a>
+                                    <input name="diploma" type="file"  class="py-0.5 px-2 aret-hau outline-hau">
+                                    @error('diploma')
+                                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                                    @enderror
+                                </div>
+                                
+                                <div class="flex flex-col justify-center gap-1">
+                                    <a href="{{asset('uploads/' . $undergrad->research)}}" class="font-bold text-blue-700 tracking-widest underline underline-offset-2 transition hover:text-blue-600 ease-in-out delay-150 duration-300" download>
+                                       Download Research
+                                    </a>
                                     <input name="diploma" type="file"  class="py-0.5 px-2 aret-hau outline-hau">
                                     @error('diploma')
                                         <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                                     @enderror
                                 </div>
                             </div>
-                                
-                            <div class="flex items-center gap-x-2">
-                                <a href="{{asset('uploads/' . $undergrad->research)}}" class="py-1 px-2 text-sm text-white tracking-widest bg-cyan-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-cyan-600 duration-300" download>
-                                    Download
-                                </a>
-                                <div class="flex flex-col justify-center gap-1">
-                                    <label for="" class="font-bold text-hau text-sm tracking-wider">Update your research</label>
-                                    <input name="research" type="file"  class="py-0.5 px-2 aret-hau outline-hau">
-                                    @error('research')
-                                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-                                    @enderror
-                                </div>
-                            </div>
 
-                            <div class="flex justify-center gap-x-4">
-                                <a href="{{route('edubg')}}" class="py-1.5 px-4 text-white text-xl tracking-widest bg-gray-400 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-gray-500 duration-300 mb-10">
-                                    <i class="fa-regular fa-circle-xmark mr-1"></i>Cancel
-                                </a>
-                                <button class="py-1.5 px-4 text-white text-xl tracking-widest bg-green-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-green-600 duration-300 mb-10">
-                                    <i class="fa-regular fa-circle-check mr-1"></i>Save
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="m-5 flex justify-center gap-x-4">
+                            <a href="{{route('edubg')}}" class="py-1 px-2 uppercase text-white tracking-widest bg-red-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-red-600 duration-300">
+                                <i class="fa-solid fa-xmark mr-1"></i>Cancel
+                            </a>
+                            <button class="py-1 px-2 uppercase text-white tracking-widest bg-green-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-green-600 duration-300">
+                                <i class="fa-solid fa-check mr-1"></i>Save
+                            </button>
+                        </div>
+                    </form>
             </div>
         </section>
 

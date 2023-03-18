@@ -20,42 +20,42 @@
                         </div>
                         <div class="col-span-3 grid grid-cols-3 gap-4">
                             <div class="flex flex-col justify-start gap-1">
-                                <b class="text-hau text-sm tracking-wide">Employee No.</b>
-                                <p class="text-hau text-lg tracking-widest">  {{$user->emp_num}}</p>
+                                <b class="font-bold uppercase text-hau tracking-widest">Employee No.</b>
+                                <p class="text-hau text-lg">  {{$user->emp_num}}</p>
                             </div>
                             <div class="flex flex-col justify-start gap-1">
-                                <b class="text-hau text-sm tracking-wide">Faculty</b>
-                                <p class="text-hau text-lg tracking-widest">  {{$user->faculty}}</p>
+                                <b class="font-bold uppercase text-hau tracking-widest">Faculty</b>
+                                <p class="text-hau text-lg">  {{$user->faculty}}</p>
                             </div>
                             <div class="flex flex-col justify-start gap-1">
-                                <b class="text-hau text-sm tracking-wide">Department</b>
-                                <p class="text-hau text-lg tracking-widest">  {{$user->department}}</p>
+                                <b class="font-bold uppercase text-hau tracking-widest">Department</b>
+                                <p class="text-hau text-lg">  {{$user->department}}</p>
                             </div>
                             
                             <div class="flex flex-col justify-start gap-1">
-                                <b class="text-hau text-sm tracking-wide">First Name</b>
-                                <p class="text-hau text-lg tracking-widest">  {{$user->first_name}}</p>
+                                <b class="font-bold uppercase text-hau tracking-widest">First Name</b>
+                                <p class="text-hau text-lg">  {{$user->first_name}}</p>
                             </div>
                             <div class="flex flex-col justify-start gap-1">
-                                <b class="text-hau text-sm tracking-wide">Middle Name</b>
-                                <p class="text-hau text-lg tracking-widest">  {{$user->middle_name}}</p>
+                                <b class="font-bold uppercase text-hau tracking-widest">Middle Name</b>
+                                <p class="text-hau text-lg">  {{$user->middle_name}}</p>
                             </div>
                             <div class="flex flex-col justify-start gap-1">
-                                <b class="text-hau text-sm tracking-wide">Last Name</b>
-                                <p class="text-hau text-lg tracking-widest">  {{$user->last_name}}</p>
+                                <b class="font-bold uppercase text-hau tracking-widest">Last Name</b>
+                                <p class="text-hau text-lg">  {{$user->last_name}}</p>
                             </div>
 
                             <div class="flex flex-col justify-start gap-1">
-                                <b class="text-hau text-sm tracking-wide">Birthdate</b>
-                                <p class="text-hau text-lg tracking-widest">  {{date('F d, Y', strtotime($user->birth_date))}}</p>
+                                <b class="font-bold uppercase text-hau tracking-widest">Birthdate</b>
+                                <p class="text-hau text-lg">  {{date('F d, Y', strtotime($user->birth_date))}}</p>
                             </div>
                             <div class="flex flex-col justify-start gap-1">
-                                <b class="text-hau text-sm tracking-wide">Age</b>
-                                <p class="text-hau text-lg tracking-widest">  {{$user->age}}</p>
+                                <b class="font-bold uppercase text-hau tracking-widest">Age</b>
+                                <p class="text-hau text-lg">  {{$user->age}}</p>
                             </div>
                             <div class="flex flex-col justify-start gap-1">
-                                <b class="text-hau text-sm tracking-wide">Sex</b>
-                                <p class="text-hau text-lg tracking-widest">  {{$user->sex}}</p>
+                                <b class="font-bold uppercase text-hau tracking-widest">Sex</b>
+                                <p class="text-hau text-lg">  {{$user->sex}}</p>
                             </div>
                         </div>
                     </div>
@@ -64,25 +64,25 @@
                 <div class="grid grid-cols-2 content-start">
                     <div class="px-5 grid grid-cols-2 gap-8 py-5 px-12  border-t-4 border-hau rounded-b-lg shadow-2xl">
                         <div class="flex flex-col justify-start gap-1">
-                            <b class="text-hau text-sm tracking-wide">Date Hired</b>
-                            <p class="text-hau text-lg tracking-widest">  {{date('F d, Y', strtotime($application->date_hired))}}</p>
+                            <b class="font-bold uppercase text-hau tracking-widest">Date Hired</b>
+                            <p class="text-hau text-lg">  {{date('F d, Y', strtotime($application->date_hired))}}</p>
                         </div>
                         <div class="flex flex-col justify-start gap-1">
-                            <b class="text-hau text-sm tracking-wide">Current Rank</b>
-                            <p class="text-hau text-lg tracking-widest">  {{$application->current_rank}}</p>
+                            <b class="font-bold uppercase text-hau tracking-widest">Current Rank</b>
+                            <p class="text-hau text-lg">  {{$application->current_rank}}</p>
                         </div>
                         <div class="flex flex-col justify-start gap-1">
-                            <b class="text-hau text-sm tracking-wide">Date of Last Promotion</b>
-                            <p class="text-hau text-lg tracking-widest">  {{date('F d, Y', strtotime($user->date_last_prom))}}</p>
+                            <b class="font-bold uppercase text-hau tracking-widest">Date of Last Promotion</b>
+                            <p class="text-hau text-lg">  {{date('F d, Y', strtotime($user->date_last_prom))}}</p>
                         </div>
                         <div class="flex flex-col justify-start gap-1">
-                            <b class="text-hau text-sm tracking-wide">Proposed Rank</b>
-                            <p class="text-hau text-lg tracking-widest">  {{$application->proposed_rank}}</p>
+                            <b class="font-bold uppercase text-hau tracking-widest">Proposed Rank</b>
+                            <p class="text-hau text-lg">  {{$application->proposed_rank}}</p>
                         </div>
                     </div>
                     <div class="flex justify-center items-center gap-x-4">
-                        <a href="{{route('profile.edit', $user->id)}}" class="py-1.5 px-4 text-xl text-white tracking-widest bg-yellow-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-yellow-600 duration-300">
-                            <i class="fa-solid fa-pen-to-square mr-1"></i>Edit
+                        <a href="{{route('profile.edit', $user->id)}}" class="py-1 px-2 uppercase text-white tracking-widest bg-yellow-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-yellow-600 duration-300">
+                            <i class="fa-regular fa-pen-to-square mr-1"></i>Edit
                         </a>
                     </div>
                 </div>

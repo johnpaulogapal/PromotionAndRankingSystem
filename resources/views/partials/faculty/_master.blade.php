@@ -7,26 +7,33 @@
         <p class="font-bold uppercase text-xl text-center tracking-widest">Masters information has not yet been submitted.</p>
     @else
         @foreach (auth()->user()->masters as $master)
-            <div class="w-full mb-2 p-5 border-t-8 border-hau rounded-b-lg shadow-2xl space-y-4">
-                {{-- <h5 class="font-bold uppercase text-center text-lg text-orange-700">
+            <div class="w-full mb-2 p-5 border-t-8 {{ $master->status == 'approved' ? 'border-green-500' : 'border-hau'}} rounded-b-lg shadow-2xl space-y-4">
+
+                @if($master->status == 'resubmit')
+                <h5 class="font-bold uppercase text-center text-lg text-orange-700">
                     <i class="fa-solid fa-triangle-exclamation mr-1"></i>
                     Please Edit this Information
-                </h5> --}}
+                </h5>
+                @endif
+
+                @if($master->status == 'approved')
                 <h5 class="font-bold uppercase text-center text-lg text-green-700">
                     <i class="fa-solid fa-circle-check mr-1"></i></i>
                     This Information has been Verified
                 </h5>
+                @endif
+
                 <div class="flex flex-col justify-start ">
                     <b class="font-bold uppercase text-hau tracking-widest">School</b>
                     <p class="text-lg text-hau">{{$master->school}}</p>
                 </div>
                 <div class="flex flex-col justify-start">
                     <b class="font-bold uppercase text-hau tracking-widest">Course</b>
-                    <p class="text-hau">{{$master->course}}</p>
+                    <p class="text-lg text-hau">{{$master->course}}</p>
                 </div>
                 <div class="flex flex-col justify-start">
                     <b class="font-bold uppercase text-hau tracking-widest">Graduation Date</b>
-                    <p class="text-hau">{{date('F d, Y', strtotime($master->graduation_date))}}</p>
+                    <p class="text-lg text-hau">{{date('F d, Y', strtotime($master->graduation_date))}}</p>
                 </div>
                 
                 <div class="">
@@ -43,6 +50,7 @@
                     </a>
                 </div>
 
+                @if($master->status == 'pending' || $master->status == 'resubmit')
                 <div class="border-t border-hau flex justify-end pt-5 gap-4">
                     <form action="{{route('master.edit', $master->id)}}">
                         <button class="py-1 px-2 uppercase text-white tracking-widest bg-yellow-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-yellow-600 duration-300">
@@ -128,6 +136,8 @@
                     </div>
                 </div>
                 {{-- [END] Delete Modal --}}
+                @endif
+
             </div>
         @endforeach
     @endif

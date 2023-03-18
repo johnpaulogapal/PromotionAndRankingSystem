@@ -94,6 +94,22 @@ class UserController extends Controller
     public function update(Request $request, User $user, Application $application)
     {
 
+        $request->validate([
+            'emp_num' => 'required',
+            'first_name' => 'required',
+            'middle_name' => 'required',
+            'last_name' => 'required',
+            'birth_date' => 'required',
+            'sex' => 'required',
+            'department' => 'required',
+            'faculty' => 'required',
+            'avatar' => ['mimes:jpg,jpeg,png', 'max:2048'],
+            'date_hired' => 'required',
+            'current_rank' => 'required',
+            'date_last_prom' => 'required',
+            'proposed_rank' => 'required',
+        ]);
+
         $userInfo = $request->validate([
             'emp_num' => 'required',
             'first_name' => 'required',

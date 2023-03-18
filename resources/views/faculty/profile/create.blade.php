@@ -27,7 +27,16 @@
                     <div class="col-span-2 py-10 px-5 border-t-4 border-hau rounded-b shadow-2xl space-y-5">
                         <p class="font-bold uppercase text-hau text-xl tracking-widest">Employee Information</p>
                         <div class="grid grid-rows-3 gap-8">
+                            
                             <div class="grid grid-cols-3 gap-x-4">
+                                <div class="flex flex-col justify-center gap-1">
+                                    <label for="" class="font-bold text-hau text-sm tracking-wider">Employee No.</label>
+                                    <input name="emp_num" type="number" class="py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{old('emp_num')}}">
+                                    @error('emp_num')
+                                        <p class="font-bold text-red-500 mt-1">{{$message}}</p>
+                                    @enderror
+                                </div>
+
                                 <div class="flex flex-col justify-center gap-1">
                                     <label for="" class="font-bold text-hau text-sm tracking-wider">Faculty</label>
                                     <input name="faculty" type="text" class="py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{old('faculty')}}">
@@ -42,16 +51,7 @@
                                     @error('department')
                                     <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                                     @enderror
-                                </div>
-                                
-                                <div class="flex flex-col justify-center gap-1">
-                                    <label for="" class="font-bold text-hau text-sm tracking-wider">Employee No.</label>
-                                    <input name="emp_num" type="number" class="py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{old('emp_num')}}">
-                                    @error('emp_num')
-                                        <p class="font-bold text-red-500 mt-1">{{$message}}</p>
-                                    @enderror
-                                </div>
-                               
+                                </div>      
                             </div>
         
                             <div class="grid grid-cols-3 gap-x-4">

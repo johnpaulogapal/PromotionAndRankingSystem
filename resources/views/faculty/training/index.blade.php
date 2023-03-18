@@ -10,55 +10,78 @@
         <section class="h-screen w-full pt-20 p-8">
             <div class="flex flex-col jusfity-center items-center gap-y-4">
                 <p class="uppercase text-xl text-center tracking-widest"><i class="fa-solid fa-chalkboard-user text-hau mr-2"></i>Trainings/Seminars/Webinars Information</p>
-                <a href="{{route('training.create')}}" class="py-1.5 px-4 text-xl text-white tracking-widest bg-cyan-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-cyan-600 duration-300 mb-5">
-                    <i class="fa-solid fa-circle-plus mr-1"></i>Add Info
+                <a href="{{route('training.create')}}" class="py-1 px-2 text-lg uppercase text-white tracking-widest bg-cyan-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-cyan-600 duration-300 mb-5">
+                    <i class="fa-solid fa-plus mr-1"></i>Add Info
                 </a>
             </div>
 
             <div class="pt-5 px-10 grid justify-items-center content-start gap-y-8">
                 @foreach (auth()->user()->trainings as $training)
-                    <div class="w-full py-5 px-10 border-t-4 border-hau rounded-b shadow-2xl">
-                        <div class="grid grid-cols-7 gap-3">
-                            <div class="p-2 border-l-2 border-dashed border-gray-200 flex flex-col justify-start">
-                                <b class="text-hau text-xs tracking-wide">From</b>
-                                <p class="text-hau tracking-widest">{{date('F d, Y', strtotime($training->from))}}</p>
+                    @if($training->status == 'resubmit')
+                    <h5 class="font-bold uppercase text-center text-lg text-orange-700">
+                        <i class="fa-solid fa-triangle-exclamation mr-1"></i>
+                        Please Edit this Information
+                    </h5>
+                    @endif
+
+                    @if($training->status == 'approved')
+                    <h5 class="font-bold uppercase text-center text-lg text-green-700">
+                        <i class="fa-solid fa-circle-check mr-1"></i></i>
+                        This Information has been Verified
+                    </h5>
+                    @endif
+                    <div class="w-3/4 py-5 px-10 border-t-4 border-hau rounded-b shadow-2xl">
+                        <div class="grid grid-cols-3 gap-8">
+                            <div class="flex flex-col justify-start">
+                                <b class="font-bold uppercase text-hau tracking-widest">From</b>
+                                <p class="text-hau text-lg">{{date('F d, Y', strtotime($training->from))}}</p>
                             </div>
-                            <div class="p-2 border-l-2 border-dashed border-gray-200 flex flex-col justify-start">
-                                <b class="text-hau text-xs tracking-wide">To</b>
-                                <p class="text-hau tracking-widest">{{date('F d, Y', strtotime($training->to))}}</p>
+                            <div class="flex flex-col justify-start">
+                                <b class="font-bold uppercase text-hau tracking-widest">To</b>
+                                <p class="text-hau text-lg">{{date('F d, Y', strtotime($training->to))}}</p>
                             </div>
-                            <div class="p-2 border-l-2 border-dashed border-gray-200 flex flex-col justify-start">
-                                <b class="text-hau text-xs tracking-wide">Title</b>
-                                <p class="text-hau tracking-widest">{{$training->title}}</p>
+                            <div class="col-start-1 flex flex-col justify-start">
+                                <b class="font-bold uppercase text-hau tracking-widest">Title</b>
+                                <p class="text-hau text-lg">{{$training->title}}</p>
                             </div>
-                            <div class="p-2 border-l-2 border-dashed border-gray-200 flex flex-col justify-start">
-                                <b class="text-hau text-xs tracking-wide">Speaker</b>
-                                <p class="text-hau tracking-widest">{{$training->speaker}}</p>
+                            <div class="flex flex-col justify-start">
+                                <b class="font-bold uppercase text-hau tracking-widest">Speaker</b>
+                                <p class="text-hau text-lg">{{$training->speaker}}</p>
                             </div>
-                            <div class="p-2 border-l-2 border-dashed border-gray-200 flex flex-col justify-start">
-                                <b class="text-hau text-xs tracking-wide">Venue</b>
-                                <p class="text-hau tracking-widest">{{$training->venue}}</p>
+                            <div class="flex flex-col justify-start">
+                                <b class="font-bold uppercase text-hau tracking-widest">Venue</b>
+                                <p class="text-hau text-lg">{{$training->venue}}</p>
                             </div>
-                            <div class="p-2 border-l-2 border-dashed border-gray-200 flex flex-col justify-start">
-                                <b class="text-hau text-xs tracking-wide">Institution</b>
-                                <p class="text-hau tracking-widest">{{$training->institution}}</p>
+                            <div class="flex flex-col justify-start">
+                                <b class="font-bold uppercase text-hau tracking-widest">Institution</b>
+                                <p class="text-hau text-lg">{{$training->institution}}</p>
                             </div>
-                            <div class="border-l border-hau">
+                            <div class="col-span-2">
+                                <b class="font-bold uppercase text-hau tracking-widest">Certificate - </b>
+                                <a href="{{asset('uploads/' . $training->certificate)}}" class="font-bold text-blue-700 tracking-widest underline underline-offset-2 transition hover:text-blue-600 ease-in-out delay-150 duration-300" download>
+                                    Download
+                                </a>
+                            </div>
+
+                            @if($training->status == 'pending' || $training->status == 'resubmit')
+                            <div class="col-start-1 border-t border-hau flex justify-center items-center pt-5 gap-4">
                                 <form action="{{route('training.edit', $training->id)}}">
-                                    <button class="mx-3 mb-4 py-1 px-2 text-white tracking-widest bg-yellow-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-yellow-400 duration-300">
-                                        <i class="fa-solid fa-pen-to-square mr-1"></i>Edit
+                                    <button class="py-1 px-2 uppercase text-white tracking-widest bg-yellow-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-yellow-600 duration-300">
+                                        <i class="fa-regular fa-pen-to-square mr-1"></i>Edit
                                     </button>
                                 </form>
                                 <button 
                                     type="submit"
-                                    class="mx-3 py-1 px-2 text-white tracking-widest bg-red-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-red-600 duration-300"
+                                    class="py-1 px-2 uppercase text-white tracking-widest bg-red-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-red-600 duration-300"
                                     data-te-toggle="modal"
                                     data-te-target="#training{{$training->id}}"
                                     data-te-ripple-init
                                     data-te-ripple-color="light">
-                                    <i class="fa-solid fa-trash-can mr-1"></i>Delete
+                                    <i class="fa-solid fa-trash mr-1"></i>Delete
                                 </button>
                             </div>
+                            @endif
+
                         </div>
                     </div>
                     <hr class="w-full border-t-2 border-dashed border-gray-200">

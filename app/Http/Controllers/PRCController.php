@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Prc;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class PRCController extends Controller
 {
@@ -40,8 +41,8 @@ class PRCController extends Controller
         $prcInfo = $request->validate([
             'prc_num' => 'required',
             'validity' => 'required',
-            'prc_front' => 'required',
-            'prc_back' => 'required',
+            'prc_front' => ['required', 'mimes:jpg, jpeg, png', 'max:2048'],
+            'prc_back' => ['required', 'mimes:jpg, jpeg, png', 'max:2048'],
         ]);
 
         $prcInfo['status'] = 'pending';
@@ -96,8 +97,8 @@ class PRCController extends Controller
         $prcInfo = $request->validate([
             'prc_num' => 'required',
             'validity' => 'required',
-            'prc_front' => 'required',
-            'prc_back' => 'required',
+            'prc_front' => ['mimes:jpg, jpeg, png', 'max:2048'],
+            'prc_back' => ['mimes:jpg, jpeg, png', 'max:2048'],
         ]);
 
         if($request->hasFile('prc_front')){
@@ -107,7 +108,6 @@ class PRCController extends Controller
         if($request->hasFile('prc_back')){
             $prcInfo['prc_back'] = $request->file('prc_back')->store('images', 'public');
         }
-
 
         $prc->update($prcInfo);
 
@@ -122,6 +122,15 @@ class PRCController extends Controller
      */
     public function destroy(Prc $prc)
     {
+
+        if (File::exists(public_path('uploads/' . $prc->prc_front))) {
+            File::delete(public_path('uploads/' . $prc->prc_front));
+        }
+
+        if (File::exists(public_path('uploads/' . $prc->prc_back))) {
+            File::delete(public_path('uploads/' . $prc->prc_back));
+        }
+
         $prc->delete();
 
         return redirect(route('prc.index'))->with('message', 'Prc Information Successfully Deleted');

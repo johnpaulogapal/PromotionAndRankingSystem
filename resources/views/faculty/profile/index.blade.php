@@ -43,22 +43,22 @@
                                 $total = $edubg + $prcs + $mpos + $trainings;
                                 
                                 if($total === 1){
-                                    $progress = 'bg-yellow-300 w-1/12';
+                                    $progress = 'bg-yellow-200 w-1/12';
                                 }
                                 elseif($total === 2){
-                                    $progress = 'bg-yellow-500 w-1/3';
+                                    $progress = 'bg-yellow-300 w-1/3';
                                 }
                                 elseif($total === 3){
-                                    $progress = 'bg-orange-500 w-1/2';
+                                    $progress = 'bg-orange-400 w-1/2';
                                 }
                                 elseif($total === 4){
                                     $progress = 'bg-orange-500 w-3/4';
                                 }
                                 elseif($total === 5){
-                                    $progress = 'bg-green-300 w-4/5';
+                                    $progress = 'bg-green-600 w-4/5';
                                 }
                                 elseif($total > 5){
-                                    $progress = 'bg-green-500 w-full';
+                                    $progress = 'bg-green-700 w-full';
                                 }
                                 else
                                     $progress = '';

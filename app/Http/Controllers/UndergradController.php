@@ -97,8 +97,8 @@ class UndergradController extends Controller
             'school' => 'required',
             'course' => 'required',
             'graduation_date' => 'required',
-            'diploma' => 'required',
-            'research' => 'required',
+            'diploma' => ['mimes:jpg, jpeg, png', 'max:2048'],
+            'research' => ['mimes:zip'],
         ]);
 
         if($request->hasFile('diploma')){

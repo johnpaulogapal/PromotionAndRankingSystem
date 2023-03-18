@@ -28,6 +28,7 @@ class TrainingController extends Controller
             'speaker' => 'required',
             'venue' => 'required',
             'institution' => 'required',
+            'certificate' => ['required', 'mimes:jpg, jpeg, png', 'max:2048'],
         ]);
 
         $trainingInfo['status'] = 'pending';
@@ -54,6 +55,7 @@ class TrainingController extends Controller
             'speaker' => 'required',
             'venue' => 'required',
             'institution' => 'required',
+            'certificate' => ['mimes:jpg, jpeg, png', 'max:2048'],
         ]);
 
         $trainingInfo['user_id'] = auth()->user()->id;

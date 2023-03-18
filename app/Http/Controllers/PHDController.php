@@ -40,8 +40,8 @@ class PHDController extends Controller
             'school' => 'required',
             'course' => 'required',
             'graduation_date' => 'required',
-            'diploma' => 'required',
-            'research' => 'required',
+            'diploma' => ['required', 'mimes:jpg, jpeg, png', 'max:2048'],
+            'research' => ['required', 'mimes:zip'],
         ]);
         
         $phdInfo['status'] = 'pending';
@@ -97,8 +97,8 @@ class PHDController extends Controller
             'school' => 'required',
             'course' => 'required',
             'graduation_date' => 'required',
-            'diploma' => 'required',
-            'research' => 'required',
+            'diploma' => ['mimes:jpg, jpeg, png', 'max:2048'],
+            'research' => ['mimes:zip'],
         ]);
 
         if($request->hasFile('diploma')){
