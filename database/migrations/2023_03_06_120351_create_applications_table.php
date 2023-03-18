@@ -16,11 +16,11 @@ class CreateApplicationsTable extends Migration
         Schema::create('applications', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('app_status');
             $table->string('current_rank');
             $table->string('proposed_rank');
             $table->date('date_last_prom');
             $table->date('date_hired');
-            $table->boolean('received');
             $table->string('status');
             $table->string('comment')->nullable();
             $table->timestamps();

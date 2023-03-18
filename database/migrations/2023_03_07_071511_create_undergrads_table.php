@@ -19,8 +19,8 @@ class CreateUndergradsTable extends Migration
             $table->string('school');
             $table->string('course');
             $table->date('graduation_date');
-            $table->string('diploma');
-            $table->string('research');
+            $table->string('diploma')->nullable();
+            $table->string('research')->nullable();
             $table->string('status');
             $table->string('comment')->nullable();
             $table->timestamps();

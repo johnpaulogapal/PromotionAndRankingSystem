@@ -18,6 +18,7 @@ class CreateMposTable extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('org_name');
             $table->date('validity');
+            $table->string('certificate')->nullable();
             $table->string('status');
             $table->string('comment')->nullable();
             $table->timestamps();
