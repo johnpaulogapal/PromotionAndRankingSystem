@@ -27,7 +27,38 @@ class UserController extends Controller
 
     public function store(Request $request, User $user)
     {
+        
+       $request->validate([
+            'emp_num' => 'required',
+            'first_name' => 'required',
+            'middle_name' => 'required',
+            'last_name' => 'required',
+            'birth_date' => 'required',
+            'sex' => 'required',
+            'department' => 'required',
+            'faculty' => 'required',
+            'avatar' => ['required', 'mimes:jpg,jpeg,png', 'max:2048'],
+            'date_hired' => 'required',
+            'current_rank' => 'required',
+            'date_last_prom' => 'required',
+            'proposed_rank' => 'required',
+        ]);
 
+        // ALL APPLICATION RELATED
+        $appInfo = $request->validate([
+            'date_hired' => 'required',
+            'current_rank' => 'required',
+            'date_last_prom' => 'required',
+            'proposed_rank' => 'required',
+        ]);
+
+        $appInfo['app_status'] = 'pending';
+        $appInfo['status'] = 'pending';
+        $appInfo['user_id'] = auth()->user()->id;
+
+        Application::create($appInfo);
+
+        // ALL USER RELATED
         $userInfo = $request->validate([
             'emp_num' => 'required',
             'first_name' => 'required',
@@ -42,26 +73,12 @@ class UserController extends Controller
 
         $userInfo['age'] = $this->getAge($request->birth_date);
         $userInfo['status'] = 'pending';
-
         
         if($request->hasFile('avatar')){
             $userInfo['avatar'] = $request->file('avatar')->store('images', 'public');
         }
-      
+
         $user->update($userInfo);
-
-        $appInfo = $request->validate([
-            'date_hired' => 'required',
-            'current_rank' => 'required',
-            'date_last_prom' => 'required',
-            'proposed_rank' => 'required',
-        ]);
-
-        $appInfo['status'] = 'pending';
-        $appInfo['received'] = false;
-        $appInfo['user_id'] = auth()->user()->id;
-
-        Application::create($appInfo);
 
         return redirect('/')->with('message', 'Welcome to our Ranking and Promotion Portal. Please Submit the Needed Information');
     }
@@ -102,6 +119,8 @@ class UserController extends Controller
             'date_last_prom' => 'required',
             'proposed_rank' => 'required',
         ]);
+
+        $appInfo['status'] = 'pending';
 
         $application->update($appInfo);
 

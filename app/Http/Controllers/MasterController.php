@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Master;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class MasterController extends Controller
 {
@@ -121,6 +122,15 @@ class MasterController extends Controller
      */
     public function destroy(Master $master)
     {
+
+        if (File::exists(public_path('uploads/' . $master->diploma))) {
+            File::delete(public_path('uploads/' . $master->diploma));
+        }
+
+        if (File::exists(public_path('uploads/' . $master->research))) {
+            File::delete(public_path('uploads/' . $master->research));
+        }
+
         $master->delete();
 
         return redirect(route('edubg'))->with('message', 'Masters Information Successfully Deleted');

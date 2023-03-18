@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Undergrad;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class UndergradController extends Controller
 {
@@ -39,9 +40,8 @@ class UndergradController extends Controller
             'school' => 'required',
             'course' => 'required',
             'graduation_date' => 'required',
-            'diploma' => 'required',
-            'research' => 'required'
-            // 'research' => ['required', 'mimes:docx'],
+            'diploma' => ['required', 'mimes:jpg, jpeg, png', 'max:2048'],
+            'research' => ['required', 'mimes:zip'],
         ]);
         
         $undergradInfo['status'] = 'pending';
@@ -98,7 +98,6 @@ class UndergradController extends Controller
             'course' => 'required',
             'graduation_date' => 'required',
             'diploma' => 'required',
-            // 'diploma' => ['required', 'zip'],
             'research' => 'required',
         ]);
 
@@ -123,6 +122,14 @@ class UndergradController extends Controller
      */
     public function destroy(Undergrad $undergrad)
     {
+        if (File::exists(public_path('uploads/' . $undergrad->diploma))) {
+            File::delete(public_path('uploads/' . $undergrad->diploma));
+        }
+
+        if (File::exists(public_path('uploads/' . $undergrad->research))) {
+            File::delete(public_path('uploads/' . $undergrad->research));
+        }
+
         $undergrad->delete();
 
         return redirect(route('edubg'))->with('message', 'Undergrad Information Successfully Deleted');

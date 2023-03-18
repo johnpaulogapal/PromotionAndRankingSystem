@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class Faculty
+class OldAccount
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,10 @@ class Faculty
      */
     public function handle(Request $request, Closure $next)
     {
-        if ((auth()->user() &&  (auth()->user()->user_type == 'basicEd' || auth()->user()->user_type == 'college'))) {
+        if (!auth()->user()->status == '') {
             return $next($request);
         }
         
-        return redirect('/admin');
+        return redirect('/profile/create');
     }
 }

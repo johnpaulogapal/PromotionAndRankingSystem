@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Phd;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class PHDController extends Controller
 {
@@ -121,6 +122,15 @@ class PHDController extends Controller
      */
     public function destroy(Phd $phd)
     {
+
+        if (File::exists(public_path('uploads/' . $phd->diploma))) {
+            File::delete(public_path('uploads/' . $phd->diploma));
+        }
+
+        if (File::exists(public_path('uploads/' . $phd->research))) {
+            File::delete(public_path('uploads/' . $phd->research));
+        }
+
         $phd->delete();
 
         return redirect(route('edubg'))->with('message', 'PHD Information Successfully Deleted');

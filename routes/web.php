@@ -32,17 +32,17 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('authenticate', 'authenticate')->name('authenticate');
 });
 
+Route::get('profile/create', [UserController::class, 'create'])->middleware(['auth', 'faculty', 'new-account', 'prevent-back-history'])->name('profile.create');
+Route::post('profile/store/{user}', [UserController::class, 'store'])->middleware(['auth', 'faculty', 'new-account', 'prevent-back-history'])->name('profile.store');
+
 // Middleware for authentication
-Route::middleware(['auth', 'faculty', 'prevent-back-history'])->group(function () {
+Route::middleware(['auth', 'faculty', 'old-account', 'prevent-back-history'])->group(function () {
     
     Route::controller(UserController::class)->group(function () {
         
         Route::get('/', 'index')->name('home');
 
         Route::get('educational-background', 'edubg')->name('edubg');
-
-        Route::get('profile/create', 'create')->name('profile.create');
-        Route::post('profile/store/{user}', 'store')->name('profile.store');
 
         Route::get('profile/edit/{user}', 'edit')->name('profile.edit');
         Route::put('profile/update/{user}/{application}', 'update')->name('profile.update');

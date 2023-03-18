@@ -4,7 +4,7 @@
         <i class="fa-solid fa-plus mr-1"></i>Add Info
     </a>
     @if (auth()->user()->undergrads->count() == 0)
-        <p class="text-center tracking-widest">Please Submit Your Masters Information</p>
+        <p class="font-bold uppercase text-xl text-center tracking-widest">Undergrad information has not yet been submitted.</p>
     @else
         @foreach (auth()->user()->undergrads as $undergrad)
             <div class="w-full mb-2 p-5 border-t-8 border-hau rounded-b-lg shadow-2xl space-y-4">
