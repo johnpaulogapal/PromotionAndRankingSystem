@@ -8,6 +8,12 @@
             <form method="POST" action="{{route('prc.update', $prc->id)}}" enctype="multipart/form-data" class="pt-5 grid justify-items-center content-start gap-y-8">
             @csrf
             @method('PUT')
+                @if($prc->status == 'resubmit')
+                <div class="p-2 my-1 flex flex-col gap-1 text-white bg-orange-700 rounded">
+                    <span><i class="fa-regular fa-comment mr-1"></i> Comment</span>
+                    <p class="font-bold uppercase text-sm">{{$prc->comment}}</p>
+                </div>
+                @endif
                 <div class="w-full p-10 border-t-4 border-hau grid grid-cols-3 gap-4 rounded-b shadow-2xl">
                     <div class="col-span-2 grid grid-cols-2 gap-x-4">
                         <img src="{{asset('uploads/' . $prc->prc_front)}}" alt="" class="aspect-video">

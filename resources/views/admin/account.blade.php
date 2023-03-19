@@ -10,18 +10,28 @@
         
         <!-- <table> -->
             <div class="p-24 h-screen w-full">
-                <p class="uppercase font-bold text-center text-2xl tracking-widest mb-5">Pending Applications</p>
+                <div class="pb-5 flex justify-between items-center">
+                    <p class="uppercase font-bold text-center text-2xl tracking-widest mb-5">Pending Applications</p>
+                    <a href="account/create" class="py-1 px-2 text-white tracking-widest bg-cyan-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-cyan-600 duration-300">
+                        <i class="fa-solid fa-plus"></i>
+                        Create an Account
+                    </a>
+                </div>
+                
                 <table id="dataTable" class="pt-5">
                     <thead class="bg-hau">
                         <tr>
                             <th class="p-8 uppercase text-sm text-white tracking-widest">
-                                App No.
+                                ID No.
                             </th>
                             <th class="p-8 uppercase text-sm text-white tracking-widest">
-                                Applicant
+                                Name
                             </th>
                             <th class="p-8 uppercase text-sm text-white tracking-widest">
-                                Submitted on
+                                Email
+                            </th>
+                            <th class="p-8 uppercase text-sm text-white tracking-widest">
+                                Created on
                             </th>
                             <th class="p-8 uppercase text-sm text-white tracking-widest">
                                 Options
@@ -29,25 +39,22 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white">
-                        @foreach ($pendingApplications as $pendingApplication)
+                        @foreach ($accounts as $account)
                         <tr class="whitespace-nowrap">
                             <td class="px-6 py-4 font-bold text-sm text-center">
-                                {{$pendingApplication->id}}
+                                {{$account->id}}
                             </td>
                             <td class="px-6 py-4 font-bold text-center tracking-widest">
-                                {{$pendingApplication->user->first_name . ' ' . $pendingApplication->user->last_name}} ({{$pendingApplication->user->email}})
+                                {{$account->first_name . ' ' . $account->last_name}}
                             </td>
                             <td class="px-6 py-4 font-bold text-center tracking-widest">
-                                {{$pendingApplication->user->created_at->format('F d, Y')}}
+                                {{$account->email}}
                             </td>
                             <td class="px-6 py-4 font-bold text-center tracking-widest">
-                                <form method="POST" action="{{route('pending.receive', $pendingApplication->id)}}">
-                                @csrf
-                                @method('PUT')
-                                    <button class="p-1 text-white tracking-widest bg-green-600 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-green-700 duration-300">
-                                        Receive
-                                    </button>
-                                </form>
+                                {{date('F d, Y', strtotime($account->created_at))}}
+                            </td>
+                            <td class="px-6 py-4 font-bold text-center tracking-widest">
+                                
                             </td>
                         </tr>
                         @endforeach

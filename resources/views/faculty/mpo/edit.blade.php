@@ -8,6 +8,12 @@
             <form method="POST" action="{{route('mpo.update', $mpo->id)}}" enctype="multipart/form-data"  class="pt-5 grid justify-items-center content-start gap-y-8">
             @csrf
             @method('PUT')
+                @if($mpo->status == 'resubmit')
+                <div class="p-2 my-1 flex flex-col gap-1 text-white bg-orange-700 rounded">
+                    <span><i class="fa-regular fa-comment mr-1"></i> Comment</span>
+                    <p class="font-bold uppercase text-sm">{{$mpo->comment}}</p>
+                </div>
+                @endif
                 <div class="w-1/3 p-10 border-t-4 border-hau grid grid-rows-3 gap-4 rounded-b shadow-2xl">
                   
                     <div class="flex flex-col justify-start gap-y-1">

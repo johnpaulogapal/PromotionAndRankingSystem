@@ -14,7 +14,7 @@ class CreateMastersTable extends Migration
     public function up()
     {
         Schema::create('masters', function (Blueprint $table) {
-            $table->id();
+            $table->id()->from('103000001');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('school');
             $table->string('course');

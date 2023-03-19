@@ -14,7 +14,7 @@ class CreateMposTable extends Migration
     public function up()
     {
         Schema::create('mpos', function (Blueprint $table) {
-            $table->id();
+            $table->id()->from('106000001');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('org_name');
             $table->date('validity');

@@ -14,7 +14,7 @@ class CreatePrcsTable extends Migration
     public function up()
     {
         Schema::create('prcs', function (Blueprint $table) {
-            $table->id();
+            $table->id()->from('105000001');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('prc_num');
             $table->date('validity');

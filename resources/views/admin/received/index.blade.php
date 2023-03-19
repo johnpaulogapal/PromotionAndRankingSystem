@@ -24,7 +24,7 @@
                                 No. of Resubmit
                             </th>
                             <th class="p-8 uppercase text-sm text-white tracking-widest">
-                                No. of Approved
+                                No. of Verified
                             </th>
                             <th class="p-8 uppercase text-sm text-white tracking-widest">
                                 Options
@@ -99,12 +99,12 @@
                             </td>
                             <td class="px-6 py-4 font-bold text-center tracking-widest">
                                 @php
-                                if($receivedApplication->user->status == 'approved')
+                                if($receivedApplication->user->status == 'verified')
                                     $userApproved = 1;
                                 else 
                                     $userApproved = 0;
 
-                                if($receivedApplication->status == 'approved')
+                                if($receivedApplication->status == 'verified')
                                     $applicationApproved = 1;
                                 else 
                                     $applicationApproved = 0;

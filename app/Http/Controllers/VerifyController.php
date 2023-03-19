@@ -27,13 +27,13 @@ class VerifyController extends Controller
         return redirect()->route('received.show', $user->id)->with('message', 'User Personal Information has been updated for editing');
     }
 
-    public function profileApproved(User $user){
+    public function profileVerified(User $user){
 
-        $userInfo['status'] = 'approved';
+        $userInfo['status'] = 'verified';
 
         $user->update($userInfo);
         
-        return redirect()->route('received.show', $user->id)->with('message', 'User Personal Information has been Approved');
+        return redirect()->route('received.show', $user->id)->with('message', 'User Personal Information has been Verified');
     }
 
     public function applicationResubmit(Request $request, Application $application){
@@ -49,13 +49,13 @@ class VerifyController extends Controller
         return redirect()->route('received.show', $application->user_id)->with('message', 'User Application Information has been updated for editing');
     }
 
-    public function applicationApproved(Application $application){
+    public function applicationVerified(Application $application){
 
-        $applicationInfo['status'] = 'approved';
+        $applicationInfo['status'] = 'verified';
 
         $application->update($applicationInfo);
         
-        return redirect()->route('received.show', $application->user_id)->with('message', 'User Application Information has been Approved');
+        return redirect()->route('received.show', $application->user_id)->with('message', 'User Application Information has been Verified');
     }
 
     public function undergradResubmit(Request $request, Undergrad $undergrad){
@@ -71,13 +71,13 @@ class VerifyController extends Controller
         return redirect()->route('received.show', $undergrad->user_id)->with('message', 'User Undergrad Information has been updated for editing');
     }
 
-    public function undergradApproved(Undergrad $undergrad){
+    public function undergradVerified(Undergrad $undergrad){
 
-        $undergradInfo['status'] = 'approved';
+        $undergradInfo['status'] = 'verified';
 
         $undergrad->update($undergradInfo);
         
-        return redirect()->route('received.show', $undergrad->user_id)->with('message', 'User Undergrad Information has been Approved');
+        return redirect()->route('received.show', $undergrad->user_id)->with('message', 'User Undergrad Information has been Verified');
     }
 
     public function masterResubmit(Request $request, Master $master){
@@ -93,13 +93,13 @@ class VerifyController extends Controller
         return redirect()->route('received.show', $master->user_id)->with('message', 'User Masters Information has been updated for editing');
     }
 
-    public function masterApproved(Master $master){
+    public function masterVerified(Master $master){
 
-        $masterInfo['status'] = 'approved';
+        $masterInfo['status'] = 'verified';
 
         $master->update($masterInfo);
         
-        return redirect()->route('received.show', $master->user_id)->with('message', 'User Masters Information has been Approved');
+        return redirect()->route('received.show', $master->user_id)->with('message', 'User Masters Information has been Verified');
     }
 
     public function phdResubmit(Request $request, Phd $phd){
@@ -115,13 +115,13 @@ class VerifyController extends Controller
         return redirect()->route('received.show', $phd->user_id)->with('message', 'User PHD Information has been updated for editing');
     }
 
-    public function phdApproved(Phd $phd){
+    public function phdVerified(Phd $phd){
 
-        $phdInfo['status'] = 'approved';
+        $phdInfo['status'] = 'verified';
 
         $phd->update($phdInfo);
         
-        return redirect()->route('received.show', $phd->user_id)->with('message', 'User PHD Information has been Approved');
+        return redirect()->route('received.show', $phd->user_id)->with('message', 'User PHD Information has been Verified');
     }
 
     public function prcResubmit(Request $request, Prc $prc){
@@ -137,13 +137,13 @@ class VerifyController extends Controller
         return redirect()->route('received.show', $prc->user_id)->with('message', 'User Prc License Information has been updated for editing');
     }
 
-    public function prcApproved(Prc $prc){
+    public function prcVerified(Prc $prc){
 
-        $prcInfo['status'] = 'approved';
+        $prcInfo['status'] = 'verified';
 
         $prc->update($prcInfo);
         
-        return redirect()->route('received.show', $prc->user_id)->with('message', 'User Prc License Information has been Approved');
+        return redirect()->route('received.show', $prc->user_id)->with('message', 'User Prc License Information has been Verified');
     }
 
     public function mpoResubmit(Request $request, Mpo $mpo){
@@ -159,13 +159,13 @@ class VerifyController extends Controller
         return redirect()->route('received.show', $mpo->user_id)->with('message', 'User Membership in Professional Organization Information has been updated for editing');
     }
 
-    public function mpoApproved(Mpo $mpo){
+    public function mpoVerified(Mpo $mpo){
 
-        $mpoInfo['status'] = 'approved';
+        $mpoInfo['status'] = 'verified';
 
         $mpo->update($mpoInfo);
         
-        return redirect()->route('received.show', $mpo->user_id)->with('message', 'User Membership in Professional Organization Information has been Approved');
+        return redirect()->route('received.show', $mpo->user_id)->with('message', 'User Membership in Professional Organization Information has been Verified');
     }
 
     public function trainingResubmit(Request $request, Training $training){
@@ -181,12 +181,21 @@ class VerifyController extends Controller
         return redirect()->route('received.show', $training->user_id)->with('message', 'User Training/Seminars/Webinars Information has been updated for editing');
     }
 
-    public function trainingApproved(Training $training){
+    public function trainingVerified(Training $training){
 
-        $trainingInfo['status'] = 'approved';
+        $trainingInfo['status'] = 'verified';
 
         $training->update($trainingInfo);
         
-        return redirect()->route('received.show', $training->user_id)->with('message', 'User Training/Seminars/Webinars Information has been Approved');
+        return redirect()->route('received.show', $training->user_id)->with('message', 'User Training/Seminars/Webinars Information has been Verified');
+    }
+
+    public function applicationApproved(Application $application){
+
+        $applicationInfo['app_status'] = 'approved';
+
+        $application->update($applicationInfo);
+        
+        return redirect()->route('approved.index')->with('message', 'Application has been Approved');
     }
 }

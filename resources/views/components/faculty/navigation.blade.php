@@ -42,15 +42,20 @@
     {{-- Main Content --}}
     <div class="pl-60">
         <div class="w-full absolute top-0 right-0 flex justify-end items-center border-b-4 border-dashed border-gray-200">
-            <a href="{{route('application.index')}}" class="py-2 px-3 my-2 mr-8 rounded transition ease-in-out hover:scale-110 hover:text-gray-900 duration-300">
-         
-                <span class="uppercase text-xl tracking-widest">
-                    <i class="fa-regular fa-bell mr-1"></i>
-                    View Applications Status
-                    <i class="fa-solid fa-arrow-right ml-1"></i>
-                </span>
-          
-            </a>
+            
+            <div class="w-full pl-60 py-3 flex justify-between">
+                <h5 class="ml-12 uppercase text-lg tracking-widest">
+                    <span class="font-bold">User:</span> {{auth()->user()->first_name . " " . auth()->user()->last_name}}                  
+                 </h5>
+                 <h5 class="ml-12 uppercase text-lg tracking-widest">
+                    <span class="font-bold">Application No.</span> {{auth()->user()->application->id}}                  
+                 </h5>
+                 <h5 class="mr-12 uppercase text-lg tracking-widest">
+                     <span class="font-bold">Date:</span> {{date('D - F d, Y', strtotime(now()))}}
+                  </h5>
+            </div>
+               
+            
         </div>
         
         {{ $slot }}

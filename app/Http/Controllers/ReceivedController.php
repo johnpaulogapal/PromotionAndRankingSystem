@@ -16,13 +16,14 @@ class ReceivedController extends Controller
 {
     public function index(){
         return view('admin.received.index', [
-            'receivedApplications' => Application::where('received', 1)->get(),
+            'receivedApplications' => Application::where('app_status', 'received')->get(),
         ]);
     }
 
     public function show(User $user){
         return view('admin.received.show', [
             'user' => $user,
+            'totalEdubg' => Undergrad::where('status', 'verified')->get()->count(),
         ]);
     }
 
@@ -31,8 +32,8 @@ class ReceivedController extends Controller
 
         if($user->status == 'resubmit')
             $userInfo['status'] = 'resubmit';
-        elseif($user->status == 'approved')
-            $userInfo['status'] = 'approved';
+        elseif($user->status == 'verified')
+            $userInfo['status'] = 'verified';
         else
             $userInfo['status'] = 'processing';
             
@@ -47,8 +48,8 @@ class ReceivedController extends Controller
 
         if($application->status == 'resubmit')
             $applicationInfo['status'] = 'resubmit';
-        elseif($application->status == 'approved')
-            $applicationInfo['status'] = 'approved';
+        elseif($application->status == 'verified')
+            $applicationInfo['status'] = 'verified';
         else
             $applicationInfo['status'] = 'processing';
 
@@ -63,8 +64,8 @@ class ReceivedController extends Controller
 
         if($undergrad->status == 'resubmit')
             $undergradInfo['status'] = 'resubmit';
-        elseif($undergrad->status == 'approved')
-            $undergradInfo['status'] = 'approved';
+        elseif($undergrad->status == 'verified')
+            $undergradInfo['status'] = 'verified';
         else
             $undergradInfo['status'] = 'processing';
 
@@ -79,8 +80,8 @@ class ReceivedController extends Controller
 
         if($master->status == 'resubmit')
             $masterInfo['status'] = 'resubmit';
-        elseif($master->status == 'approved')
-            $masterInfo['status'] = 'approved';
+        elseif($master->status == 'verified')
+            $masterInfo['status'] = 'verified';
         else
             $masterInfo['status'] = 'processing';
 
@@ -95,8 +96,8 @@ class ReceivedController extends Controller
 
         if($phd->status == 'resubmit')
             $phdInfo['status'] = 'resubmit';
-        elseif($phd->status == 'approved')
-            $phdInfo['status'] = 'approved';
+        elseif($phd->status == 'verified')
+            $phdInfo['status'] = 'verified';
         else
             $phdInfo['status'] = 'processing';
 
@@ -111,8 +112,8 @@ class ReceivedController extends Controller
 
         if($prc->status == 'resubmit')
             $prcInfo['status'] = 'resubmit';
-        elseif($prc->status == 'approved')
-            $prcInfo['status'] = 'approved';
+        elseif($prc->status == 'verified')
+            $prcInfo['status'] = 'verified';
         else
             $prcInfo['status'] = 'processing';
 
@@ -127,8 +128,8 @@ class ReceivedController extends Controller
 
         if($mpo->status == 'resubmit')
             $mpoInfo['status'] = 'resubmit';
-        elseif($mpo->status == 'approved')
-            $mpoInfo['status'] = 'approved';
+        elseif($mpo->status == 'verified')
+            $mpoInfo['status'] = 'verified';
         else
             $mpoInfo['status'] = 'processing';
 
@@ -143,8 +144,8 @@ class ReceivedController extends Controller
 
         if($training->status == 'resubmit')
             $trainingInfo['status'] = 'resubmit';
-        elseif($training->status == 'approved')
-            $trainingInfo['status'] = 'approved';
+        elseif($training->status == 'verified')
+            $trainingInfo['status'] = 'verified';
         else
             $trainingInfo['status'] = 'processing';
 

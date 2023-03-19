@@ -5,8 +5,21 @@
             <form method="POST" action="{{route('profile.update', ['user' => $user->id, 'application' => $application->id])}}" enctype="multipart/form-data" class="pt-20 p-8 h-screen w-full">
             @csrf
             @method('PUT')
+           
             <p class="px-10 mb-2 uppercase text-xl tracking-widest"><span class="py-1 px-2 bg-hau text-white rounded shadow-lg"><i class="fa-solid fa-pen-to-square mr-2"></i>Edit</span> Personal and Application Information</p>
             <div class="px-10">
+                @if($user->status == 'resubmit')
+                <div class="w-1/2 p-2 my-5 flex flex-col gap-1 text-white bg-orange-700 rounded">
+                    <span><i class="fa-regular fa-comment mr-1"></i> Comment for Personal Info</span>
+                    <p class="font-bold uppercase text-sm">{{$user->comment}}</p>
+                </div>
+                @endif
+                @if($application->status == 'resubmit')
+                <div class="w-1/2 p-2 my-5 flex flex-col flex flex-col gap-1 text-white bg-orange-700 rounded">
+                    <span><i class="fa-regular fa-comment mr-1"></i> Comment for Application Info</span>
+                    <p class="font-bold uppercase text-sm">{{$application->comment}}</p>
+                </div>
+                @endif
                 <div class="py-10 px-5 border-t-4 border-hau rounded-b-lg shadow-2xl space-y-5">
                     <div class="grid grid-cols-4 gap-y-8">
                         <div class="flex flex-col justify-start gap-1">

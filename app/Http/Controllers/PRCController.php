@@ -109,6 +109,8 @@ class PRCController extends Controller
             $prcInfo['prc_back'] = $request->file('prc_back')->store('images', 'public');
         }
 
+        $prcInfo['status'] = 'pending';
+        
         $prc->update($prcInfo);
 
         return redirect()->route('prc.index')->with('message', 'PRC Information Successfully Updated');

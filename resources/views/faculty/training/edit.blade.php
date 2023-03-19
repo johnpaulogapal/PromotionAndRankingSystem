@@ -8,6 +8,12 @@
             <form method="POST" action="{{route('training.update', $training->id)}}" enctype="multipart/form-data" class="pt-5 grid justify-items-center content-start gap-y-8">
             @csrf
             @method('PUT')
+                @if($training->status == 'resubmit')
+                <div class="p-2 my-1 flex flex-col gap-1 text-white bg-orange-700 rounded">
+                    <span><i class="fa-regular fa-comment mr-1"></i> Comment</span>
+                    <p class="font-bold uppercase text-sm">{{$training->comment}}</p>
+                </div>
+                @endif
                 <div class="w-3/4 py-5 px-10 border-t-4 border-hau rounded-b shadow-2xl">
                     <div class="grid grid-cols-3 gap-8">
                         <div class="flex flex-col justify-start gy-1">

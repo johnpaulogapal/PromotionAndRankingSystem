@@ -108,6 +108,8 @@ class UndergradController extends Controller
         if($request->hasFile('research')){
             $undergradInfo['research'] = $request->file('research')->store('images', 'public');
         }
+        
+        $undergradInfo['status'] = 'pending';
    
         $undergrad->update($undergradInfo);
 

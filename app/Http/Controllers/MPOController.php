@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mpo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class MPOController extends Controller
 {
@@ -50,6 +51,8 @@ class MPOController extends Controller
             'certificate' => ['mimes:jpg, jpeg, png', 'max:2048'],
         ]);
 
+        $mpoInfo['status'] = 'pending';
+        
         $mpo->update($mpoInfo);
 
         return redirect()->route('mpo.index')->with('message', 'Membership In Professional Organization Information Successfully Updated');
@@ -57,6 +60,11 @@ class MPOController extends Controller
 
     public function destroy(Mpo $mpo)
     {
+
+        if (File::exists(public_path('uploads/' . $mpo->certificate))) {
+            File::delete(public_path('uploads/' . $mpo->certificate));
+        }
+
         $mpo->delete();
 
         return redirect(route('mpo.index'))->with('message', 'Membership In Professional Organization Information Successfully Deleted');

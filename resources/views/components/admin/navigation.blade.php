@@ -9,7 +9,7 @@
             </div>
 
             <div class="flex flex-col items-center text-center">
-                <a href="{{route('home')}}" class="{{ Route::is('home') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:scale-110 hover:bg-white hover:text-gray-900 '}} w-full py-3 font-bold text-white transition ease-in-out duration-300">
+                <a href="{{route('admin.index')}}" class="{{ Route::is('admin.index') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:scale-110 hover:bg-white hover:text-gray-900 '}} w-full py-3 font-bold text-white transition ease-in-out duration-300">
                     <span class="text-sm tracking-wider">Dashboard</span>
                 </a>
                 <a href="{{route('pending.index')}}" class="{{ Route::is('pending.index') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:scale-110 hover:bg-white hover:text-gray-900 '}} w-full py-3 font-bold transition ease-in-out duration-300">
@@ -18,10 +18,10 @@
                 <a href="{{route('received.index')}}" class="{{ Route::is('received.index') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:scale-110 hover:bg-white hover:text-gray-900 '}} w-full py-3 font-bold transition ease-in-out duration-300">
                     <span class="text-sm tracking-wider">Received Applications</span>
                 </a>
-                <a href="" class="{{ Route::is('profile.show') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:scale-110 hover:bg-white hover:text-gray-900 '}} w-full py-3 font-bold transition ease-in-out duration-300">
+                <a href="{{route('approved.index')}}" class="{{ Route::is('approved.index') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:scale-110 hover:bg-white hover:text-gray-900 '}} w-full py-3 font-bold transition ease-in-out duration-300">
                     <span class="text-sm tracking-wider">Approved Applications</span>
                 </a>
-                <a href="" class="{{ Route::is('edubg') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:scale-110 hover:bg-white hover:text-gray-900'}} w-full py-3 font-bold transition ease-in-out duration-300">
+                <a href="{{route('admin.account')}}" class="{{ Route::is('admin.account') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:scale-110 hover:bg-white hover:text-gray-900'}} w-full py-3 font-bold transition ease-in-out duration-300">
                     <span class="text-sm tracking-wider">Accounts</span>
                 </a>
             </div>

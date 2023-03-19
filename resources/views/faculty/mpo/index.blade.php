@@ -24,13 +24,13 @@
                     </h5>
                     @endif
 
-                    @if($mpo->status == 'approved')
+                    @if($mpo->status == 'verified' || auth()->user()->application->app_status == 'approved')
                     <h5 class="font-bold uppercase text-center text-lg text-green-700">
                         <i class="fa-solid fa-circle-check mr-1"></i></i>
                         This Information has been Verified
                     </h5>
                     @endif
-                    <div class="w-1/3 p-5 border-t-4 border-hau grid grid grid-rows-3 gap-4 rounded-b shadow-2xl">
+                    <div class="w-1/3 p-5 border-t-4 {{ $mpo->status == 'verified' ? 'border-green-700' : 'border-hau'}} grid grid grid-rows-3 gap-4 rounded-b shadow-2xl">
                         
                             <div class="flex flex-col justify-start">
                                 <b class="font-bold uppercase text-hau tracking-widest">Organiztion Name</b>
@@ -47,38 +47,41 @@
                                 </a>
                             </div>
 
-                            @if($mpo->status == 'pending' || $mpo->status == 'resubmit')
-                            <div class="border-t border-hau flex justify-end pt-5 gap-x-4">
-                                <form action="{{route('mpo.edit', $mpo->id)}}">
-                                    <button class="py-1 px-2 uppercase text-white tracking-widest bg-yellow-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-yellow-600 duration-300">
-                                        <i class="fa-regular fa-pen-to-square mr-1"></i>Edit
+                            @if(auth()->user()->application->app_status == 'approved')
+                                <p></p>
+                            @else
+                                @if($mpo->status == 'pending' || $mpo->status == 'resubmit')
+                                <div class="border-t border-hau flex justify-center pt-5 gap-x-4">
+                                    <form action="{{route('mpo.edit', $mpo->id)}}">
+                                        <button class="py-1 px-2 uppercase text-white tracking-widest bg-yellow-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-yellow-600 duration-300">
+                                            <i class="fa-regular fa-pen-to-square mr-1"></i>Edit
+                                        </button>
+                                    </form>
+                                    <button 
+                                        type="submit"
+                                        class="py-1 px-2 uppercase text-white tracking-widest bg-red-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-red-600 duration-300"
+                                        data-te-toggle="modal"
+                                        data-te-target="#mpo{{$mpo->id}}"
+                                        data-te-ripple-init
+                                        data-te-ripple-color="light">
+                                        <i class="fa-solid fa-trash mr-1"></i>Delete
                                     </button>
-                                </form>
-                                <button 
-                                    type="submit"
-                                    class="py-1 px-2 uppercase text-white tracking-widest bg-red-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-red-600 duration-300"
-                                    data-te-toggle="modal"
-                                    data-te-target="#mpo{{$mpo->id}}"
-                                    data-te-ripple-init
-                                    data-te-ripple-color="light">
-                                    <i class="fa-solid fa-trash mr-1"></i>Delete
-                                </button>
-                            </div>
+                                </div>
+                                @endif
                             @endif
-                        
                     </div>
                     <hr class="w-full border-t-2 border-dashed border-gray-200">
                     {{-- [START] Delete Modal --}}
                     <div
-                        data-te-modal-init
-                        class="fixed top-0 left-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
-                        id="mpo{{$mpo->id}}"
-                        tabindex="-1"
-                        aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div
-                            data-te-modal-dialog-ref
-                            class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:max-w-[500px]">
+                    data-te-modal-init
+                    class="fixed pl-60 top-0 left-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
+                    id="mpo{{$mpo->id}}"
+                    tabindex="-1"
+                    aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div
+                        data-te-modal-dialog-ref
+                        class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:max-w-[500px]">
                             <div
                             class="min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)] pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none">
                                 <div
@@ -108,27 +111,27 @@
                                     </button>
                                 </div>
                                 <div class="relative flex-auto p-4" data-te-modal-body-ref>
-                                    <p class="text-red-500 tracking-widest">Are you sure you want to delete this Membership In Professinal Organization information permanently?</p>
+                                    <p class="font-bold uppercase tracking-widest">Are you sure you want to delete this Membership in Professional Organization Information permanently?</p>
                                 </div>
                                 <div
                                     class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-opacity-100 p-4 space-x-4">
                                     <button
                                     type="button"
-                                    class="py-1 px-2 text-white tracking-widest bg-gray-400 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-gray-500 duration-300"
+                                    class="py-1 px-2 uppercase text-white tracking-widest bg-red-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-red-600 duration-300"
                                     data-te-modal-dismiss
                                     data-te-ripple-init
                                     data-te-ripple-color="light">
-                                        Close
+                                        <i class="fa-solid fa-xmark mr-1"></i>Cancel
                                     </button>
                                     <form method="POST" action="{{route('mpo.destroy', $mpo->id)}}">
                                     @csrf
                                     @method('DELETE')
                                         <button
                                         type="submit"
-                                        class="py-1 px-2 text-white tracking-widest bg-blue-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-blue-600 duration-300"
+                                        class="py-1 px-2 uppercase text-white tracking-widest bg-green-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-green-600 duration-300"
                                         data-te-ripple-init
                                         data-te-ripple-color="light">
-                                            Confirm
+                                        <i class="fa-solid fa-check mr-1"></i>Confirm
                                         </button>
                                     </form>
                                 </div>

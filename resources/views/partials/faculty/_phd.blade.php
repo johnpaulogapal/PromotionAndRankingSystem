@@ -7,7 +7,7 @@
         <p class="font-bold uppercase text-xl text-center tracking-widest">PHD information has not yet been submitted.</p>
     @else
         @foreach (auth()->user()->phds as $phd)
-            <div class="w-full mb-2 p-5 border-t-8 {{ $phd->status == 'approved' ? 'border-green-500' : 'border-hau'}} rounded-b-lg shadow-2xl space-y-4">
+            <div class="w-full mb-2 p-5 border-t-8 {{ $phd->status == 'verified' ? 'border-green-700' : 'border-hau'}} rounded-b-lg shadow-2xl space-y-4">
                 
                 @if($phd->status == 'resubmit')
                 <h5 class="font-bold uppercase text-center text-lg text-orange-700">
@@ -16,7 +16,7 @@
                 </h5>
                 @endif
 
-                @if($phd->status == 'approved')
+                @if($phd->status == 'verified' || auth()->user()->application->app_status == 'approved')
                 <h5 class="font-bold uppercase text-center text-lg text-green-700">
                     <i class="fa-solid fa-circle-check mr-1"></i></i>
                     This Information has been Verified
@@ -50,94 +50,97 @@
                     </a>
                 </div>
 
-                @if($phd->status == 'pending' || $phd->status == 'resubmit')
-                <div class="border-t border-hau flex justify-end pt-5 gap-4">
-                    <form action="{{route('phd.edit', $phd->id)}}">
-                        <button class="py-1 px-2 uppercase text-white tracking-widest bg-yellow-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-yellow-600 duration-300">
-                            <i class="fa-regular fa-pen-to-square mr-1"></i>Edit
+                @if(auth()->user()->application->app_status == 'approved')
+                    <p></p>
+                @else
+                    @if($phd->status == 'pending' || $phd->status == 'resubmit')
+                    <div class="border-t border-hau flex justify-center pt-5 gap-4">
+                        <form action="{{route('phd.edit', $phd->id)}}">
+                            <button class="py-1 px-2 uppercase text-white tracking-widest bg-yellow-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-yellow-600 duration-300">
+                                <i class="fa-regular fa-pen-to-square mr-1"></i>Edit
+                            </button>
+                        </form>
+                        <button 
+                            type="submit"
+                            class="py-1 px-2 uppercase text-white tracking-widest bg-red-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-red-600 duration-300"
+                            data-te-toggle="modal"
+                            data-te-target="#phd{{$phd->id}}"
+                            data-te-ripple-init
+                            data-te-ripple-color="light">
+                            <i class="fa-solid fa-trash mr-1"></i>Delete
                         </button>
-                    </form>
-                    <button 
-                        type="submit"
-                        class="py-1 px-2 uppercase text-white tracking-widest bg-red-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-red-600 duration-300"
-                        data-te-toggle="modal"
-                        data-te-target="#phd{{$phd->id}}"
-                        data-te-ripple-init
-                        data-te-ripple-color="light">
-                        <i class="fa-solid fa-trash mr-1"></i>Delete
-                    </button>
-                </div>
+                    </div>
 
-                {{-- [START] Delete Modal --}}
-                <div
-                    data-te-modal-init
-                    class="fixed pl-60 top-0 left-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
-                    id="phd{{$phd->id}}"
-                    tabindex="-1"
-                    aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
+                    {{-- [START] Delete Modal --}}
                     <div
-                        data-te-modal-dialog-ref
-                        class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:max-w-[500px]">
+                        data-te-modal-init
+                        class="fixed pl-60 top-0 left-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
+                        id="phd{{$phd->id}}"
+                        tabindex="-1"
+                        aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
                         <div
-                        class="min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)] pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none">
+                            data-te-modal-dialog-ref
+                            class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:max-w-[500px]">
                             <div
-                                class="flex flex-shrink-0 items-center justify-between rounded-t-md border-t-2 border-hau p-4">
-                                <h5
-                                class="text-3xl font-medium leading-normal text-neutral-800"
-                                id="exampleModalLabel">
-                                    <i class="fa-solid fa-triangle-exclamation text-red-500"></i>
-                                </h5>
-                                <button
-                                type="button"
-                                class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
-                                data-te-modal-dismiss
-                                aria-label="Close">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke-width="1.5"
-                                    stroke="currentColor"
-                                    class="h-6 w-6">
-                                    <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-                                </button>
-                            </div>
-                            <div class="relative flex-auto p-4" data-te-modal-body-ref>
-                                <p class="font-bold uppercase tracking-widest">Are you sure you want to delete this PHD Information permanently?</p>
-                            </div>
-                            <div
-                                class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-opacity-100 p-4 space-x-4">
-                                <button
-                                type="button"
-                                class="py-1 px-2 uppercase text-white tracking-widest bg-red-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-red-600 duration-300"
-                                data-te-modal-dismiss
-                                data-te-ripple-init
-                                data-te-ripple-color="light">
-                                <i class="fa-solid fa-xmark mr-1"></i>Cancel
-                                </button>
-                                <form method="POST" action="{{route('phd.destroy', $phd->id)}}">
-                                @csrf
-                                @method('DELETE')
+                            class="min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)] pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none">
+                                <div
+                                    class="flex flex-shrink-0 items-center justify-between rounded-t-md border-t-2 border-hau p-4">
+                                    <h5
+                                    class="text-3xl font-medium leading-normal text-neutral-800"
+                                    id="exampleModalLabel">
+                                        <i class="fa-solid fa-triangle-exclamation text-red-500"></i>
+                                    </h5>
                                     <button
-                                    type="submit"
-                                    class="py-1 px-2 uppercase text-white tracking-widest bg-green-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-green-600 duration-300"
+                                    type="button"
+                                    class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                                    data-te-modal-dismiss
+                                    aria-label="Close">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke-width="1.5"
+                                        stroke="currentColor"
+                                        class="h-6 w-6">
+                                        <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                    </button>
+                                </div>
+                                <div class="relative flex-auto p-4" data-te-modal-body-ref>
+                                    <p class="font-bold uppercase tracking-widest">Are you sure you want to delete this PHD Information permanently?</p>
+                                </div>
+                                <div
+                                    class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-opacity-100 p-4 space-x-4">
+                                    <button
+                                    type="button"
+                                    class="py-1 px-2 uppercase text-white tracking-widest bg-red-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-red-600 duration-300"
+                                    data-te-modal-dismiss
                                     data-te-ripple-init
                                     data-te-ripple-color="light">
-                                    <i class="fa-solid fa-check mr-1"></i>Confirm
+                                    <i class="fa-solid fa-xmark mr-1"></i>Cancel
                                     </button>
-                                </form>
+                                    <form method="POST" action="{{route('phd.destroy', $phd->id)}}">
+                                    @csrf
+                                    @method('DELETE')
+                                        <button
+                                        type="submit"
+                                        class="py-1 px-2 uppercase text-white tracking-widest bg-green-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-green-600 duration-300"
+                                        data-te-ripple-init
+                                        data-te-ripple-color="light">
+                                        <i class="fa-solid fa-check mr-1"></i>Confirm
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                {{-- [END] Delete Modal --}}
+                    {{-- [END] Delete Modal --}}
+                    @endif
                 @endif
-
             </div>
         @endforeach
     @endif

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Training;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class TrainingController extends Controller
 {
@@ -57,8 +58,8 @@ class TrainingController extends Controller
             'institution' => 'required',
             'certificate' => ['mimes:jpg, jpeg, png', 'max:2048'],
         ]);
-
-        $trainingInfo['user_id'] = auth()->user()->id;
+        
+        $trainingInfo['status'] = 'pending';
 
         $training->update($trainingInfo);
 
@@ -67,6 +68,11 @@ class TrainingController extends Controller
 
     public function destroy(Training $training)
     {
+
+        if (File::exists(public_path('uploads/' . $training->certificate))) {
+            File::delete(public_path('uploads/' . $training->certificate));
+        }
+
         $training->delete();
 
         return redirect(route('training.index'))->with('message', 'Trainings/Seminars/Webinars Information Successfully Deleted');

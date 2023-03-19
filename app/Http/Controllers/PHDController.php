@@ -108,6 +108,8 @@ class PHDController extends Controller
         if($request->hasFile('research')){
             $phdInfo['research'] = $request->file('research')->store('images', 'public');
         }
+
+        $phdInfo['status'] = 'pending';
    
         $phd->update($phdInfo);
 

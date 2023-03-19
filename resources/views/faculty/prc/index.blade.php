@@ -24,13 +24,13 @@
                     </h5>
                     @endif
 
-                    @if($prc->status == 'approved')
+                    @if($prc->status == 'verified' || auth()->user()->application->app_status == 'approved')
                     <h5 class="font-bold uppercase text-center text-lg text-green-700">
                         <i class="fa-solid fa-circle-check mr-1"></i></i>
                         This Information has been Verified
                     </h5>
                     @endif
-                    <div class="w-full p-8 border-t-4 border-hau grid grid-cols-3 gap-4 rounded-b shadow-2xl">
+                    <div class="w-full p-8 border-t-4 {{ $prc->status == 'verified' ? 'border-green-700' : 'border-hau'}} grid grid-cols-3 gap-4 rounded-b shadow-2xl">
                         <div class="col-span-2 grid grid-cols-2 gap-x-4">
                           <img src="{{asset('uploads/' . $prc->prc_front)}}" alt="" class="aspect-video transition ease-in-out delay-150 hover:scale-150 duration-300">
                           <img src="{{asset('uploads/' . $prc->prc_back)}}" alt="" class="aspect-video transition ease-in-out delay-150 hover:scale-150 duration-300">
@@ -45,25 +45,28 @@
                                 <p class="text-lg text-hau">{{date('F d, Y', strtotime($prc->prc_num))}}</p>
                             </div>
 
-                            @if($prc->status == 'pending' || $prc->status == 'resubmit')
-                            <div class="flex items-center justify-center gap-x-4">
-                                <form action="{{route('prc.edit', $prc->id)}}">
-                                    <button class="py-1 px-2 uppercase text-white tracking-widest bg-yellow-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-yellow-600 duration-300">
-                                        <i class="fa-regular fa-pen-to-square mr-1"></i>Edit
+                            @if(auth()->user()->application->app_status == 'approved')
+                                <p></p>
+                            @else
+                                @if($prc->status == 'pending' || $prc->status == 'resubmit')
+                                <div class="flex items-center justify-center border-t border-hau gap-x-4">
+                                    <form action="{{route('prc.edit', $prc->id)}}">
+                                        <button class="py-1 px-2 uppercase text-white tracking-widest bg-yellow-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-yellow-600 duration-300">
+                                            <i class="fa-regular fa-pen-to-square mr-1"></i>Edit
+                                        </button>
+                                    </form>
+                                    <button 
+                                        type="submit"
+                                        class="py-1 px-2 uppercase text-white tracking-widest bg-red-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-red-600 duration-300"
+                                        data-te-toggle="modal"
+                                        data-te-target="#prc{{$prc->id}}"
+                                        data-te-ripple-init
+                                        data-te-ripple-color="light">
+                                        <i class="fa-solid fa-trash mr-1"></i>Delete
                                     </button>
-                                </form>
-                                <button 
-                                    type="submit"
-                                    class="py-1 px-2 uppercase text-white tracking-widest bg-red-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-red-600 duration-300"
-                                    data-te-toggle="modal"
-                                    data-te-target="#prc{{$prc->id}}"
-                                    data-te-ripple-init
-                                    data-te-ripple-color="light">
-                                    <i class="fa-solid fa-trash mr-1"></i>Delete
-                                </button>
-                            </div>
+                                </div>
+                                @endif
                             @endif
-
                         </div>
                     </div>
                     <hr class="w-full border-t-2 border-dashed border-gray-200">

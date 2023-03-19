@@ -108,6 +108,8 @@ class MasterController extends Controller
         if($request->hasFile('research')){
             $masterInfo['research'] = $request->file('research')->store('images', 'public');
         }
+
+        $masterInfo['status'] = 'pending';
    
         $master->update($masterInfo);
 

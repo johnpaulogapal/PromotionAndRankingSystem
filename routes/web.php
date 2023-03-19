@@ -1,20 +1,21 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\ApplicationController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\MasterController;
-use App\Http\Controllers\PHDController;
-use App\Http\Controllers\UndergradController;
-use App\Http\Controllers\PRCController;
+use App\Models\Application;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MPOController;
+use App\Http\Controllers\PHDController;
+use App\Http\Controllers\PRCController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MasterController;
+use App\Http\Controllers\VerifyController;
 use App\Http\Controllers\PendingController;
+use App\Http\Controllers\ApprovedController;
 use App\Http\Controllers\ReceivedController;
 use App\Http\Controllers\TrainingController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\VerifyController;
-use App\Models\Application;
+use App\Http\Controllers\UndergradController;
+use App\Http\Controllers\ApplicationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -129,6 +130,9 @@ Route::middleware(['auth', 'admin', 'prevent-back-history'])->group(function () 
 
     Route::controller(AdminController::class)->group(function () {
         Route::get('admin', 'index')->name('admin.index'); 
+        Route::get('admin/accounts', 'account')->name('admin.account'); 
+        Route::get('admin/account/create', 'accountCreate'); 
+        Route::post('admin/account/store', 'accountStore'); 
     });
 
     Route::controller(PendingController::class)->group(function () {
@@ -153,29 +157,35 @@ Route::middleware(['auth', 'admin', 'prevent-back-history'])->group(function () 
     Route::controller(VerifyController::class)->group(function () {
          
         Route::put('admin/profile-resubmit/{user}', 'profileResubmit')->name('verify.resubmit.profile');
-        Route::put('admin/profile-approved/{user}', 'profileApproved')->name('verify.approved.profile'); 
+        Route::put('admin/profile-verified/{user}', 'profileVerified')->name('verify.approved.profile'); 
 
         Route::put('admin/application-resubmit/{application}', 'applicationResubmit')->name('verify.resubmit.application');
-        Route::put('admin/application-approved/{application}', 'applicationApproved')->name('verify.approved.application'); 
+        Route::put('admin/application-verified/{application}', 'applicationVerified')->name('verify.approved.application'); 
 
         Route::put('admin/undergrad-resubmit/{undergrad}', 'undergradResubmit')->name('verify.resubmit.undergrad');
-        Route::put('admin/undergrad-approved/{undergrad}', 'undergradApproved')->name('verify.approved.undergrad');
+        Route::put('admin/undergrad-verified/{undergrad}', 'undergradVerified')->name('verify.approved.undergrad');
         
         Route::put('admin/masters-resubmit/{master}', 'masterResubmit')->name('verify.resubmit.master');
-        Route::put('admin/masters-approved/{master}', 'masterApproved')->name('verify.approved.master'); 
+        Route::put('admin/masters-verified/{master}', 'masterVerified')->name('verify.approved.master'); 
 
         Route::put('admin/phd-resubmit/{phd}', 'phdResubmit')->name('verify.resubmit.phd');
-        Route::put('admin/phd-approved/{phd}', 'phdApproved')->name('verify.approved.phd'); 
+        Route::put('admin/phd-verified/{phd}', 'phdVerified')->name('verify.approved.phd'); 
 
         Route::put('admin/prc-resubmit/{prc}', 'prcResubmit')->name('verify.resubmit.prc');
-        Route::put('admin/prc-approved/{prc}', 'prcApproved')->name('verify.approved.prc'); 
+        Route::put('admin/prc-verified/{prc}', 'prcVerified')->name('verify.approved.prc'); 
 
         Route::put('admin/mpo-resubmit/{mpo}', 'mpoResubmit')->name('verify.resubmit.mpo');
-        Route::put('admin/mpo-approved/{mpo}', 'mpoApproved')->name('verify.approved.mpo'); 
+        Route::put('admin/mpo-verified/{mpo}', 'mpoVerified')->name('verify.approved.mpo'); 
 
         Route::put('admin/training-resubmit/{training}', 'trainingResubmit')->name('verify.resubmit.training');
-        Route::put('admin/training-approved/{training}', 'trainingApproved')->name('verify.approved.training'); 
+        Route::put('admin/training-verified/{training}', 'trainingVerified')->name('verify.approved.training'); 
 
+        Route::put('admin/application-approved/{application}', 'applicationApproved')->name('verify.approved.approved'); 
+
+    });
+
+    Route::controller(ApprovedController::class)->group(function () {
+        Route::get('admin/approved-applications', 'index')->name('approved.index'); 
     });
 
 });

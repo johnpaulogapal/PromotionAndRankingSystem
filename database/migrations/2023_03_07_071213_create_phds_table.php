@@ -14,7 +14,7 @@ class CreatePhdsTable extends Migration
     public function up()
     {
         Schema::create('phds', function (Blueprint $table) {
-            $table->id();
+            $table->id()->from('104000001');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('school');
             $table->string('course');

@@ -41,3 +41,22 @@ input[type=number] {
 a:hover {
     color: white;
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px royalblue; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #710E1D; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #861226fd;
+}

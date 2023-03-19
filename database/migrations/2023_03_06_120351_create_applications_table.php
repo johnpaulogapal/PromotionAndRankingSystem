@@ -14,7 +14,7 @@ class CreateApplicationsTable extends Migration
     public function up()
     {
         Schema::create('applications', function (Blueprint $table) {
-            $table->id();
+            $table->id()->from('101000001');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('app_status');
             $table->string('current_rank');

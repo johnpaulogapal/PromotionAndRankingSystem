@@ -25,10 +25,10 @@
                     {{-- Username --}}
                     <div class="space-y-1">
                         <i class="fa-solid fa-user-shield text-xl text-hau"></i>
-                        <span class="text-hau tracking-widest">Username</span>
+                        <span class="text-hau tracking-widest">Email</span>
                         <input name="email" type="text" class="outline-hau w-full py-1 px-2 font-bold text-gray-700 text-sm border border-gray-500 caret-hau rounded shadow-2xl transition ease-in-out delay-150 hover:scale-110 duration-300" required>
                         @error('email')
-                            <p class="text-xs text-red-700">{{ $message}}</p>
+                            <p class="font-bold text-red-700">{{ $message}}</p>
                         @enderror
                     </div>
                     {{-- Password --}}

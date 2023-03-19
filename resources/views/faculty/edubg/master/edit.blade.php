@@ -3,10 +3,17 @@
         
         <section>
             <div class="h-screen w-full pt-20">
-                
+                    @if()
                     <form method="POST" action="{{route('master.update', $master->id)}}" enctype="multipart/form-data" class="pt-10 mx-5 h-full flex flex-col items-center gap-y-4">
                     @csrf
                     @method('PUT')
+                        @if($master->status == 'resubmit')
+                        <div class="p-2 my-1 flex flex-col gap-1 text-white bg-orange-700 rounded">
+                            <span><i class="fa-regular fa-comment mr-1"></i> Comment</span>
+                            <p class="font-bold uppercase text-sm">{{$master->comment}}</p>
+                        </div>
+                        @endif
+
                         <p class="uppercase text-xl tracking-widest"><span class="py-1 px-2 bg-hau text-white rounded shadow-lg"><i class="fa-solid fa-pen-to-square mr-2"></i>Edit</span> Masters Information</p>
                         <div class="w-1/2 py-5 px-10 border-t-2 border-hau rounded-b-lg shadow-2xl space-y-5">
                         

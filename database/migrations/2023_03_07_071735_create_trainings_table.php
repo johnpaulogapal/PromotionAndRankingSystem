@@ -14,7 +14,7 @@ class CreateTrainingsTable extends Migration
     public function up()
     {
         Schema::create('trainings', function (Blueprint $table) {
-            $table->id();
+            $table->id()->from('107000001');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->date('from');
             $table->date('to');
