@@ -113,12 +113,12 @@
                                 {{
                                     $userApproved +
                                     $applicationApproved +
-                                    count($receivedApplication->user->undergrads->where('status', 'approved')) +
-                                    count($receivedApplication->user->masters->where('status', 'approved')) +
-                                    count($receivedApplication->user->phds->where('status', 'approved')) +
-                                    count($receivedApplication->user->prcs->where('status', 'approved')) +
-                                    count($receivedApplication->user->mpos->where('status', 'approved')) +
-                                    count($receivedApplication->user->trainings->where('status', 'approved'))
+                                    count($receivedApplication->user->undergrads->where('status', 'verified')) +
+                                    count($receivedApplication->user->masters->where('status', 'verified')) +
+                                    count($receivedApplication->user->phds->where('status', 'verified')) +
+                                    count($receivedApplication->user->prcs->where('status', 'verified')) +
+                                    count($receivedApplication->user->mpos->where('status', 'verified')) +
+                                    count($receivedApplication->user->trainings->where('status', 'verified'))
                                 }}
                                 </span>
                             </td>

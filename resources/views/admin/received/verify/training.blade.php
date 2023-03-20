@@ -5,31 +5,37 @@
             TRAININGS/SEMINARS/WEBINARS Information of {{$training->user->first_name . " " . $training->user->last_name}}
         </p>
         
-        <div class="w-full py-5 px-10 border-t-4 border-hau rounded-b shadow-2xl">
-            <div class="grid grid-cols-6 gap-3">
-                <div class="p-2 border-l-2 border-dashed border-gray-200 flex flex-col justify-start">
-                    <b class="text-hau text-xs tracking-wide">From</b>
-                    <p class="text-hau tracking-widest">{{date('F d, Y', strtotime($training->from))}}</p>
+        <div class="w-3/4 py-5 px-10 border-t-4 border-hau rounded-b shadow-2xl">
+            <div class="grid grid-cols-3 gap-8">
+                <div class="flex flex-col justify-start">
+                    <b class="font-bold uppercase text-hau tracking-widest">From</b>
+                    <p class="text-hau text-lg">{{date('F d, Y', strtotime($training->from))}}</p>
                 </div>
-                <div class="p-2 border-l-2 border-dashed border-gray-200 flex flex-col justify-start">
-                    <b class="text-hau text-xs tracking-wide">To</b>
-                    <p class="text-hau tracking-widest">{{date('F d, Y', strtotime($training->to))}}</p>
+                <div class="flex flex-col justify-start">
+                    <b class="font-bold uppercase text-hau tracking-widest">To</b>
+                    <p class="text-hau text-lg">{{date('F d, Y', strtotime($training->to))}}</p>
                 </div>
-                <div class="p-2 border-l-2 border-dashed border-gray-200 flex flex-col justify-start">
-                    <b class="text-hau text-xs tracking-wide">Title</b>
-                    <p class="text-hau tracking-widest">{{$training->title}}</p>
+                <div class="col-start-1 flex flex-col justify-start">
+                    <b class="font-bold uppercase text-hau tracking-widest">Title</b>
+                    <p class="text-hau text-lg">{{$training->title}}</p>
                 </div>
-                <div class="p-2 border-l-2 border-dashed border-gray-200 flex flex-col justify-start">
-                    <b class="text-hau text-xs tracking-wide">Speaker</b>
-                    <p class="text-hau tracking-widest">{{$training->speaker}}</p>
+                <div class="flex flex-col justify-start">
+                    <b class="font-bold uppercase text-hau tracking-widest">Speaker</b>
+                    <p class="text-hau text-lg">{{$training->speaker}}</p>
                 </div>
-                <div class="p-2 border-l-2 border-dashed border-gray-200 flex flex-col justify-start">
-                    <b class="text-hau text-xs tracking-wide">Venue</b>
-                    <p class="text-hau tracking-widest">{{$training->venue}}</p>
+                <div class="flex flex-col justify-start">
+                    <b class="font-bold uppercase text-hau tracking-widest">Venue</b>
+                    <p class="text-hau text-lg">{{$training->venue}}</p>
                 </div>
-                <div class="p-2 border-l-2 border-dashed border-gray-200 flex flex-col justify-start">
-                    <b class="text-hau text-xs tracking-wide">Institution</b>
-                    <p class="text-hau tracking-widest">{{$training->institution}}</p>
+                <div class="flex flex-col justify-start">
+                    <b class="font-bold uppercase text-hau tracking-widest">Institution</b>
+                    <p class="text-hau text-lg">{{$training->institution}}</p>
+                </div>
+                <div class="col-span-2">
+                    <b class="font-bold uppercase text-hau tracking-widest">Certificate - </b>
+                    <a href="{{asset('uploads/' . $training->certificate)}}" class="font-bold text-blue-700 tracking-widest underline underline-offset-2 transition hover:text-blue-600 ease-in-out delay-150 duration-300" download>
+                        Download
+                    </a>
                 </div>
             </div>
         </div>

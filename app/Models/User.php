@@ -69,4 +69,9 @@ class User extends Authenticatable
     public function trainings() {
         return $this->hasMany(Training::class, 'user_id');
     }
+
+    public function score() {
+        return $this->hasOne(Score::class, 'user_id');
+    }
+
 }

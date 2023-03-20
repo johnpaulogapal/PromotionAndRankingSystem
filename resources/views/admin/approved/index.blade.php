@@ -41,7 +41,11 @@
                                 {{$approvedApplication->user->created_at->format('F d, Y')}}
                             </td>
                             <td class="px-6 py-4 font-bold text-center tracking-widest">
-                                Grade
+                                
+                                <a href="{{route('admin.score', $approvedApplication->user_id)}}" class="p-1 text-white tracking-widest bg-cyan-600 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-cyan-700 duration-300">
+                                    Evaluate
+                                </a>
+                                
                             </td>
                         </tr>
                         @endforeach

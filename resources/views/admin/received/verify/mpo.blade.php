@@ -5,19 +5,20 @@
             Membership in Professional Organization Information of {{$mpo->user->first_name . " " . $mpo->user->last_name}}
         </p>
         
-        <div class="w-1/2 p-5 border-t-4 border-hau grid grid-cols-2 gap-4 rounded-b shadow-2xl">
-            <div class="justify-self-center flex items-center">
-                qwe
+        <div class="w-1/3 p-5 border-t-4 border-hau grid grid grid-rows-3 gap-4 rounded-b shadow-2xl">
+            <div class="flex flex-col justify-start">
+                <b class="font-bold uppercase text-hau tracking-widest">Organiztion Name</b>
+                <p class="text-hau text-lg">{{$mpo->org_name}}</p>
             </div>
-            <div class="grid grid-rows-3 gap-y-4">
-                <div class="flex flex-col justify-start">
-                    <b class="text-hau text-sm tracking-wide">Organiztion Name</b>
-                    <p class="text-hau text-lg tracking-widest">{{$mpo->org_name}}</p>
-                </div>
-                <div class="flex flex-col justify-start">
-                    <b class="text-hau text-sm tracking-wide">Validity</b>
-                    <p class="text-hau text-lg tracking-widest">{{date('F d, Y', strtotime($mpo->mpo_num))}}</p>
-                </div>
+            <div class="flex flex-col justify-start">
+                <b class="font-bold uppercase text-hau tracking-widest">Validity</b>
+                <p class="text-hau text-lg">{{date('F d, Y', strtotime($mpo->mpo_num))}}</p>
+            </div>
+            <div class="">
+                <b class="font-bold uppercase text-hau tracking-widest">Certificate - </b>
+                <a href="{{asset('uploads/' . $mpo->certificate)}}" class="font-bold text-blue-700 tracking-widest underline underline-offset-2 transition hover:text-blue-600 ease-in-out delay-150 duration-300" download>
+                    Download
+                </a>
             </div>
         </div>
         

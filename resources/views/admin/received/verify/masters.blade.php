@@ -5,29 +5,29 @@
             Masters Information of {{$master->user->first_name . " " . $master->user->last_name}}
         </p>
         <div class="w-1/3 mb-2 p-5 border-t-4 border-hau rounded-b-lg shadow-2xl space-y-4">
-            <div class="flex flex-col justify-start">
-                <b class="text-hau tracking-wide">School</b>
-                <p class="text-hau tracking-widest">{{$master->school}}</p>
+            <div class="flex flex-col justify-start ">
+                <b class="font-bold uppercase text-hau tracking-widest">School</b>
+                <p class="text-lg text-hau">{{$master->school}}</p>
             </div>
             <div class="flex flex-col justify-start">
-                <b class="text-hau tracking-wide">Course</b>
-                <p class="text-hau tracking-widest">{{$master->course}}</p>
+                <b class="font-bold uppercase text-hau tracking-widest">Course</b>
+                <p class="text-lg text-hau">{{$master->course}}</p>
             </div>
             <div class="flex flex-col justify-start">
-                <b class="text-hau tracking-wide">Graduation Date</b>
-                <p class="text-hau tracking-widest">{{date('F d, Y', strtotime($master->graduation_date))}}</p>
+                <b class="font-bold uppercase text-hau tracking-widest">Graduation Date</b>
+                <p class="text-lg text-hau">{{date('F d, Y', strtotime($master->graduation_date))}}</p>
             </div>
             
             <div class="">
-                <b class="text-hau tracking-wide">Diploma</b>
-                <a href="{{asset('uploads/' . $master->diploma)}}" class="py-1 px-2 text-sm text-white tracking-widest bg-cyan-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-cyan-600 duration-300" download>
+                <b class="font-bold uppercase text-hau tracking-widest">Diploma - </b>
+                <a href="{{asset('uploads/' . $master->diploma)}}" class="font-bold text-blue-700 tracking-widest underline underline-offset-2 transition hover:text-blue-600 ease-in-out delay-150 duration-300" download>
                     Download
                 </a>
             </div>
-            
+           
             <div class="">
-                <b class="text-hau tracking-wide">Research</b>
-                <a href="{{asset('uploads/' . $master->research)}}" class="py-1 px-2 text-sm text-white tracking-widest bg-cyan-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-cyan-600 duration-300" download>
+                <b class="font-bold uppercase text-hau tracking-widest">Research - </b>
+                <a href="{{asset('uploads/' . $master->research)}}" class="font-bold text-blue-700 tracking-widest underline underline-offset-2 transition hover:text-blue-600 ease-in-out delay-150 duration-300" download>
                     Download
                 </a>
             </div>

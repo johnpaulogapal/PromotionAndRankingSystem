@@ -133,6 +133,9 @@ Route::middleware(['auth', 'admin', 'prevent-back-history'])->group(function () 
         Route::get('admin/accounts', 'account')->name('admin.account'); 
         Route::get('admin/account/create', 'accountCreate'); 
         Route::post('admin/account/store', 'accountStore'); 
+
+        Route::get('admin/scores/{user}', 'score')->name('admin.score'); 
+        Route::post('admin/scores/store/{user}', 'scoreStore')->name('admin.scoreStore'); 
     });
 
     Route::controller(PendingController::class)->group(function () {
