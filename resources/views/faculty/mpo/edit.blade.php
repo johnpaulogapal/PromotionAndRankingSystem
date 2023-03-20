@@ -14,7 +14,7 @@
                     <p class="font-bold uppercase text-sm">{{$mpo->comment}}</p>
                 </div>
                 @endif
-                <div class="w-1/3 p-10 border-t-4 border-hau grid grid-rows-3 gap-4 rounded-b shadow-2xl">
+                <div class="w-full md:w-1/3 p-10 border-t-4 border-hau grid grid-rows-3 gap-4 rounded-b shadow-2xl">
                   
                     <div class="flex flex-col justify-start gap-y-1">
                         <b class="text-hau text-sm tracking-wide">License Number</b>

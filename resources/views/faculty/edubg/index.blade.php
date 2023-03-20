@@ -10,7 +10,7 @@
         
         <section>
             <div class="pt-12 h-screen w-full">
-                <div class="h-full px-5 grid grid-cols-3 gap-x-8 justify-items-center">
+                <div class="h-full px-5 grid grid-cols-1 md:grid-cols-3 gap-x-8 justify-items-center">
 
                     {{-- UNDERGRAD --}}
                     @include('partials.faculty._undergrad')

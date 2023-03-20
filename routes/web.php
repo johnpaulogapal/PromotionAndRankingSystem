@@ -27,10 +27,12 @@ use App\Http\Controllers\ApplicationController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::controller(AuthController::class)->group(function () {
     Route::get('login', 'login')->name('login')->middleware('guest');
     Route::post('logout', 'logout')->name('logout');
     Route::post('authenticate', 'authenticate')->name('authenticate');
+    Route::get('/privacy-policy', 'privacy')->name('privacy')->middleware('guest');
 });
 
 Route::get('profile/create', [UserController::class, 'create'])->middleware(['auth', 'faculty', 'new-account', 'prevent-back-history'])->name('profile.create');
@@ -133,9 +135,15 @@ Route::middleware(['auth', 'admin', 'prevent-back-history'])->group(function () 
         Route::get('admin/accounts', 'account')->name('admin.account'); 
         Route::get('admin/account/create', 'accountCreate'); 
         Route::post('admin/account/store', 'accountStore'); 
+        Route::delete('admin/account/destroy/{user}', 'accountDestroy')->name('admin.accountDestroy'); 
 
         Route::get('admin/scores/{user}', 'score')->name('admin.score'); 
         Route::post('admin/scores/store/{user}', 'scoreStore')->name('admin.scoreStore'); 
+        Route::get('admin/scores/edit/{user}', 'scoreEdit')->name('admin.scoreEdit'); 
+        Route::put('admin/scores/update/{user}/{score}', 'scoreUpdate')->name('admin.scoreUpdate'); 
+
+        Route::get('admin/basic-education/rankings', 'basicEd')->name('admin.basicEd'); 
+        Route::get('admin/college/rankings', 'college')->name('admin.college'); 
     });
 
     Route::controller(PendingController::class)->group(function () {

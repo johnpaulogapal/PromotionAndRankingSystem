@@ -29,6 +29,8 @@
 
 </head>
 <body>
+
+    @include('partials.faculty._phoneNav')
     
     {{$slot}}
 

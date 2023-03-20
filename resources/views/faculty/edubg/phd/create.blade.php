@@ -7,7 +7,7 @@
                     <form method="POST" action="{{route('phd.store')}}" enctype="multipart/form-data" class="p-10 mx-5 h-full flex flex-col items-center gap-y-4">
                         @csrf
                         <p class="uppercase text-xl tracking-widest"><span class="py-1 px-2 bg-hau text-white rounded shadow-lg"><i class="fa-solid fa-plus mr-2"></i>Add</span> PHD Information</p>
-                        <div class="w-1/2 p-10 border-t-2 border-hau rounded-b-lg shadow-2xl space-y-5">
+                        <div class="w-full md:w-1/2 p-10 border-t-2 border-hau rounded-b-lg shadow-2xl space-y-5">
                             <div class="flex flex-col justify-start gap-y-1">
                                 <b class="text-hau text-sm tracking-wide">School</b>
                                 <input name="school" type="text" class="py-0.5 px-2 border border-hau rounded caret-hau outline-hau">
@@ -29,7 +29,7 @@
                                     <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                                 @enderror
                             </div>   
-                            <div class="flex">
+                            <div class="flex flex-col md:flex-row justify-between">
                                 <div class="flex flex-col justify-center gap-1">
                                     <label for="" class="font-bold text-hau text-sm tracking-wider">Upload your diploma</label>
                                     <input name="diploma" type="file"  class="py-0.5 px-2 aret-hau outline-hau">

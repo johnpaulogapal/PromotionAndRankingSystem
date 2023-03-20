@@ -1,8 +1,9 @@
 <div class="flex flex-col">
     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-        <form method="POST" action="{{route('admin.scoreStore', $user->id)}}" class="overflow-hidden">
+        <form method="POST" action="{{route('admin.scoreUpdate', [ 'user' => $user->id, 'score' => $user->score->id])}}" class="overflow-hidden">
         @csrf
+        @method('PUT')
           <table class="min-w-full text-left text-sm font-light">
             <thead class="border-b font-medium dark:border-neutral-500">
               <tr>
@@ -18,159 +19,143 @@
                 <td class="whitespace-nowrap px-6 py-4">30</td>
                 <td class="whitespace-nowrap px-6 py-4">
                     
-                    @if(empty($user->score))
-                        <div class="flex flex-col justify-center gap-1">
-                            <label for="" class="font-bold text-hau text-sm tracking-wider"></label>
-                            <input name="edu_attain" type="number" class="w-1/4 py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{old('edu_attain')}}" min="60" max="100" required>
-                            @error('edu_attain')
-                                <p class="font-bold text-red-500 mt-1">{{$message}}</p>
-                            @enderror
-                        </div>
-                    @else
-                       <span class="font-bold">{{$user->score->edu_attain}}</span>
-                    @endif
+                   
+                    <div class="flex flex-col justify-center gap-1">
+                        <label for="" class="font-bold text-hau text-sm tracking-wider"></label>
+                        <input name="edu_attain" type="number" class="w-1/4 py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{$user->score->edu_attain}}" min="60" max="100" required>
+                        @error('edu_attain')
+                            <p class="font-bold text-red-500 mt-1">{{$message}}</p>
+                        @enderror
+                    </div>
+                   
                 </td>
                 <td>
-                    @if(empty($user->score))
-                        <div class="flex gap-x-4">
-                            <div class="mx-5">
-                                <input name="masters" type="radio" value=1 class="py-1.5 px-1.5 border border-hau rounded-full appearance-none checked:bg-green-500 checked:border-green-500" required>
-                                <label for="" class="text-hau tracking-wider">Met</label>
-                            </div>   
-                            <div class="">
-                                <input name="masters" type="radio" value=0 class="py-1.5 px-1.5 border border-hau rounded-full appearance-none checked:bg-green-500 checked:border-green-500">
-                                <label for="" class="text-hau tracking-wider">Not</label>
-                            </div>
-                            @error('masters')
-                                <p class="font-bold text-red-500 mt-1">{{$message}}</p>
-                            @enderror
+                   
+                    <div class="flex gap-x-4">
+                        <div class="mx-5">
+                            <input name="masters" type="radio" value=1 class="py-1.5 px-1.5 border border-hau rounded-full appearance-none checked:bg-green-500 checked:border-green-500" required {{$user->score->masters == 1 ? 'checked' : ''}}>
+                            <label for="" class="text-hau tracking-wider">Met</label>
+                        </div>   
+                        <div class="">
+                            <input name="masters" type="radio" value=0 class="py-1.5 px-1.5 border border-hau rounded-full appearance-none checked:bg-green-500 checked:border-green-500" {{$user->score->masters == 0 ? 'checked' : ''}}>
+                            <label for="" class="text-hau tracking-wider">Not</label>
                         </div>
-                    @else
-                        <span class="font-bold mx-5">{{$user->score->masters == 1 ? 'Met' : 'Not'}}</span>
-                    @endif
+                        @error('masters')
+                            <p class="font-bold text-red-500 mt-1">{{$message}}</p>
+                        @enderror
+                    </div>
+                   
                 </td>
               </tr>
               <tr class="border-b dark:border-neutral-500">
                 <td class="whitespace-nowrap px-6 py-4 font-medium">Teaching Evaluation Rating</td>
                 <td class="whitespace-nowrap px-6 py-4">25</td>
                 <td class="whitespace-nowrap px-6 py-4">
-                    @if(empty($user->score))
+                   
                         <div class="flex flex-col justify-center gap-1">
                             <label for="" class="font-bold text-hau text-sm tracking-wider"></label>
-                            <input name="teach_eval" type="number" class="w-1/4 py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{old('teach_eval')}}" min="60" max="100" required>
+                            <input name="teach_eval" type="number" class="w-1/4 py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{$user->score->teach_eval}}" min="60" max="100" required>
                             @error('teach_eval')
                                 <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                             @enderror
                         </div>
-                    @else
-                       <span class="font-bold">{{$user->score->teach_eval}}</span>
-                    @endif
+                   
                 </td>
                 <td>
-                    @if(empty($user->score))
+                   
                         <div class="flex gap-x-4">
                             <div class="mx-5">
-                                <input name="teach_eval_min" type="radio" value=1 class="py-1.5 px-1.5 border border-hau rounded-full appearance-none checked:bg-green-500 checked:border-green-500" required>
+                                <input name="teach_eval_min" type="radio" value=1 class="py-1.5 px-1.5 border border-hau rounded-full appearance-none checked:bg-green-500 checked:border-green-500" required {{$user->score->teach_eval_min == 1 ? 'checked' : ''}}>
                                 <label for="" class="text-hau tracking-wider">Met</label>
                             </div>   
                             <div class="">
-                                <input name="teach_eval_min" type="radio" value=0 class="py-1.5 px-1.5 border border-hau rounded-full appearance-none checked:bg-green-500 checked:border-green-500">
+                                <input name="teach_eval_min" type="radio" value=0 class="py-1.5 px-1.5 border border-hau rounded-full appearance-none checked:bg-green-500 checked:border-green-500" {{$user->score->teach_eval_min == 0 ? 'checked' : ''}}>
                                 <label for="" class="text-hau tracking-wider">Not</label>
                             </div>
                             @error('teach_eval_min')
                                 <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                             @enderror
                         </div>
-                    @else
-                        <span class="font-bold mx-5">{{$user->score->teach_eval_min == 1 ? 'Met' : 'Not'}}</span>
-                    @endif
+                   
                 </td>
               </tr>
               <tr class="border-b dark:border-neutral-500">
                 <td class="whitespace-nowrap px-6 py-4 font-medium">Research</td>
                 <td class="whitespace-nowrap px-6 py-4">25</td>
                 <td class="whitespace-nowrap px-6 py-4">
-                    @if(empty($user->score))
+                   
                         <div class="flex flex-col justify-center gap-1">
                             <label for="" class="font-bold text-hau text-sm tracking-wider"></label>
-                            <input name="research" type="number" class="w-1/4 py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{old('research')}}" min="60" max="100" required>
+                            <input name="research" type="number" class="w-1/4 py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{$user->score->research}}" min="60" max="100" required>
                             @error('research')
                                 <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                             @enderror
                         </div>
-                    @else
-                        <span class="font-bold">{{$user->score->research}}</span>
-                    @endif
+                   
                 </td>
                 <td>
-                    @if(empty($user->score))
+                   
                         <div class="flex gap-x-4">
                             <div class="mx-5">
-                                <input name="research_min" type="radio" value=1 class="py-1.5 px-1.5 border border-hau rounded-full appearance-none checked:bg-green-500 checked:border-green-500" required>
+                                <input name="research_min" type="radio" value=1 class="py-1.5 px-1.5 border border-hau rounded-full appearance-none checked:bg-green-500 checked:border-green-500" required
+                                {{$user->score->research_min == 1 ? 'checked' : ''}}>
                                 <label for="" class="text-hau tracking-wider">Met</label>
                             </div>   
                             <div class="">
-                                <input name="research_min" type="radio" value=0 class="py-1.5 px-1.5 border border-hau rounded-full appearance-none checked:bg-green-500 checked:border-green-500">
+                                <input name="research_min" type="radio" value=0 class="py-1.5 px-1.5 border border-hau rounded-full appearance-none checked:bg-green-500 checked:border-green-500"
+                                {{$user->score->research_min == 0 ? 'checked' : ''}}>
                                 <label for="" class="text-hau tracking-wider">Not</label>
                             </div>
                             @error('research_min')
                                 <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                             @enderror
                         </div>
-                    @else
-                        <span class="font-bold mx-5">{{$user->score->research_min == 1 ? 'Met' : 'Not'}}</span>
-                    @endif
+                   
                 </td>
               </tr>
               <tr class="border-b dark:border-neutral-500">
                 <td class="whitespace-nowrap px-6 py-4 font-medium">Community Service</td>
                 <td class="whitespace-nowrap px-6 py-4">10</td>
                 <td class="whitespace-nowrap px-6 py-4">
-                    @if(empty($user->score))
+                   
                         <div class="flex flex-col justify-center gap-1">
                             <label for="" class="font-bold text-hau text-sm tracking-wider"></label>
-                            <input name="com_ser" type="number" class="w-1/4 py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{old('com_ser')}}" min="60" max="100" required>
+                            <input name="com_ser" type="number" class="w-1/4 py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{$user->score->com_ser}}" min="60" max="100" required >
                             @error('com_ser')
                                 <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                             @enderror
                         </div>
-                    @else
-                        <span class="font-bold">{{$user->score->com_ser}}</span>
-                    @endif
+                   
                 </td>
               </tr>
               <tr class="border-b dark:border-neutral-500">
                 <td class="whitespace-nowrap px-6 py-4 font-medium">Trainings/Seminars</td>
                 <td class="whitespace-nowrap px-6 py-4">8</td>
                 <td class="whitespace-nowrap px-6 py-4">
-                    @if(empty($user->score))
+                   
                         <div class="flex flex-col justify-center gap-1">
                             <label for="" class="font-bold text-hau text-sm tracking-wider"></label>
-                            <input name="train_sem" type="number" class="w-1/4 py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{old('train_sem')}}" min="60" max="100" required>
+                            <input name="train_sem" type="number" class="w-1/4 py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{$user->score->train_sem}}" min="60" max="100" required>
                             @error('train_sem')
                                 <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                             @enderror
                         </div>
-                    @else
-                        <span class="font-bold">{{$user->score->train_sem}}</span>
-                    @endif
+                    
                 </td>
               </tr>
               <tr class="border-b dark:border-neutral-500">
                 <td class="whitespace-nowrap px-6 py-4 font-medium">Membership in professional organization or Professional Examination</td>
                 <td class="whitespace-nowrap px-6 py-4">2</td>
                 <td class="whitespace-nowrap px-6 py-4">
-                    @if(empty($user->score))
+                   
                         <div class="flex flex-col justify-center gap-1">
                             <label for="" class="font-bold text-hau text-sm tracking-wider"></label>
-                            <input name="mpo" type="number" class="w-1/4 py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{old('mpo')}}" min="60" max="100" required>
+                            <input name="mpo" type="number" class="w-1/4 py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{$user->score->mpo}}" min="60" max="100" required>
                             @error('mpo')
                                 <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                             @enderror
                         </div>
-                    @else
-                        <span class="font-bold">{{$user->score->mpo}}</span>
-                    @endif
+                    
                 </td>
               </tr>
               <tr class="border-b dark:border-neutral-500">
@@ -178,40 +163,30 @@
                 <td class="whitespace-nowrap px-6 py-4">100</td>
                 <td class="whitespace-nowrap px-6 py-4">
 
-                    @if(empty($user->score))
-                        N/A
-                    @else
-                        <span class="font-bold">{{ $user->score->total }}</span>
-                    @endif
+                   
                     
                 </td>
               </tr>
             </tbody>
            
           </table>
-          <div class="w-full pt-5 px-5 flex justify-end">
-            @if(empty($user->score)){
-                <button
-                type="button"
-                data-te-toggle="modal"
-                data-te-target="#scoreSubmit"
-                data-te-ripple-init
-                data-te-ripple-color="light" 
-                class="py-1 px-2 uppercase text-white tracking-widest bg-green-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-green-600 duration-300">Submit</button>
-            }
-            @else
-                <a
-                href="{{route('admin.scoreEdit', $user->id)}}"
-                class="py-1 px-2 uppercase text-white tracking-widest bg-yellow-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-yellow-600 duration-300">Edit</a>
-            @endif
+          <div class="w-full pt-5 px-5 flex justify-end gap-x-4">
+            <a href="{{route('admin.score', $user->id)}}" class="py-1 px-2 uppercase text-white tracking-widest bg-gray-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-gray-600 duration-300">Back</a>
+            <button
+            type="button"
+            data-te-toggle="modal"
+            data-te-target="#scoreSave"
+            data-te-ripple-init
+            data-te-ripple-color="light" 
+            class="py-1 px-2 uppercase text-white tracking-widest bg-green-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-green-600 duration-300">Save</button>
           </div>
           {{-- [START] Submit Score Modal Modal --}}
             <div
             data-te-modal-init
             class="fixed pl-60 top-0 left-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
-            id="scoreSubmit"
+            id="scoreSave"
             tabindex="-1"
-            aria-labelledby="scoreSubmit"
+            aria-labelledby="scoreSave"
             aria-hidden="true">
             <div
                 data-te-modal-dialog-ref

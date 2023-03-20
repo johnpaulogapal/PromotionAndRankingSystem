@@ -30,7 +30,7 @@
                         This Information has been Verified
                     </h5>
                     @endif
-                    <div class="w-1/3 p-5 border-t-4 {{ $mpo->status == 'verified' ? 'border-green-700' : 'border-hau'}} grid grid grid-rows-3 gap-4 rounded-b shadow-2xl">
+                    <div class="w-full md:w-1/3 p-5 border-t-4 {{ $mpo->status == 'verified' ? 'border-green-700' : 'border-hau'}} grid grid grid-rows-3 gap-4 rounded-b shadow-2xl">
                         
                             <div class="flex flex-col justify-start">
                                 <b class="font-bold uppercase text-hau tracking-widest">Organiztion Name</b>

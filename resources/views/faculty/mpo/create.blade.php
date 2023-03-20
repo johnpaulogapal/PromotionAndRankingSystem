@@ -7,7 +7,7 @@
             </div>
             <form method="POST" action="{{route('mpo.store')}}" enctype="multipart/form-data"  class="pt-5 grid justify-items-center content-start gap-y-8">
             @csrf
-                <div class="w-1/3 p-10 border-t-4 border-hau grid grid-rows-2 gap-8 rounded-b shadow-2xl">
+                <div class="w-full md:w-1/3 p-10 border-t-4 border-hau grid grid-rows-2 gap-8 rounded-b shadow-2xl">
                     
                     <div class="flex flex-col justify-start gap-y-1">
                         <b class="text-hau text-sm tracking-wide">Organiztion Name</b>

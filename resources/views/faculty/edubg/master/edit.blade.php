@@ -15,7 +15,7 @@
                         @endif
 
                         <p class="uppercase text-xl tracking-widest"><span class="py-1 px-2 bg-hau text-white rounded shadow-lg"><i class="fa-solid fa-pen-to-square mr-2"></i>Edit</span> Masters Information</p>
-                        <div class="w-1/2 py-5 px-10 border-t-2 border-hau rounded-b-lg shadow-2xl space-y-5">
+                        <div class="w-full md:w-1/2 py-5 px-10 border-t-2 border-hau rounded-b-lg shadow-2xl space-y-5">
                         
                             <div class="flex flex-col justify-start gap-y-1">
                                 <b class="text-hau text-sm tracking-wide">School</b>
@@ -39,7 +39,7 @@
                                 @enderror
                             </div>
 
-                           <div class="flex justify-between">
+                           <div class="flex flex-col md:flex-row justify-between">
                                 <div class="flex flex-col justify-center gap-1">
                                     <a href="{{asset('uploads/' . $master->diploma)}}" class="font-bold text-blue-700 tracking-widest underline underline-offset-2 transition hover:text-blue-600 ease-in-out delay-150 duration-300" download>
                                        Download Diploma

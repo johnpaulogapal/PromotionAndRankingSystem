@@ -42,4 +42,9 @@ class AuthController extends Controller
         }
 
     }
+
+    public function privacy()
+    {
+        return view('auth/privacy');
+    }
 }

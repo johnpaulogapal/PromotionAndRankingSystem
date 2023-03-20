@@ -50,7 +50,7 @@
                     <span>
                         <a href="" class="text-hau transition ease-in-out delay-150 hover:text-red-500 duration-300">Terms and Conditions</a>
                         and
-                        <a href="" class="text-hau transition ease-in-out delay-150 hover:text-red-500 duration-300">Privacy Policy.</a>
+                        <a href="{{route('privacy')}}" class="text-hau transition ease-in-out delay-150 hover:text-red-500 duration-300">Privacy Policy.</a>
                     </span>
                 </div>
                 

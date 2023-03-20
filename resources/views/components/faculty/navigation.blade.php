@@ -1,5 +1,5 @@
 <section>
-    <div class="h-screen w-60 fixed flex flex-col justify-between bg-hau text-white z-50">
+    <div class="hidden md:flex h-screen w-60 fixed  flex-col justify-between bg-hau text-white z-50">
         <div class="space-y-4">
             <div class="p-5 flex flex-col items-center gap-y-2">
                 <a href="">
@@ -40,10 +40,10 @@
     </div>
 
     {{-- Main Content --}}
-    <div class="pl-60">
+    <div class="pl-0 md:pl-60">
         <div class="w-full absolute top-0 right-0 flex justify-end items-center border-b-4 border-dashed border-gray-200">
             
-            <div class="w-full pl-60 py-3 flex justify-between">
+            <div class="hidden md:flex w-full pl-60 py-3  justify-between">
                 <h5 class="ml-12 uppercase text-lg tracking-widest">
                     <span class="font-bold">User:</span> {{auth()->user()->first_name . " " . auth()->user()->last_name}}                  
                  </h5>

@@ -30,8 +30,8 @@
                         This Information has been Verified
                     </h5>
                     @endif
-                    <div class="w-full p-8 border-t-4 {{ $prc->status == 'verified' ? 'border-green-700' : 'border-hau'}} grid grid-cols-3 gap-4 rounded-b shadow-2xl">
-                        <div class="col-span-2 grid grid-cols-2 gap-x-4">
+                    <div class="w-full p-8 border-t-4 {{ $prc->status == 'verified' ? 'border-green-700' : 'border-hau'}} grid grid-cols-1 md:grid-cols-3 gap-4 rounded-b shadow-2xl">
+                        <div class="md:col-span-2 grid md:grid-cols-2 md:gap-x-4">
                           <img src="{{asset('uploads/' . $prc->prc_front)}}" alt="" class="aspect-video transition ease-in-out delay-150 hover:scale-150 duration-300">
                           <img src="{{asset('uploads/' . $prc->prc_back)}}" alt="" class="aspect-video transition ease-in-out delay-150 hover:scale-150 duration-300">
                         </div>

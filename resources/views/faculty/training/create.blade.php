@@ -7,7 +7,7 @@
             </div>
             <form method="POST" action="{{route('training.store')}}" enctype="multipart/form-data" class="pt-5 grid justify-items-center content-start gap-y-8">
             @csrf
-                <div class="w-3/4 py-5 px-10 border-t-4 border-hau rounded-b shadow-2xl">
+                <div class="w-full md:w-3/4 py-5 px-10 border-t-4 border-hau rounded-b shadow-2xl">
                     <div class="grid grid-cols-3 gap-8">
                         
                         <div class="flex flex-col justify-start">

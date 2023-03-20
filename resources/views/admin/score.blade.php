@@ -1,6 +1,12 @@
 <x-admin.layout>
     <x-admin.navigation>
-       
+        @if(session()->has('message'))
+            <div x-data="{show: true}" x-init="setTimeout(() => show = false, 3000)" x-show="show" class="fixed m-10 bottom-0 right-0 bg-gray-200 border-l-8 border-green-700 text-green-700 px-5 py-2 shadow-lg">
+                <p class="text-lg tracking-widest">
+                    <i class="fa-solid fa-check mr-2"></i>{{session('message')}}
+                </p>
+            </div>
+        @endif   
         <div class="w-full pt-24 p-24 space-y-8">
             <div class="w-full p-12 border-t-8 border-hau rounded shadow-2xl">
                 <h1 class="w-full font-bold uppercase text-2xl text-center tracking-widest">Evaluation of {{ $user->first_name . ' ' . $user->last_name }}</h1>

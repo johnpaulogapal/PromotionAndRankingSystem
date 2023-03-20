@@ -9,7 +9,7 @@
         @endif
         <section>
             
-        <form method="POST" action="{{route('profile.store', auth()->user()->id)}}" class="pt-20 p-8 h-screen">
+        <form method="POST" action="{{route('profile.store', auth()->user()->id)}}" class="pt-10 md:pt-20 p-1 md:p-8 h-screen">
         @csrf
             <p class="px-10 mb-2 uppercase text-xl tracking-widest"><i class="fa-solid fa-id-badge text-hau mr-2"></i>Personal and Application Information</p>
             <div class="px-10">
@@ -28,10 +28,10 @@
                     </h5>
                     @endif
                     <div class="grid grid-cols-4 gap-y-8">
-                        <div class="flex flex-col justify-start gap-1">
-                            <img src="{{asset('uploads/' . $user->avatar)}}" alt="" class="h-60 w-60 object-cover border-2 border-hau">
+                        <div class="mr-5 md:m-0 flex flex-col justify-start gap-1">
+                            <img src="{{asset('uploads/' . $user->avatar)}}" alt="" class="h-32 w-32 md:h-60 md:w-60 object-cover border-2 border-hau">
                         </div>
-                        <div class="col-span-3 grid grid-cols-3 gap-4">
+                        <div class="col-span-3 grid grid-cols-2 md:grid-cols-3 gap-4">
                             <div class="flex flex-col justify-start gap-1">
                                 <b class="font-bold uppercase text-hau tracking-widest">Employee No.</b>
                                 <p class="text-hau text-lg">  {{$user->emp_num}}</p>
@@ -74,8 +74,8 @@
                     </div>
                 </div>
                 <hr class="my-5 border-2 border-dashed border-gray-300">
-                <div class="grid grid-cols-3 content-start">
-                    <div class="col-span-2 py-5 px-12 border-t-4 {{ $application->status == 'verified' ? 'border-green-700' : 'border-hau'}} rounded-b-lg shadow-2xl">
+                <div class="grid grid-cols-1 md:grid-cols-3 content-start">
+                    <div class="md:col-span-2 py-5 px-12 border-t-4 {{ $application->status == 'verified' ? 'border-green-700' : 'border-hau'}} rounded-b-lg shadow-2xl">
                         @if($application->status == 'resubmit')
                         <h5 class="font-bold uppercase text-center text-lg text-orange-700">
                             <i class="fa-solid fa-triangle-exclamation mr-1"></i>
@@ -111,7 +111,7 @@
                     @if($application->app_status == 'approved')
                         <p></p>
                     @else
-                        @if(($user->status == 'pending' || $user->status == 'resubmit') && ($application->status == 'pending' || $application->status == 'resubmit'))
+                        @if(($user->status == 'pending' || $user->status == 'resubmit') || ($application->status == 'pending' || $application->status == 'resubmit'))
                         <div class="flex justify-center items-center gap-x-4">
                             <a href="{{route('profile.edit', $user->id)}}" class="py-1 px-2 uppercase text-white tracking-widest bg-yellow-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-yellow-600 duration-300">
                                 <i class="fa-regular fa-pen-to-square mr-1"></i>Edit

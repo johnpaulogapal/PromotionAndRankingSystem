@@ -1,3 +1,4 @@
+
 <div class="flex flex-col">
     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
@@ -136,38 +137,32 @@
                 <td class="whitespace-nowrap px-6 py-4 font-medium">Total</td>
                 <td class="whitespace-nowrap px-6 py-4">100</td>
                 <td class="whitespace-nowrap px-6 py-4">
-                    @php
-                    if(!empty($user->score)){
-                        $educ_attain = $user->score->educ_attain * 0.35;
-                        $teach_eval = $user->score->teach_eval * 0.30;
-                        $research = $user->score->research * 0.05;
-                        $com_ser = $user->score->com_ser * 0.10;
-                        $train_sem = $user->score->train_sem * 0.15;
-                        $mpo = $user->score->mpo * 0.02;
-                        $prof_exam = $user->score->prof_exam * 0.03; 
-                    }
-                         
-                    @endphp
-
                     @if(empty($user->score))
                         N/A
                     @else
-                        <span class="font-bold">{{ $educ_attain + $teach_eval + $research + $com_ser + $train_sem + $mpo + $prof_exam }}</span>
-                    @endif
-                    
+                        <span class="font-bold">{{ $user->score->total }}</span>
+                    @endif 
                 </td>
               </tr>
             </tbody>
            
           </table>
           <div class="w-full pt-5 px-5 flex justify-end">
-            <button
+            @if(empty($user->score)){
+                <button
                 type="button"
                 data-te-toggle="modal"
                 data-te-target="#scoreSubmit"
                 data-te-ripple-init
                 data-te-ripple-color="light" 
                 class="py-1 px-2 uppercase text-white tracking-widest bg-green-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-green-600 duration-300">Submit</button>
+            }
+            @else
+                <a
+                href="{{route('admin.scoreEdit', $user->id)}}"
+                class="py-1 px-2 uppercase text-white tracking-widest bg-yellow-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-yellow-600 duration-300">Edit</a>
+            @endif
+           
           </div>
           {{-- [START] Submit Score Modal Modal --}}
             <div

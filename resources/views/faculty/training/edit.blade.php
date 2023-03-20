@@ -14,7 +14,7 @@
                     <p class="font-bold uppercase text-sm">{{$training->comment}}</p>
                 </div>
                 @endif
-                <div class="w-3/4 py-5 px-10 border-t-4 border-hau rounded-b shadow-2xl">
+                <div class="w-full md:w-3/4 py-5 px-10 border-t-4 border-hau rounded-b shadow-2xl">
                     <div class="grid grid-cols-3 gap-8">
                         <div class="flex flex-col justify-start gy-1">
                             <b class="text-hau text-sm tracking-wide">From</b>

@@ -21,6 +21,12 @@
                 <a href="{{route('approved.index')}}" class="{{ Route::is('approved.index') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:scale-110 hover:bg-white hover:text-gray-900 '}} w-full py-3 font-bold transition ease-in-out duration-300">
                     <span class="text-sm tracking-wider">Approved Applications</span>
                 </a>
+                <a href="{{route('admin.basicEd')}}" class="{{ Route::is('admin.basicEd') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:scale-110 hover:bg-white hover:text-gray-900'}} w-full py-3 font-bold transition ease-in-out duration-300">
+                    <span class="text-sm tracking-wider">Basic Education Ranking</span>
+                </a>
+                <a href="{{route('admin.college')}}" class="{{ Route::is('admin.college') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:scale-110 hover:bg-white hover:text-gray-900'}} w-full py-3 font-bold transition ease-in-out duration-300">
+                    <span class="text-sm tracking-wider">College Ranking</span>
+                </a>
                 <a href="{{route('admin.account')}}" class="{{ Route::is('admin.account') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:scale-110 hover:bg-white hover:text-gray-900'}} w-full py-3 font-bold transition ease-in-out duration-300">
                     <span class="text-sm tracking-wider">Accounts</span>
                 </a>

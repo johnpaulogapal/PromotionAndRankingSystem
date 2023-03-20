@@ -30,7 +30,7 @@
                         This Information has been Verified
                     </h5>
                     @endif
-                    <div class="w-3/4 py-5 px-10 border-t-4 border-hau rounded-b shadow-2xl">
+                    <div class="w-full md:w-3/4 py-5 px-10 border-t-4 border-hau rounded-b shadow-2xl">
                         <div class="grid grid-cols-3 gap-8">
                             <div class="flex flex-col justify-start">
                                 <b class="font-bold uppercase text-hau tracking-widest">From</b>
