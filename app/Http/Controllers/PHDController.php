@@ -40,21 +40,16 @@ class PHDController extends Controller
             'school' => 'required',
             'course' => 'required',
             'graduation_date' => 'required',
-            'diploma' => ['required', 'mimes:jpg, jpeg, png', 'max:2048'],
-            'research' => ['required', 'mimes:zip'],
+            'tor' => ['required', 'mimes:jpg, jpeg, png', 'max:2048'],
         ]);
         
         $phdInfo['status'] = 'pending';
         $phdInfo['user_id'] = auth()->user()->id;
 
-        if($request->hasFile('diploma')){
-            $phdInfo['diploma'] = $request->file('diploma')->store('images', 'public');
+        if($request->hasFile('tor')){
+            $phdInfo['tor'] = $request->file('tor')->store('images', 'public');
         }
 
-        if($request->hasFile('research')){
-            $phdInfo['research'] = $request->file('research')->store('images', 'public');
-        }
-   
         Phd::create($phdInfo);
 
         return redirect(route('edubg'))->with('message', 'PHD Information Successfully Added');
@@ -97,16 +92,11 @@ class PHDController extends Controller
             'school' => 'required',
             'course' => 'required',
             'graduation_date' => 'required',
-            'diploma' => ['mimes:jpg, jpeg, png', 'max:2048'],
-            'research' => ['mimes:zip'],
+            'tor' => ['mimes:jpg, jpeg, png', 'max:2048'],
         ]);
 
-        if($request->hasFile('diploma')){
-            $phdInfo['diploma'] = $request->file('diploma')->store('images', 'public');
-        }
-
-        if($request->hasFile('research')){
-            $phdInfo['research'] = $request->file('research')->store('images', 'public');
+        if($request->hasFile('tor')){
+            $phdInfo['tor'] = $request->file('tor')->store('images', 'public');
         }
 
         $phdInfo['status'] = 'pending';
@@ -125,13 +115,11 @@ class PHDController extends Controller
     public function destroy(Phd $phd)
     {
 
-        if (File::exists(public_path('uploads/' . $phd->diploma))) {
-            File::delete(public_path('uploads/' . $phd->diploma));
+        if (File::exists(public_path('uploads/' . $phd->tor))) {
+            File::delete(public_path('uploads/' . $phd->tor));
         }
 
-        if (File::exists(public_path('uploads/' . $phd->research))) {
-            File::delete(public_path('uploads/' . $phd->research));
-        }
+      
 
         $phd->delete();
 

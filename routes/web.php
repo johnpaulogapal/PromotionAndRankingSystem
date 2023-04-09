@@ -5,7 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MPOController;
 use App\Http\Controllers\PHDController;
 use App\Http\Controllers\PRCController;
+use App\Http\Controllers\UROController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DeanController;
+use App\Http\Controllers\OCESController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MasterController;
@@ -197,6 +200,30 @@ Route::middleware(['auth', 'admin', 'prevent-back-history'])->group(function () 
 
     Route::controller(ApprovedController::class)->group(function () {
         Route::get('admin/approved-applications', 'index')->name('approved.index'); 
+    });
+
+});
+
+Route::middleware(['auth', 'uro', 'prevent-back-history'])->group(function () {
+
+    Route::controller(UROController::class)->group(function () {
+        Route::get('evaluator-uro', 'index')->name('uro.index'); 
+    });
+
+});
+
+Route::middleware(['auth', 'oces', 'prevent-back-history'])->group(function () {
+
+    Route::controller(OCESController::class)->group(function () {
+        Route::get('evaluator-oces', 'index')->name('oces.index'); 
+    });
+
+});
+
+Route::middleware(['auth', 'dean', 'prevent-back-history'])->group(function () {
+
+    Route::controller(DeanController::class)->group(function () {
+        Route::get('dean', 'index')->name('dean.index'); 
     });
 
 });

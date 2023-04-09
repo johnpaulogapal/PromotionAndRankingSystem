@@ -43,6 +43,7 @@ class PRCController extends Controller
             'validity' => 'required',
             'prc_front' => ['required', 'mimes:jpg, jpeg, png', 'max:2048'],
             'prc_back' => ['required', 'mimes:jpg, jpeg, png', 'max:2048'],
+            'prc_certificate' => ['mimes:jpg, jpeg, png', 'max:2048'],
         ]);
 
         $prcInfo['status'] = 'pending';
@@ -54,6 +55,10 @@ class PRCController extends Controller
 
         if($request->hasFile('prc_back')){
             $prcInfo['prc_back'] = $request->file('prc_back')->store('images', 'public');
+        }
+
+        if($request->hasFile('prc_certificate')){
+            $prcInfo['prc_certificate'] = $request->file('prc_certificate')->store('images', 'public');
         }
 
         Prc::create($prcInfo);
@@ -99,6 +104,7 @@ class PRCController extends Controller
             'validity' => 'required',
             'prc_front' => ['mimes:jpg, jpeg, png', 'max:2048'],
             'prc_back' => ['mimes:jpg, jpeg, png', 'max:2048'],
+            'prc_certificate' => ['mimes:jpg, jpeg, png', 'max:2048'],
         ]);
 
         if($request->hasFile('prc_front')){
@@ -107,6 +113,10 @@ class PRCController extends Controller
 
         if($request->hasFile('prc_back')){
             $prcInfo['prc_back'] = $request->file('prc_back')->store('images', 'public');
+        }
+
+        if($request->hasFile('prc_certificate')){
+            $prcInfo['prc_certificate'] = $request->file('prc_certificate')->store('images', 'public');
         }
 
         $prcInfo['status'] = 'pending';
@@ -131,6 +141,10 @@ class PRCController extends Controller
 
         if (File::exists(public_path('uploads/' . $prc->prc_back))) {
             File::delete(public_path('uploads/' . $prc->prc_back));
+        }
+
+        if (File::exists(public_path('uploads/' . $prc->prc_certificate))) {
+            File::delete(public_path('uploads/' . $prc->prc_certificate));
         }
 
         $prc->delete();

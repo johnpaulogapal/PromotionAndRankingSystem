@@ -14,7 +14,7 @@ class AdminController extends Controller
     public function index(){
         return view('admin.index', [
             'pendingCount' => Application::where('app_status' , 'pending')->get()->count(),
-            'ongoingCount' => Application::where('app_status' , 'processing')->get()->count(),
+            'ongoingCount' => Application::where('app_status' , 'received')->get()->count(),
             'approvedCount' => Application::where('app_status' , 'approved')->get()->count(),
             'userCount' => User::All()->count(),
             'weekApplications' => Application::where('app_status', 'pending')->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->get(),
@@ -23,7 +23,7 @@ class AdminController extends Controller
 
     public function account(){
         return view('admin.account', [
-            'accounts' => User::orderBy('created_at', 'DESC')->get(),
+            'accounts' => User::all(),
         ]);
     }
 

@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Application;
 use Illuminate\Http\Request;
 
-class ApprovedController extends Controller
+class UROController extends Controller
 {
     public function index()
     {
-        return view('admin.approved.index', [
+        return view('evaluate.uro.index', [
             'approvedApplications' => Application::where('app_status', 'approved')->get()
         ]);
     }

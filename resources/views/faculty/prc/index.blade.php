@@ -30,12 +30,13 @@
                         This Information has been Verified
                     </h5>
                     @endif
-                    <div class="w-full p-8 border-t-4 {{ $prc->status == 'verified' ? 'border-green-700' : 'border-hau'}} grid grid-cols-1 md:grid-cols-3 gap-4 rounded-b shadow-2xl">
-                        <div class="md:col-span-2 grid md:grid-cols-2 md:gap-x-4">
-                          <img src="{{asset('uploads/' . $prc->prc_front)}}" alt="" class="aspect-video transition ease-in-out delay-150 hover:scale-150 duration-300">
-                          <img src="{{asset('uploads/' . $prc->prc_back)}}" alt="" class="aspect-video transition ease-in-out delay-150 hover:scale-150 duration-300">
+                    <div class="w-full p-8 border-t-4 {{ $prc->status == 'verified' ? 'border-green-700' : 'border-hau'}} grid grid-cols-1 md:grid-rows-1 gap-4 rounded-b shadow-2xl">
+                        <div class="md:col-span-2 grid md:grid-cols-3 md:gap-x-4">
+                            <a href="{{asset('uploads/' . $prc->prc_front)}}"><img src="{{asset('uploads/' . $prc->prc_front)}}" alt="" class="aspect-video transition ease-in-out delay-150 hover:scale-110 duration-300"></a>
+                            <a href="{{asset('uploads/' . $prc->prc_back)}}"><img src="{{asset('uploads/' . $prc->prc_back)}}" alt="" class="aspect-video transition ease-in-out delay-150 hover:scale-110 duration-300"></a>
+                            <a href="{{asset('uploads/' . $prc->prc_certificate)}}"><img src="{{asset('uploads/' . $prc->prc_certificate)}}" alt="" class="aspect-video transition ease-in-out delay-150 hover:scale-110 duration-300"></a>
                         </div>
-                        <div class="grid grid-rows-3 gap-y-4">
+                        <div class="md:pt-10 grid grid-cols-3 justify-items-center gap-y-4">
                             <div class="flex flex-col justify-start">
                                 <b class="font-bold uppercase text-hau tracking-widest">License Number</b>
                                 <p class="text-lg text-hau">{{$prc->prc_num}}</p>

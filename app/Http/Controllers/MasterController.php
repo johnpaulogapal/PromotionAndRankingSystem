@@ -40,19 +40,14 @@ class MasterController extends Controller
             'school' => 'required',
             'course' => 'required',
             'graduation_date' => 'required',
-            'diploma' => ['required', 'mimes:jpg, jpeg, png', 'max:2048'],
-            'research' => ['required', 'mimes:zip'],
+            'tor' => ['required', 'mimes:jpg, jpeg, png', 'max:2048'],
         ]);
         
         $masterInfo['status'] = 'pending';
         $masterInfo['user_id'] = auth()->user()->id;
 
-        if($request->hasFile('diploma')){
-            $masterInfo['diploma'] = $request->file('diploma')->store('images', 'public');
-        }
-
-        if($request->hasFile('research')){
-            $masterInfo['research'] = $request->file('research')->store('images', 'public');
+        if($request->hasFile('tor')){
+            $masterInfo['tor'] = $request->file('tor')->store('images', 'public');
         }
    
         Master::create($masterInfo);
@@ -97,16 +92,11 @@ class MasterController extends Controller
             'school' => 'required',
             'course' => 'required',
             'graduation_date' => 'required',
-            'diploma' => ['mimes:jpg, jpeg, png', 'max:2048'],
-            'research' => ['mimes:zip'],
+            'tor' => ['mimes:jpg, jpeg, png', 'max:2048'],
         ]);
 
-        if($request->hasFile('diploma')){
-            $masterInfo['diploma'] = $request->file('diploma')->store('images', 'public');
-        }
-
-        if($request->hasFile('research')){
-            $masterInfo['research'] = $request->file('research')->store('images', 'public');
+        if($request->hasFile('tor')){
+            $masterInfo['tor'] = $request->file('tor')->store('images', 'public');
         }
 
         $masterInfo['status'] = 'pending';
@@ -125,14 +115,11 @@ class MasterController extends Controller
     public function destroy(Master $master)
     {
 
-        if (File::exists(public_path('uploads/' . $master->diploma))) {
-            File::delete(public_path('uploads/' . $master->diploma));
+        if (File::exists(public_path('uploads/' . $master->tor))) {
+            File::delete(public_path('uploads/' . $master->tor));
         }
 
-        if (File::exists(public_path('uploads/' . $master->research))) {
-            File::delete(public_path('uploads/' . $master->research));
-        }
-
+        
         $master->delete();
 
         return redirect(route('edubg'))->with('message', 'Masters Information Successfully Deleted');

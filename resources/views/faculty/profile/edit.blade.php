@@ -33,13 +33,7 @@
                                         <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                                 @enderror
                             </div>
-                            <div class="flex flex-col justify-center gap-1">
-                                <label for="" class="font-bold text-hau text-sm tracking-wider">Faculty</label>
-                                <input name="faculty" type="text" class="py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{$user->faculty}}" >
-                                @error('faculty')
-                                        <p class="font-bold text-red-500 mt-1">{{$message}}</p>
-                                @enderror
-                            </div>
+                           
                             <div class="flex flex-col justify-center gap-1">
                                 <label for="" class="font-bold text-hau text-sm tracking-wider">Department</label>
                                 <input name="department" type="text" class="py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{$user->department}}" >
@@ -47,7 +41,13 @@
                                         <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                                 @enderror
                             </div>
-                            
+                            <div class="flex flex-col justify-center gap-1">
+                                <label for="" class="font-bold text-hau text-xs md:text-sm tracking-wider">Contact No.</label>
+                                <input name="contact_num" type="tel" class="py-0.5 px-2 border border-hau rounded caret-hau outline-hau" placeholder="09XXXXXXXXXXX" pattern="[0]{1}[9]{1}[0-9]{9}" value="{{$user->contact_num}}">
+                                @error('contact_num')
+                                    <p class="font-bold text-red-500 mt-1">{{$message}}</p>
+                                @enderror
+                            </div>
                             <div class="flex flex-col justify-center gap-1">
                                 <label for="" class="font-bold text-hau text-sm tracking-wider">First Name</label>
                                 <input name="first_name" type="text" class="py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{$user->first_name}}">
@@ -71,7 +71,7 @@
                             </div>
 
                             <div class="flex flex-col justify-center gap-1">
-                                <label for="" class="font-bold text-hau text-sm tracking-wider">Update your image</label>
+                                <label for="" class="font-bold text-hau text-sm tracking-wider">Update your image <span class="text-red-700">(Max Size 2MB)</span></label>
                                 <input name="avatar" type="file"  class="py-0.5 px-2 aret-hau outline-hau">
                                 @error('avatar')
                                     <p class="font-bold text-red-500 mt-1">{{$message}}</p>

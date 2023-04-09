@@ -19,7 +19,25 @@ class Faculty
         if ((auth()->user() &&  (auth()->user()->user_type == 'basicEd' || auth()->user()->user_type == 'college'))) {
             return $next($request);
         }
+
+        if(auth()->user() && auth()->user()->user_type == 'uro'){
+            return redirect('/evaluator-uro');
+        }
+
+        if(auth()->user() && auth()->user()->user_type == 'oces'){
+            return redirect('/evaluator-oces');
+        }
+
+        if(auth()->user() && auth()->user()->user_type == 'dean'){
+            return redirect('/dean');
+        }
+
+        if(auth()->user() && auth()->user()->user_type == 'admin'){
+            return redirect('/admin');
+        }
         
-        return redirect('/admin');
+
+        return redirect('/');
+       
     }
 }

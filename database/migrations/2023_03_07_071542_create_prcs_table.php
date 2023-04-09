@@ -20,6 +20,7 @@ class CreatePrcsTable extends Migration
             $table->date('validity');
             $table->string('prc_front')->nullable();
             $table->string('prc_back')->nullable();
+            $table->string('prc_certificate')->nullable();
             $table->string('status');
             $table->string('comment')->nullable();
             $table->timestamps();

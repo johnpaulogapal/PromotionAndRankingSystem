@@ -57,7 +57,7 @@
                                 <button 
                                 type="button"
                                 data-te-toggle="modal"
-                                data-te-target="#accountDestroy"
+                                data-te-target="#accountDestroy{{$account->id}}"
                                 data-te-ripple-init
                                 data-te-ripple-color="light"
                                 class="py-1 px-2 uppercase text-white tracking-widest bg-red-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-red-600 duration-300">
@@ -67,7 +67,7 @@
                                 <div
                                     data-te-modal-init
                                     class="fixed pl-60 top-0 left-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
-                                    id="accountDestroy"
+                                    id="accountDestroy{{$account->id}}"
                                     tabindex="-1"
                                     aria-labelledby="accountDestroy"
                                     aria-hidden="true">

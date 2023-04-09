@@ -7,19 +7,26 @@
             </div>
             <form method="POST" action="{{route('prc.store')}}" enctype="multipart/form-data"  class="pt-5 grid justify-items-center content-start gap-y-8">
             @csrf
-                <div class="w-1/2 p-12 border-t-4 border-hau grid grid-cols-2 gap-12 rounded-b shadow-2xl">
-                    <div class="grid grid-rows-2 justify-items-center gap-4">
+                <div class="w-2/3 p-12 border-t-4 border-hau grid grid-cols-2 justify-items-center gap-12 rounded-b shadow-2xl">
+                    <div class="grid grid-rows-3 gap-y-4">
                         <div class="flex flex-col justify-center gap-1">
-                            <label for="" class="font-bold text-hau text-sm tracking-wider">Upload the front of your Prc License</label>
-                            <input name="prc_front" type="file"  class="py-0.5 px-2 aret-hau outline-hau">
+                            <label for="" class="font-bold text-hau text-sm tracking-wider">Upload the front of your Prc License <span class="text-red-700">(Max Size 2MB)</span></label>
+                            <input name="prc_front" type="file"  class="py-0.5 px-2 caret-hau outline-hau">
                             @error('prc_front')
                                 <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                             @enderror
                         </div>
                         <div class="flex flex-col justify-center gap-1">
-                            <label for="" class="font-bold text-hau text-sm tracking-wider">Upload the back of your Prc License</label>
-                            <input name="prc_back" type="file"  class="py-0.5 px-2 aret-hau outline-hau">
+                            <label for="" class="font-bold text-hau text-sm tracking-wider">Upload the back of your Prc License <span class="text-red-700">(Max Size 2MB)</span></label>
+                            <input name="prc_back" type="file"  class="py-0.5 px-2 caret-hau outline-hau">
                             @error('prc_back')
+                                <p class="font-bold text-red-500 mt-1">{{$message}}</p>
+                            @enderror
+                        </div>
+                        <div class="flex flex-col justify-center gap-1">
+                            <label for="" class="font-bold text-hau text-sm tracking-wider">Upload Prc License Cerificate <span class="text-red-700">(Max Size 2MB)</span></label>
+                            <input name="prc_certificate" type="file"  class="py-0.5 px-2 caret-hau outline-hau">
+                            @error('prc_certificate')
                                 <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                             @enderror
                         </div>

@@ -1,5 +1,5 @@
 <section>
-    <div class="hidden md:flex h-screen w-60 fixed  flex-col justify-between bg-hau text-white z-50">
+    <div class="hidden md:flex h-screen w-64 fixed  flex-col justify-between bg-hau text-white z-50">
         <div class="space-y-4">
             <div class="p-5 flex flex-col items-center gap-y-2">
                 <a href="">
@@ -10,24 +10,24 @@
         @if (Auth::user()->first_name == '')
             </div>
         @else
-            <div class="flex flex-col items-center text-center">
-                <a href="{{route('home')}}" class="{{ Route::is('home') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:scale-110 hover:bg-white hover:text-gray-900 '}} w-full py-3 font-bold text-white transition ease-in-out duration-300">
-                    <span class="text-sm tracking-wider">Dashboard</span>
+            <div class="flex flex-col items-center gap-y-1">
+                <a href="{{route('home')}}" class="pl-2 {{ Route::is('home') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:bg-white hover:text-gray-900 '}} w-full py-3 font-bold text-white transition ease-in-out duration-300">
+                    <span class="tracking-wider"><i class="fa-solid fa-chart-pie mr-2"></i>Dashboard</span>
                 </a>
-                <a href="{{route('profile.show', auth()->user()->id)}}" class="{{ Route::is('profile.show') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:scale-110 hover:bg-white hover:text-gray-900 '}} w-full py-3 font-bold transition ease-in-out duration-300">
-                    <span class="text-sm tracking-wider">My Information</span>
+                <a href="{{route('profile.show', auth()->user()->id)}}" class="pl-2 {{ Route::is('profile.show') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:bg-white hover:text-gray-900 '}} w-full py-3 font-bold transition ease-in-out duration-300">
+                    <span class="tracking-wider"><i class="fa-solid fa-user mr-2"></i>Profile</span>
                 </a>
-                <a href="{{route('edubg')}}" class="{{ Route::is('edubg') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:scale-110 hover:bg-white hover:text-gray-900'}} w-full py-3 font-bold transition ease-in-out duration-300">
-                    <span class="text-sm tracking-wider">Educational Background</span>
+                <a href="{{route('edubg')}}" class="pl-2 {{ Route::is('edubg') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:bg-white hover:text-gray-900'}} w-full py-3 font-bold transition ease-in-out duration-300">
+                    <span class="tracking-wider"><i class="fa-solid fa-graduation-cap mr-2"></i>Educational Background</span>
                 </a>
-                <a href="{{route('prc.index')}}" class="{{ Route::is('prc.index') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:scale-110 hover:bg-white hover:text-gray-900'}} w-full py-3 font-bold transition ease-in-out duration-300">
-                    <span class="text-sm tracking-wider">PRC License</span>
+                <a href="{{route('prc.index')}}" class="pl-2 {{ Route::is('prc.index') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:bg-white hover:text-gray-900'}} w-full py-3 font-bold transition ease-in-out duration-300">
+                    <span class="tracking-wider"><i class="fa-solid fa-id-card mr-2"></i>PRC License</span>
                 </a>
-                <a href="{{route('mpo.index')}}" class="{{ Route::is('mpo.index') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:scale-110 hover:bg-white hover:text-gray-900'}} w-full py-3 font-bold transition ease-in-out duration-300">
-                    <span class="text-sm tracking-wider">Membership in Professional Organization</span>
+                <a href="{{route('mpo.index')}}" class="pl-2 {{ Route::is('mpo.index') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:bg-white hover:text-gray-900'}} w-full py-3 font-bold transition ease-in-out duration-300">
+                    <span class="tracking-wider"><i class="fa-solid fa-sitemap mr-2"></i>Membership in Professional Organization</span>
                 </a>
-                <a href="{{route('training.index')}}" class="{{ Route::is('training.index') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:scale-110 hover:bg-white hover:text-gray-900'}} w-full py-3 font-bold transition ease-in-out duration-300">
-                    <span class="text-sm tracking-wider">Trainings /Seminars /Webinars</span>
+                <a href="{{route('training.index')}}" class="pl-2 {{ Route::is('training.index') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:bg-white hover:text-gray-900'}} w-full py-3 font-bold transition ease-in-out duration-300">
+                    <span class="tracking-wider"><i class="fa-solid fa-chalkboard-user mr-2"></i>Trainings/Seminars/ Webinars</span>
                 </a>
             </div>
         </div>
@@ -40,7 +40,7 @@
     </div>
 
     {{-- Main Content --}}
-    <div class="pl-0 md:pl-60">
+    <div class="pl-0 md:pl-64">
         <div class="w-full absolute top-0 right-0 flex justify-end items-center border-b-4 border-dashed border-gray-200">
             
             <div class="hidden md:flex w-full pl-60 py-3  justify-between">

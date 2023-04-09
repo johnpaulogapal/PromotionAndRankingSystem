@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('age')->nullable();
             $table->string('sex')->nullable();
             $table->string('department')->nullable();
-            $table->string('faculty')->nullable();
+            $table->string('contact_num')->nullable();
             $table->string('avatar')->nullable();    
             $table->string('status')->nullable(); 
             $table->string('comment')->nullable();  

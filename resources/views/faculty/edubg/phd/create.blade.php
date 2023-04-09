@@ -31,19 +31,13 @@
                             </div>   
                             <div class="flex flex-col md:flex-row justify-between">
                                 <div class="flex flex-col justify-center gap-1">
-                                    <label for="" class="font-bold text-hau text-sm tracking-wider">Upload your diploma</label>
-                                    <input name="diploma" type="file"  class="py-0.5 px-2 aret-hau outline-hau">
-                                    @error('diploma')
+                                    <label for="" class="font-bold text-hau text-sm tracking-wider">Upload your TOR <span class="text-red-700">(Max Size 2MB)</span></label>
+                                    <input name="tor" type="file"  class="py-0.5 px-2 aret-hau outline-hau">
+                                    @error('tor')
                                         <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                                     @enderror
                                 </div>
-                                <div class="flex flex-col justify-center gap-1">
-                                    <label for="" class="font-bold text-hau text-sm tracking-wider">Upload your research/thesis</label>
-                                    <input name="research" type="file"  class="py-0.5 px-2 aret-hau outline-hau">
-                                    @error('research')
-                                        <p class="font-bold text-red-500 mt-1">{{$message}}</p>
-                                    @enderror
-                                </div>
+                                
                             </div>
                                             
                         </div>

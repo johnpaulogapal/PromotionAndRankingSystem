@@ -37,14 +37,13 @@
                                 <p class="text-hau text-lg">  {{$user->emp_num}}</p>
                             </div>
                             <div class="flex flex-col justify-start gap-1">
-                                <b class="font-bold uppercase text-hau tracking-widest">Faculty</b>
-                                <p class="text-hau text-lg">  {{$user->faculty}}</p>
-                            </div>
-                            <div class="flex flex-col justify-start gap-1">
                                 <b class="font-bold uppercase text-hau tracking-widest">Department</b>
                                 <p class="text-hau text-lg">  {{$user->department}}</p>
                             </div>
-                            
+                            <div class="flex flex-col justify-start gap-1">
+                                <b class="font-bold uppercase text-hau tracking-widest">Contact Number</b>
+                                <p class="text-hau text-lg">  {{$user->contact_num}}</p>
+                            </div>
                             <div class="flex flex-col justify-start gap-1">
                                 <b class="font-bold uppercase text-hau tracking-widest">First Name</b>
                                 <p class="text-hau text-lg">  {{$user->first_name}}</p>

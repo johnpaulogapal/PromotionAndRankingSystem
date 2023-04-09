@@ -41,24 +41,16 @@
                             
                             <div class="flex flex-col md:flex-row justify-between">
                                 <div class="flex flex-col justify-center gap-1">
-                                    <a href="{{asset('uploads/' . $phd->diploma)}}" class="font-bold text-blue-700 tracking-widest underline underline-offset-2 transition hover:text-blue-600 ease-in-out delay-150 duration-300" download>
-                                       Download Diploma
+                                    <a href="{{asset('uploads/' . $phd->tor)}}" class="font-bold text-blue-700 tracking-widest underline underline-offset-2 transition hover:text-blue-600 ease-in-out delay-150 duration-300" download>
+                                       Download TOR
                                     </a>
-                                    <input name="diploma" type="file"  class="py-0.5 px-2 aret-hau outline-hau">
-                                    @error('diploma')
+                                    <input name="tor" type="file"  class="py-0.5 px-2 aret-hau outline-hau">
+                                    @error('tor')
                                         <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                                     @enderror
                                 </div>
                                 
-                                <div class="flex flex-col justify-center gap-1">
-                                    <a href="{{asset('uploads/' . $phd->research)}}" class="font-bold text-blue-700 tracking-widest underline underline-offset-2 transition hover:text-blue-600 ease-in-out delay-150 duration-300" download>
-                                       Download Research
-                                    </a>
-                                    <input name="diploma" type="file"  class="py-0.5 px-2 aret-hau outline-hau">
-                                    @error('diploma')
-                                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-                                    @enderror
-                                </div>
+                              
                             </div>
                             
                         </div>

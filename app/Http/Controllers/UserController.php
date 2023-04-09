@@ -70,7 +70,7 @@ class UserController extends Controller
             'birth_date' => 'required',
             'sex' => 'required',
             'department' => 'required',
-            'faculty' => 'required',
+            'contact_num' => 'required',
             'avatar' => ['required', 'mimes:jpg,jpeg,png', 'max:2048'],
             'date_hired' => 'required',
             'current_rank' => 'required',
@@ -101,7 +101,7 @@ class UserController extends Controller
             'birth_date' => 'required',
             'sex' => 'required',
             'department' => 'required',
-            'faculty' => 'required',
+            'contact_num' => 'required',
             'avatar' => 'required',
         ]);
 

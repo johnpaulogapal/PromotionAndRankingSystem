@@ -32,8 +32,16 @@ class AuthController extends Controller
 
         if(auth()->attempt($formFields)) {
             $request->session()->regenerate();
-            if(auth()->user()->first_name == '')
+            if(auth()->user()->status == '' && (auth()->user()->user_type == 'basicEd' || auth()->user()->user_type == 'college'))
                 return redirect()->route('profile.create')->with('message', 'You may now pass the needed requirements. Thank you');
+            elseif(auth()->user()->user_type == 'uro')
+                return redirect()->route('uro.index')->with('message', 'Welcome URO');
+            elseif(auth()->user()->user_type == 'oces')
+                return redirect()->route('oces.index')->with('message', 'Welcome URO');
+            elseif(auth()->user()->user_type == 'dean')
+                return redirect()->route('dean.index')->with('message', 'Welcome URO');
+            elseif(auth()->user()->user_type == 'admin')
+                return redirect()->route('admin.index')->with('message', 'Welcome URO');
             else
                 return redirect('/')->with('message', 'You are now Signed as');
         }

@@ -68,5 +68,8 @@ class Kernel extends HttpKernel
         'new-account' => \App\Http\Middleware\NewAccount::class,
         'old-account' => \App\Http\Middleware\OldAccount::class,
         'prevent-back-history' => \App\Http\Middleware\PreventBackHistory::class,
+        'uro' => \App\Http\Middleware\URO::class,
+        'oces' => \App\Http\Middleware\OCES::class,
+        'dean' => \App\Http\Middleware\Dean::class,
     ];
 }

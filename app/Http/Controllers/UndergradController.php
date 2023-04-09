@@ -40,19 +40,14 @@ class UndergradController extends Controller
             'school' => 'required',
             'course' => 'required',
             'graduation_date' => 'required',
-            'diploma' => ['required', 'mimes:jpg, jpeg, png', 'max:2048'],
-            'research' => ['required', 'mimes:zip'],
+            'tor' => ['required', 'mimes:jpg, jpeg, png', 'max:2048'],
         ]);
         
         $undergradInfo['status'] = 'pending';
         $undergradInfo['user_id'] = auth()->user()->id;
 
-        if($request->hasFile('diploma')){
-            $undergradInfo['diploma'] = $request->file('diploma')->store('images', 'public');
-        }
-
-        if($request->hasFile('research')){
-            $undergradInfo['research'] = $request->file('research')->store('images', 'public');
+        if($request->hasFile('tor')){
+            $undergradInfo['tor'] = $request->file('tor')->store('images', 'public');
         }
    
         Undergrad::create($undergradInfo);
@@ -97,18 +92,13 @@ class UndergradController extends Controller
             'school' => 'required',
             'course' => 'required',
             'graduation_date' => 'required',
-            'diploma' => ['mimes:jpg, jpeg, png', 'max:2048'],
-            'research' => ['mimes:zip'],
+            'tor' => ['mimes:jpg, jpeg, png', 'max:2048'],
         ]);
 
-        if($request->hasFile('diploma')){
-            $undergradInfo['diploma'] = $request->file('diploma')->store('images', 'public');
+        if($request->hasFile('tor')){
+            $undergradInfo['tor'] = $request->file('tor')->store('images', 'public');
         }
 
-        if($request->hasFile('research')){
-            $undergradInfo['research'] = $request->file('research')->store('images', 'public');
-        }
-        
         $undergradInfo['status'] = 'pending';
    
         $undergrad->update($undergradInfo);
@@ -124,12 +114,8 @@ class UndergradController extends Controller
      */
     public function destroy(Undergrad $undergrad)
     {
-        if (File::exists(public_path('uploads/' . $undergrad->diploma))) {
-            File::delete(public_path('uploads/' . $undergrad->diploma));
-        }
-
-        if (File::exists(public_path('uploads/' . $undergrad->research))) {
-            File::delete(public_path('uploads/' . $undergrad->research));
+        if (File::exists(public_path('uploads/' . $undergrad->tor))) {
+            File::delete(public_path('uploads/' . $undergrad->tor));
         }
 
         $undergrad->delete();
