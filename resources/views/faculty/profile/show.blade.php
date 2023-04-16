@@ -99,7 +99,7 @@
                             </div>
                             <div class="flex flex-col justify-start gap-1">
                                 <b class="font-bold uppercase text-hau tracking-widest">Date of Last Promotion</b>
-                                <p class="text-hau text-lg">  {{date('F d, Y', strtotime($user->date_last_prom))}}</p>
+                                <p class="text-hau text-lg">  {{date('F d, Y', strtotime($application->date_last_prom))}}</p>
                             </div>
                             <div class="flex flex-col justify-start gap-1">
                                 <b class="font-bold uppercase text-hau tracking-widest">Proposed Rank</b>

@@ -36,6 +36,10 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('logout', 'logout')->name('logout');
     Route::post('authenticate', 'authenticate')->name('authenticate');
     Route::get('/privacy-policy', 'privacy')->name('privacy')->middleware('guest');
+
+    Route::get('/change-password', 'password')->name('show.password')->middleware(['auth', 'faculty', 'old-account', 'prevent-back-history']);
+    Route::post('/change-password/confirm', 'change')->name('change.password')->middleware(['auth', 'faculty', 'old-account', 'prevent-back-history']);
+
 });
 
 Route::get('profile/create', [UserController::class, 'create'])->middleware(['auth', 'faculty', 'new-account', 'prevent-back-history'])->name('profile.create');
@@ -146,7 +150,9 @@ Route::middleware(['auth', 'admin', 'prevent-back-history'])->group(function () 
         Route::put('admin/scores/update/{user}/{score}', 'scoreUpdate')->name('admin.scoreUpdate'); 
 
         Route::get('admin/basic-education/rankings', 'basicEd')->name('admin.basicEd'); 
+        Route::get('admin/basic-education/rankings/{user}', 'basicEdShow')->name('admin.basicEd.show');
         Route::get('admin/college/rankings', 'college')->name('admin.college'); 
+        Route::get('admin/college/rankings/{user}', 'collegeShow')->name('admin.college.show'); 
     });
 
     Route::controller(PendingController::class)->group(function () {
@@ -208,6 +214,8 @@ Route::middleware(['auth', 'uro', 'prevent-back-history'])->group(function () {
 
     Route::controller(UROController::class)->group(function () {
         Route::get('evaluator-uro', 'index')->name('uro.index'); 
+        Route::get('evaluator-uro/{user}', 'show')->name('uro.show'); 
+        Route::put('evaluator-uro/update/{user}/{score}', 'scoreUpdate')->name('uro.scoreUpdate'); 
     });
 
 });
@@ -216,6 +224,8 @@ Route::middleware(['auth', 'oces', 'prevent-back-history'])->group(function () {
 
     Route::controller(OCESController::class)->group(function () {
         Route::get('evaluator-oces', 'index')->name('oces.index'); 
+        Route::get('evaluator-oces/{user}', 'show')->name('oces.show');
+        Route::put('evaluator-oces/update/{user}/{score}', 'scoreUpdate')->name('oces.scoreUpdate'); 
     });
 
 });
@@ -224,6 +234,7 @@ Route::middleware(['auth', 'dean', 'prevent-back-history'])->group(function () {
 
     Route::controller(DeanController::class)->group(function () {
         Route::get('dean', 'index')->name('dean.index'); 
+        Route::get('dean/{user}', 'show')->name('dean.show'); 
     });
 
 });

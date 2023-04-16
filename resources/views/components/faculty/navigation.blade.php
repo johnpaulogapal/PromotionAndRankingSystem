@@ -29,6 +29,9 @@
                 <a href="{{route('training.index')}}" class="pl-2 {{ Route::is('training.index') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:bg-white hover:text-gray-900'}} w-full py-3 font-bold transition ease-in-out duration-300">
                     <span class="tracking-wider"><i class="fa-solid fa-chalkboard-user mr-2"></i>Trainings/Seminars/ Webinars</span>
                 </a>
+                <a href="{{route('show.password')}}" class="pl-2 {{ Route::is('show.password') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:bg-white hover:text-gray-900'}} w-full py-3 font-bold transition ease-in-out duration-300">
+                    <span class="tracking-wider"><i class="fa-solid fa-lock mr-2"></i>Change Password</span>
+                </a>
             </div>
         </div>
        

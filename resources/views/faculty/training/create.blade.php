@@ -54,7 +54,7 @@
                             @enderror
                         </div>
                         <div class="col-span-2 flex flex-col justify-center gap-1">
-                            <label for="" class="font-bold text-hau text-sm tracking-wider">Upload your diploma</label>
+                            <label for="" class="font-bold text-hau text-sm tracking-wider">Upload your Certificate <span class="text-red-700">(Max Size 2MB)</span></label>
                             <input name="certificate" type="file"  class="py-0.5 px-2 aret-hau outline-hau">
                             @error('certificate')
                                 <p class="font-bold text-red-500 mt-1">{{$message}}</p>

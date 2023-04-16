@@ -11,7 +11,7 @@
         <div class="p-2 md:p-5 h-screen w-full">
            <div class="h-full grid grid-cols-1 md:grid-cols-2 justify-items-center">
 
-                @if(!empty(auth()->user()->score) && auth()->user()->application->app_status == 'approved')
+                @if(!empty(auth()->user()->score) && auth()->user()->application->app_status == 'completed')
                     @if(auth()->user()->user_type == 'basicEd')
                         @include('partials.faculty._basicEdscore')
                     @elseif(auth()->user()->user_type == 'college')
@@ -25,14 +25,14 @@
                 <div class="py-5 md:py-20 px-3 h-full w-full">
                   
                     <p class="mb-5 font-bold uppercase text-sm md:text-xl text-center tracking-widest">
-                        @if(auth()->user()->application->app_status == 'received' || auth()->user()->application->app_status == 'approved')
+                        @if(auth()->user()->application->app_status == 'received' || auth()->user()->application->app_status == 'approved' || auth()->user()->application->app_status == 'completed')
                             <i class="fa-solid fa-envelope text-hau mr-1"></i>
                         @else()
                             <i class="fa-solid fa-envelope-open text-hau mr-1"></i>
                         @endif
 
                         Application Status -
-                        @if(auth()->user()->application->app_status == 'approved')
+                        @if(auth()->user()->application->app_status == 'approved' || auth()->user()->application->app_status == 'completed')
                             <span class="py-1 px-2 uppercase text-sm text-white bg-green-700 rounded">{{ auth()->user()->application->app_status }}</span>
                         @elseif(auth()->user()->application->app_status == 'received')
                             <span class="py-1 px-2 uppercase text-sm text-white bg-orange-700 rounded">{{ auth()->user()->application->app_status }}</span>
@@ -41,12 +41,13 @@
                         @endif
                     </p>
                     
-                    @if(auth()->user()->application->app_status == 'approved')  
+                    @if(auth()->user()->application->app_status == 'approved' || auth()->user()->application->app_status == 'completed')  
                     <div class="my-20 px-10 ">
-                        <h3 class="mb-3 font-bold text-sm md:text-xl tracking-widest">Good Day,</h3>
+                        <h3 class="mb-3 font-bold text-sm md:text-3xl tracking-widest">Good Day,</h3>
                         <p class="font-bold text-lg md:text-3xl tracking-widest">
-                            Congratulations, {{ auth()->user()->first_name . ' '. auth()->user()->last_name}} ! Your application has been approved. We will contact you as soon as we can.
+                            Congratulations! {{ auth()->user()->first_name . ' '. auth()->user()->last_name}}, your application has been approved. We will contact you as soon as we can.
                         </p>
+                        
                     </div>
                     @else
                         <ul

@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
 
 class AuthController extends Controller
 {
@@ -53,6 +57,36 @@ class AuthController extends Controller
 
     public function privacy()
     {
-        return view('auth/privacy');
+        return view('auth.privacy');
+    }
+
+    public function password()
+    {
+        return view('auth.change');
+    }
+
+    public function change(Request $request)
+    {
+        $user = User::find(auth()->user()->id);
+
+        // Validate the form data
+        $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|min:8|different:current_password',
+            'confirm_password' => 'required|same:new_password'
+        ]);
+
+        // Verify the current password
+        if (!Hash::check($request->current_password, $user->password)) {
+            return redirect()->back()->withErrors(['current_password' => 'The current password is incorrect.']);
+        }
+
+        // Update the password
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+
+        // Redirect with success message
+        return redirect()->back()->with('message', 'Password changed successfully.');
     }
 }

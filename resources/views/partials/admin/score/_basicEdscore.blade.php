@@ -1,7 +1,7 @@
-
-<div class="pt-24">
+<div class="grid grid-cols-3 gap-x-8 px-24">
     
-    <div class="flex flex-col">
+    {{-- Faculty Score --}}
+    <div class="col-span-2 flex flex-col">
         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
             <div class="overflow-hidden">
@@ -20,7 +20,7 @@
                     <td class="whitespace-nowrap px-6 py-4">
                         
                        
-                           <span class="font-bold">{{auth()->user()->score->edu_attain}}</span>
+                           <span class="font-bold">{{$user->score->edu_attain}}</span>
 
                     </td>
                   </tr>
@@ -29,7 +29,7 @@
                     
                     <td class="whitespace-nowrap px-6 py-4">
                        
-                        <span class="font-bold">{{auth()->user()->score->teach_eval}}</span>
+                        <span class="font-bold">{{$user->score->teach_eval}}</span>
                        
                     </td>
                   </tr>
@@ -38,7 +38,7 @@
                    
                     <td class="whitespace-nowrap px-6 py-4">
                       
-                        <span class="font-bold">{{auth()->user()->score->research}}</span>
+                        <span class="font-bold">{{$user->score->research}}</span>
                        
                     </td>
                   </tr>
@@ -47,7 +47,7 @@
                    
                     <td class="whitespace-nowrap px-6 py-4">
                       
-                        <span class="font-bold">{{auth()->user()->score->com_ser}}</span>
+                        <span class="font-bold">{{$user->score->com_ser}}</span>
                         
                     </td>
                   </tr>
@@ -56,7 +56,7 @@
                     
                     <td class="whitespace-nowrap px-6 py-4">
                        
-                        <span class="font-bold">{{auth()->user()->score->train_sem}}</span>
+                        <span class="font-bold">{{$user->score->train_sem}}</span>
                         
                     </td>
                   </tr>
@@ -65,7 +65,7 @@
                    
                     <td class="whitespace-nowrap px-6 py-4">
                        
-                        <span class="font-bold">{{auth()->user()->score->mpo}}</span>
+                        <span class="font-bold">{{$user->score->mpo}}</span>
                        
                     </td>
                   </tr>
@@ -74,7 +74,7 @@
                     
                     <td class="whitespace-nowrap px-6 py-4">
                         
-                        <span class="font-bold">{{auth()->user()->score->prof_exam}}</span>
+                        <span class="font-bold">{{$user->score->prof_exam}}</span>
                         
                     </td>
                   </tr>
@@ -85,13 +85,13 @@
                         
                       <span class="font-bold text-lg">
                         {{ 
-                        auth()->user()->score->edu_attain +
-                        auth()->user()->score->teach_eval +
-                        auth()->user()->score->research +
-                        auth()->user()->score->com_ser +
-                        auth()->user()->score->train_sem +
-                        auth()->user()->score->mpo +
-                        auth()->user()->score->prof_exam
+                        $user->score->edu_attain +
+                        $user->score->teach_eval +
+                        $user->score->research +
+                        $user->score->com_ser +
+                        $user->score->train_sem +
+                        $user->score->mpo +
+                        $user->score->prof_exam
                         }}
                       </span>
                         
@@ -108,6 +108,23 @@
           </div>
         </div>
     </div>
-    
-    
+
+    {{-- Faculty Suggested Rank --}}
+    <div class="flex flex-col justify-start mt-12">
+      @if($user->score->research < 7)
+        <h3 class="font-bold text-3xl tracking-widest">Conclusion</h3>
+        <h6 class="mt-5 text-2xl text-red-700 tracking-widest">
+          After thorough consideration, it has been determined that the employee does not meet the qualifications and requirements for the promotion.
+        </h6>
+      @else
+        <h3 class="font-bold text-center text-3xl tracking-widest">Faculty Suggested Rank</h3>
+        @php
+            $total = $user->score->edu_attain + $user->score->teach_eval + $user->score->research + $user->score->com_ser + $user->score->train_sem + $user->score->mpo + $user->score->prof_exam;
+        @endphp
+        <h6 class="font-bold mt-5 text-center text-3xl text-green-700 tracking-widest">
+          {{$user->score->suggestedRank($total)}}
+        </h6>
+      @endif
+    </div>
+     
 </div>

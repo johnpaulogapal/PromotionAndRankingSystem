@@ -3,7 +3,7 @@
         
         <section class="h-screen w-full pt-20 p-8">
             <div class="flex flex-col jusfity-center items-center gap-y-4">
-                <p class="uppercase text-xl text-center tracking-widest"><span class="py-1 px-2 bg-hau text-white rounded shadow-lg"><i class="fa-solid fa-pen-to-square mr-2"></i>Edit</span> PRC License Information</p>
+                <p class="uppercase text-xl text-center tracking-widest"><span class="py-1 px-2 bg-hau text-white rounded shadow-lg"><i class="fa-solid fa-pen-to-square mr-2"></i>Edit</span> Membership in Professional Organization Information</p>
             </div>
             <form method="POST" action="{{route('mpo.update', $mpo->id)}}" enctype="multipart/form-data"  class="pt-5 grid justify-items-center content-start gap-y-8">
             @csrf
@@ -34,6 +34,7 @@
                         <a href="{{asset('uploads/' . $mpo->certificate)}}" class="font-bold text-blue-700 tracking-widest underline underline-offset-2 transition hover:text-blue-600 ease-in-out delay-150 duration-300" download>
                             Download Certificate
                         </a>
+                        
                         <input name="certificate" type="file"  class="py-0.5 px-2 aret-hau outline-hau">
                         @error('certificate')
                             <p class="font-bold text-red-500 mt-1">{{$message}}</p>

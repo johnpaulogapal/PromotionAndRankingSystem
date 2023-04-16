@@ -26,7 +26,7 @@ class CreateScoresTable extends Migration
             $table->integer('masters')->nullable();
             $table->integer('teach_eval_min')->nullable();
             $table->integer('research_min')->nullable();
-            $table->integer('total')->nullable();
+            $table->string('status')->nullable()->default('pending');
             $table->timestamps();
         });
     }

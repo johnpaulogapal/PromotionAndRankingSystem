@@ -12,13 +12,15 @@
                             <b class="text-hau text-sm tracking-wide">Employee No.</b>
                             <p class="text-hau text-lg tracking-widest">  {{$user->emp_num}}</p>
                         </div>
-                        <div class="flex flex-col justify-start gap-1">
-                            <b class="text-hau text-sm tracking-wide">Faculty</b>
-                            <p class="text-hau text-lg tracking-widest">  {{$user->faculty}}</p>
-                        </div>
+                        
                         <div class="flex flex-col justify-start gap-1">
                             <b class="text-hau text-sm tracking-wide">Department</b>
                             <p class="text-hau text-lg tracking-widest">  {{$user->department}}</p>
+                        </div>
+
+                        <div class="flex flex-col justify-start gap-1">
+                            <b class="text-hau text-sm tracking-wide">Contact No.</b>
+                            <p class="text-hau text-lg tracking-widest">  {{$user->contact_num}}</p>
                         </div>
                         
                         <div class="flex flex-col justify-start gap-1">

@@ -18,6 +18,9 @@
                                 App No.
                             </th>
                             <th class="p-8 uppercase text-sm text-white tracking-widest">
+                                Faculty
+                            </th>
+                            <th class="p-8 uppercase text-sm text-white tracking-widest">
                                 Applicant
                             </th>
                             <th class="p-8 uppercase text-sm text-white tracking-widest">
@@ -33,6 +36,9 @@
                         <tr class="whitespace-nowrap">
                             <td class="px-6 py-4 font-bold text-sm text-center">
                                 {{$pendingApplication->id}}
+                            </td>
+                            <td class="px-6 py-4 font-bold text-center tracking-widest">
+                                {{$pendingApplication->user->user_type == 'basicEd' ? 'Basic Education' : 'College'}}
                             </td>
                             <td class="px-6 py-4 font-bold text-center tracking-widest">
                                 {{$pendingApplication->user->first_name . ' ' . $pendingApplication->user->last_name}} ({{$pendingApplication->user->email}})

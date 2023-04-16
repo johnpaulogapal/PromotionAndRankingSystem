@@ -5,19 +5,20 @@
             PRC License Information of {{$prc->user->first_name . " " . $prc->user->last_name}}
         </p>
         
-        <div class="w-full p-8 border-t-4 border-hau grid grid-cols-3 gap-4 rounded-b shadow-2xl">
-            <div class="col-span-2 grid grid-cols-2 gap-x-4">
-              <img src="{{asset('uploads/' . $prc->prc_front)}}" alt="" class="aspect-video transition ease-in-out delay-150 hover:scale-150 duration-300">
-              <img src="{{asset('uploads/' . $prc->prc_back)}}" alt="" class="aspect-video ease-in-out delay-150 hover:scale-150 duration-300">
+        <div class="w-full p-8 border-t-4 border-hau grid grid-cols-1 gap-4 rounded-b shadow-2xl">
+            <div class="md:col-span-2 grid md:grid-cols-3 md:gap-x-4">
+                <a href="{{asset('uploads/' . $prc->prc_front)}}"><img src="{{asset('uploads/' . $prc->prc_front)}}" alt="" class="aspect-video transition ease-in-out delay-150 hover:scale-110 duration-300"></a>
+                <a href="{{asset('uploads/' . $prc->prc_back)}}"><img src="{{asset('uploads/' . $prc->prc_back)}}" alt="" class="aspect-video transition ease-in-out delay-150 hover:scale-110 duration-300"></a>
+                <a href="{{asset('uploads/' . $prc->prc_certificate)}}"><img src="{{asset('uploads/' . $prc->prc_certificate)}}" alt="" class="aspect-video transition ease-in-out delay-150 hover:scale-110 duration-300"></a>
             </div>
-            <div class="grid grid-rows-3 gap-y-4">
+            <div class="w-full md:pt-10 flex justify-center items-center gap-x-8">
                 <div class="flex flex-col justify-start">
                     <b class="text-hau text-sm tracking-wide">License Number</b>
                     <p class="text-hau text-lg tracking-widest">{{$prc->prc_num}}</p>
                 </div>
                 <div class="flex flex-col justify-start">
                     <b class="text-hau text-sm tracking-wide">Validity</b>
-                    <p class="text-hau text-lg tracking-widest">{{date('F d, Y', strtotime($prc->prc_num))}}</p>
+                    <p class="text-hau text-lg tracking-widest">{{date('F d, Y', strtotime($prc->validity))}}</p>
                 </div>
                
             </div>

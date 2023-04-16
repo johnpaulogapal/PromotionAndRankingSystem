@@ -32,6 +32,9 @@
                             <th class="p-8 uppercase text-sm text-white tracking-widest">
                                 Scores
                             </th>
+                            <th class="p-8 uppercase text-sm text-white tracking-widest">
+                                Option
+                            </th>
                         </tr>
                     </thead>
                     <tbody class="bg-white">
@@ -50,11 +53,27 @@
                                 {{date('F d, Y', strtotime($user->created_at))}}
                             </td>
                             <td class="px-6 py-4 font-bold text-center tracking-widest">
-                                @if(!empty($user->score->total))
-                                    {{$user->score->total}}
+                                @if($user->score->status == 'approved')
+                                    {{ 
+                                    $user->score->edu_attain +
+                                    $user->score->teach_eval +
+                                    $user->score->research +
+                                    $user->score->com_ser +
+                                    $user->score->train_sem +
+                                    $user->score->mpo +
+                                    $user->score->prof_exam
+                                    }}
                                 @else
-                                    0
+                                    N/A
                                 @endif
+                            </td>
+                            <td class="flex justify-center">
+                                <form action="{{route('admin.basicEd.show', $user->id)}}">
+                                @csrf
+                                    <button class="p-1 text-white tracking-widest bg-cyan-500 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-cyan-600 duration-300">
+                                        View
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach

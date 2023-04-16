@@ -137,6 +137,9 @@
                                 @error('date_hired')
                                     <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                                 @enderror
+                                @if(session()->has('errorDate'))
+                                    <p class="font-bold text-red-500 mt-1">{{session('errorDate')}}</p>
+                                @endif
                             </div>
                             <div class="flex flex-col justify-center gap-1">
                                 <label for="" class="font-bold text-hau text-xs md:text-sm tracking-wider">Current Rank</label>

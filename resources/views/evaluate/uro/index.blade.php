@@ -7,7 +7,7 @@
                 <i class="fa-solid fa-check mr-2"></i>{{session('message')}}
             </p>
         </div>
-    @endif   
+    @endif  
     
     <!-- <table> -->
         <div class="p-24 h-screen w-full">
@@ -17,6 +17,9 @@
                     <tr>
                         <th class="p-8 uppercase text-sm text-white tracking-widest">
                             App No.
+                        </th>
+                        <th class="p-8 uppercase text-sm text-white tracking-widest">
+                            Faculty
                         </th>
                         <th class="p-8 uppercase text-sm text-white tracking-widest">
                             Applicant
@@ -36,6 +39,9 @@
                             {{$approvedApplication->id}}
                         </td>
                         <td class="px-6 py-4 font-bold text-center tracking-widest">
+                            {{$approvedApplication->user->user_type == 'basicEd' ? 'Basic Education' : 'College'}}
+                        </td>
+                        <td class="px-6 py-4 font-bold text-center tracking-widest">
                             {{$approvedApplication->user->first_name . ' ' . $approvedApplication->user->last_name}} ({{$approvedApplication->user->email}})
                         </td>
                         <td class="px-6 py-4 font-bold text-center tracking-widest">
@@ -43,7 +49,7 @@
                         </td>
                         <td class="px-6 py-4 font-bold text-center tracking-widest">
                             
-                            <a href="{{route('admin.score', $approvedApplication->user_id)}}" class="p-1 text-white tracking-widest bg-cyan-600 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-cyan-700 duration-300">
+                            <a href="{{route('uro.show', $approvedApplication->user_id)}}" class="p-1 text-white tracking-widest bg-cyan-600 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-cyan-700 duration-300">
                                 Evaluate
                             </a>
                             

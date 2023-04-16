@@ -17,14 +17,14 @@
                         @enderror
                     </div>
                     <div class="flex flex-col justify-start gap-y-1">
-                        <b class="text-hau text-sm tracking-wide">Validity</b>
-                        <input name="validity" type="date" class="py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{old('validity')}}">
+                        <b class="text-hau text-sm tracking-wide">Validity <span class="text-red-700">(Recent(2 years), valid license.)</span></b>
+                        <input name="validity" type="date" class="py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{old('validity')}}" min="{{date('Y-m-d', strtotime(now()->subYears(2)))}}">
                         @error('validity')
                             <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                         @enderror
                     </div>  
                     <div class="flex flex-col justify-center gap-1">
-                        <label for="" class="font-bold text-hau text-sm tracking-wider">Upload Certificate</label>
+                        <label for="" class="font-bold text-hau text-sm tracking-wider">Upload Certificate <span class="text-red-700">(Max Size 2MB)</span></label>
                         <input name="certificate" type="file"  class="py-0.5 px-2 aret-hau outline-hau">
                         @error('certificate')
                             <p class="font-bold text-red-500 mt-1">{{$message}}</p>

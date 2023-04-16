@@ -1,27 +1,18 @@
 <x-admin.layout>
     <x-admin.navigation>
-        @if(session()->has('message'))
-            <div x-data="{show: true}" x-init="setTimeout(() => show = false, 3000)" x-show="show" class="fixed m-10 bottom-0 right-0 bg-gray-200 border-l-8 border-green-700 text-green-700 px-5 py-2 shadow-lg">
-                <p class="text-lg tracking-widest">
-                    <i class="fa-solid fa-check mr-2"></i>{{session('message')}}
-                </p>
-            </div>
-        @endif   
+
         <div class="w-full pt-24 p-24 space-y-8">   
 
-            <a href="/admin/approved-applications" class="py-1 px-2 text-white tracking-widest bg-gray-700 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-gray-600 duration-300">
+            <a href="{{ URL::previous() }}" class="py-1 px-2 text-white tracking-widest bg-gray-700 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-gray-600 duration-300">
                 <i class="fa-solid fa-arrow-left mr-1"></i>Back
             </a>
-
+            
             <div class="w-full p-12 border-t-8 border-hau rounded shadow-2xl">
                 <h1 class="w-full font-bold uppercase text-2xl text-center tracking-widest">Evaluation of {{ $user->first_name . ' ' . $user->last_name }}</h1>
-                @if($user->user_type == 'basicEd')
-                    @include('partials.admin._basicEd')
-                @else
-                    @include('partials.admin._college')
-                @endif
+                <h2 class="w-full mb-5 font-bold uppercase text-lg text-center tracking-widest">College Faculty</h2>
+                @include('partials.admin.score._collegescore')
             </div>
-
+    
             {{-- Personal Info --}}
             <div class="w-full p-12 border-t-8 border-hau rounded shadow-2xl">
                 <h1 class="w-full font-bold uppercase text-2xl text-center tracking-widest">Personal Information</h1>
@@ -75,7 +66,7 @@
                     </div>
                 </div>
             </div>
-
+    
             {{-- Application Info --}}
             <div class="w-full p-12 border-t-8 border-hau rounded shadow-2xl">
                 <h1 class="w-full font-bold uppercase text-2xl text-center tracking-widest">Application Information</h1>
@@ -100,12 +91,12 @@
                     </div>
                 </div>
             </div>
-
+    
             {{-- Edu Bg Info --}}
             <div class="w-full p-12 border-t-8 border-hau rounded shadow-2xl">
                 <h1 class="w-full font-bold uppercase text-2xl text-center tracking-widest">Educational Background Information</h1>
                 <div class="grid grid-cols-3 justify-items-center gap-4">
-
+    
                     {{-- Undergrad --}}
                     <div class="py-8">
                         <h2 class="w-full font-bold uppercase text-lg tracking-widest mb-8">Undergrad Information</h2>
@@ -134,7 +125,7 @@
                         </div>
                         @endforeach
                     </div>
-
+    
                     {{-- Masters --}}
                     <div class="py-8">
                         <h2 class="w-full font-bold uppercase text-lg tracking-widest mb-8">Masters Information</h2>
@@ -165,7 +156,7 @@
                             <p class="font-bold uppercase text-lg text-center tracking-widest">N/A</p>
                         @endforelse
                     </div>
-
+    
                     {{-- PHD --}}
                     <div class="py-8">
                         <h2 class="w-full font-bold uppercase text-lg tracking-widest mb-8">PHD Information</h2>
@@ -196,10 +187,10 @@
                             <p class="font-bold uppercase text-lg text-center tracking-widest">N/A</p>
                         @endforelse
                     </div>
-
+    
                 </div>
             </div>
-
+    
             {{-- Prc Info --}}
             <div class="w-full p-12 border-t-8 border-hau rounded shadow-2xl">
                 <h1 class="w-full font-bold uppercase text-2xl text-center tracking-widest">PRC License Information</h1>
@@ -227,7 +218,7 @@
                     </div>
                 </div>
             </div>
-
+    
             {{-- MPO Info --}}
             <div class="w-full mt-10 p-12 border-t-8 border-hau rounded shadow-2xl">
                 <h1 class="w-full font-bold uppercase text-2xl text-center tracking-widest">Membership in Professional Organization Information</h1>
@@ -254,8 +245,8 @@
                     @endforelse
                 </div>
             </div>
-            
-            {{-- Training/Seminars/Webinars Info --}}
+    
+            {{-- Training Info --}}
             <div class="w-full mt-10 p-12 border-t-8 border-hau rounded shadow-2xl">
                 <h1 class="w-full font-bold uppercase text-2xl text-center tracking-widest">Trainings/Seminars/Webinars Information</h1>
                 <div class="py-8">
@@ -300,11 +291,8 @@
                     </div>
                 </div>
             </div>
-
+    
         </div>
-
-
-        
 
     </x-admin.navigation>
 </x-admin.layout>

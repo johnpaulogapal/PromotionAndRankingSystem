@@ -1,9 +1,9 @@
-
-<div class="flex flex-col">
+<div class="flex flex-col mb-10">
     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-        <form method="POST" action="{{route('admin.scoreStore', $user->id)}}" class="overflow-hidden">
+        <form method="POST" action="{{route('admin.scoreUpdate', [ 'user' => $user->id, 'score' => $user->score->id])}}" class="overflow-hidden">
         @csrf
+        @method('PUT')
           <table class="min-w-full text-left text-sm font-light">
             <thead class="border-b font-medium dark:border-neutral-500">
               <tr>
@@ -18,10 +18,10 @@
                 <td class="whitespace-nowrap px-6 py-4">35</td>
                 <td class="whitespace-nowrap px-6 py-4">
                     
-                    @if(empty($user->score))
+                    @if(empty($user->score->edu_attain))
                         <div class="flex flex-col justify-center gap-1">
                             <label for="" class="font-bold text-hau text-sm tracking-wider"></label>
-                            <input name="edu_attain" type="number" class="w-1/4 py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{old('edu_attain')}}" min="60" max="100" required>
+                            <input name="edu_attain" type="number" class="w-1/4 py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{old('edu_attain')}}" min="1" max="35" required>
                             @error('edu_attain')
                                 <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                             @enderror
@@ -35,10 +35,10 @@
                 <td class="whitespace-nowrap px-6 py-4 font-medium">Teaching Evaluation Rating</td>
                 <td class="whitespace-nowrap px-6 py-4">30</td>
                 <td class="whitespace-nowrap px-6 py-4">
-                    @if(empty($user->score))
+                    @if(empty($user->score->teach_eval))
                         <div class="flex flex-col justify-center gap-1">
                             <label for="" class="font-bold text-hau text-sm tracking-wider"></label>
-                            <input name="teach_eval" type="number" class="w-1/4 py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{old('teach_eval')}}" min="60" max="100" required>
+                            <input name="teach_eval" type="number" class="w-1/4 py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{old('teach_eval')}}" min="1" max="30" required>
                             @error('teach_eval')
                                 <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                             @enderror
@@ -48,82 +48,15 @@
                     @endif
                 </td>
               </tr>
-              <tr class="border-b dark:border-neutral-500">
-                <td class="whitespace-nowrap px-6 py-4 font-medium">Research</td>
-                <td class="whitespace-nowrap px-6 py-4">5</td>
-                <td class="whitespace-nowrap px-6 py-4">
-                    @if(empty($user->score))
-                        <div class="flex flex-col justify-center gap-1">
-                            <label for="" class="font-bold text-hau text-sm tracking-wider"></label>
-                            <input name="research" type="number" class="w-1/4 py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{old('research')}}" min="60" max="100" required>
-                            @error('research')
-                                <p class="font-bold text-red-500 mt-1">{{$message}}</p>
-                            @enderror
-                        </div>
-                    @else
-                        <span class="font-bold">{{$user->score->research}}</span>
-                    @endif
-                </td>
-              </tr>
-              <tr class="border-b dark:border-neutral-500">
-                <td class="whitespace-nowrap px-6 py-4 font-medium">Community Service</td>
-                <td class="whitespace-nowrap px-6 py-4">10</td>
-                <td class="whitespace-nowrap px-6 py-4">
-                    @if(empty($user->score))
-                        <div class="flex flex-col justify-center gap-1">
-                            <label for="" class="font-bold text-hau text-sm tracking-wider"></label>
-                            <input name="com_ser" type="number" class="w-1/4 py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{old('com_ser')}}" min="60" max="100" required>
-                            @error('com_ser')
-                                <p class="font-bold text-red-500 mt-1">{{$message}}</p>
-                            @enderror
-                        </div>
-                    @else
-                        <span class="font-bold">{{$user->score->com_ser}}</span>
-                    @endif
-                </td>
-              </tr>
-              <tr class="border-b dark:border-neutral-500">
-                <td class="whitespace-nowrap px-6 py-4 font-medium">Trainings/Seminars</td>
-                <td class="whitespace-nowrap px-6 py-4">15</td>
-                <td class="whitespace-nowrap px-6 py-4">
-                    @if(empty($user->score))
-                        <div class="flex flex-col justify-center gap-1">
-                            <label for="" class="font-bold text-hau text-sm tracking-wider"></label>
-                            <input name="train_sem" type="number" class="w-1/4 py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{old('train_sem')}}" min="60" max="100" required>
-                            @error('train_sem')
-                                <p class="font-bold text-red-500 mt-1">{{$message}}</p>
-                            @enderror
-                        </div>
-                    @else
-                        <span class="font-bold">{{$user->score->train_sem}}</span>
-                    @endif
-                </td>
-              </tr>
-              <tr class="border-b dark:border-neutral-500">
-                <td class="whitespace-nowrap px-6 py-4 font-medium">Membership in professional organization</td>
-                <td class="whitespace-nowrap px-6 py-4">2</td>
-                <td class="whitespace-nowrap px-6 py-4">
-                    @if(empty($user->score))
-                        <div class="flex flex-col justify-center gap-1">
-                            <label for="" class="font-bold text-hau text-sm tracking-wider"></label>
-                            <input name="mpo" type="number" class="w-1/4 py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{old('mpo')}}" min="60" max="100" required>
-                            @error('mpo')
-                                <p class="font-bold text-red-500 mt-1">{{$message}}</p>
-                            @enderror
-                        </div>
-                    @else
-                        <span class="font-bold">{{$user->score->mpo}}</span>
-                    @endif
-                </td>
-              </tr>
+             
               <tr class="border-b dark:border-neutral-500">
                 <td class="whitespace-nowrap px-6 py-4 font-medium">Professional Examination</td>
                 <td class="whitespace-nowrap px-6 py-4">3</td>
                 <td class="whitespace-nowrap px-6 py-4">
-                    @if(empty($user->score))
+                    @if(empty($user->score->prof_exam))
                         <div class="flex flex-col justify-center gap-1">
                             <label for="" class="font-bold text-hau text-sm tracking-wider"></label>
-                            <input name="prof_exam" type="number" class="w-1/4 py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{old('prof_exam')}}" min="60" max="100" required>
+                            <input name="prof_exam" type="number" class="w-1/4 py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{old('prof_exam')}}" min="1" max="3" required>
                             @error('prof_exam')
                                 <p class="font-bold text-red-500 mt-1">{{$message}}</p>
                             @enderror
@@ -134,21 +67,44 @@
                 </td>
               </tr>
               <tr class="border-b dark:border-neutral-500">
-                <td class="whitespace-nowrap px-6 py-4 font-medium">Total</td>
-                <td class="whitespace-nowrap px-6 py-4">100</td>
+                <td class="whitespace-nowrap px-6 py-4 font-medium">Trainings/Seminars</td>
+                <td class="whitespace-nowrap px-6 py-4">15</td>
                 <td class="whitespace-nowrap px-6 py-4">
-                    @if(empty($user->score))
-                        N/A
+                    @if(empty($user->score->train_sem))
+                        <div class="flex flex-col justify-center gap-1">
+                            <label for="" class="font-bold text-hau text-sm tracking-wider"></label>
+                            <input name="train_sem" type="number" class="w-1/4 py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{old('train_sem')}}" min="1" max="15" required>
+                            @error('train_sem')
+                                <p class="font-bold text-red-500 mt-1">{{$message}}</p>
+                            @enderror
+                        </div>
                     @else
-                        <span class="font-bold">{{ $user->score->total }}</span>
-                    @endif 
+                        <span class="font-bold">{{$user->score->train_sem}}</span>
+                    @endif
+                </td>
+              </tr>
+              <tr class="border-b dark:border-neutral-500">
+                <td class="whitespace-nowrap px-6 py-4 font-medium">Membership in Professional Organization or Professional Examination</td>
+                <td class="whitespace-nowrap px-6 py-4">2</td>
+                <td class="whitespace-nowrap px-6 py-4">
+                    @if(empty($user->score->mpo))
+                        <div class="flex flex-col justify-center gap-1">
+                            <label for="" class="font-bold text-hau text-sm tracking-wider"></label>
+                            <input name="mpo" type="number" class="w-1/4 py-0.5 px-2 border border-hau rounded caret-hau outline-hau" value="{{old('mpo')}}" min="1" max="2" required>
+                            @error('mpo')
+                                <p class="font-bold text-red-500 mt-1">{{$message}}</p>
+                            @enderror
+                        </div>
+                    @else
+                        <span class="font-bold">{{$user->score->mpo}}</span>
+                    @endif
                 </td>
               </tr>
             </tbody>
            
           </table>
           <div class="w-full pt-5 px-5 flex justify-end">
-            @if(empty($user->score)){
+            @if(empty($user->score->edu_attain))
                 <button
                 type="button"
                 data-te-toggle="modal"
@@ -156,15 +112,15 @@
                 data-te-ripple-init
                 data-te-ripple-color="light" 
                 class="py-1 px-2 uppercase text-white tracking-widest bg-green-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-green-600 duration-300">Submit</button>
-            }
             @else
-                <a
+                {{-- <a
                 href="{{route('admin.scoreEdit', $user->id)}}"
-                class="py-1 px-2 uppercase text-white tracking-widest bg-yellow-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-yellow-600 duration-300">Edit</a>
+                class="py-1 px-2 uppercase text-white tracking-widest bg-yellow-700 rounded shadow-lg transition ease-in-out delay-150 hover:bg-yellow-600 duration-300">Edit</a> --}}
             @endif
            
           </div>
-          {{-- [START] Submit Score Modal Modal --}}
+
+             {{-- [START] Submit Score Modal Modal --}}
             <div
             data-te-modal-init
             class="fixed pl-60 top-0 left-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
@@ -225,7 +181,8 @@
                     </div>
                 </div>
             </div>
-            {{-- [END] Delete Modal --}}
+            {{-- [END] Submit Score Modal Modal --}}
+
         </form>
       </div>
     </div>

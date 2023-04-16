@@ -19,19 +19,12 @@
             </div>
             
             <div class="">
-                <b class="font-bold uppercase text-hau tracking-widest">Diploma - </b>
-                <a href="{{asset('uploads/' . $phd->diploma)}}" class="font-bold text-blue-700 tracking-widest underline underline-offset-2 transition hover:text-blue-600 ease-in-out delay-150 duration-300" download>
+                <b class="font-bold uppercase text-hau tracking-widest">TOR - </b>
+                <a href="{{asset('uploads/' . $phd->tor)}}" class="font-bold text-blue-700 tracking-widest underline underline-offset-2 transition hover:text-blue-600 ease-in-out delay-150 duration-300" download>
                     Download
                 </a>
             </div>
-           
-            <div class="">
-                <b class="font-bold uppercase text-hau tracking-widest">Research - </b>
-                <a href="{{asset('uploads/' . $phd->research)}}" class="font-bold text-blue-700 tracking-widest underline underline-offset-2 transition hover:text-blue-600 ease-in-out delay-150 duration-300" download>
-                    Download
-                </a>
-            </div>
-
+        
         </div>
 
         <div class="border-t border-hau flex justify-end pt-5 gap-x-12">

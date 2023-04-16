@@ -1,6 +1,6 @@
 <x-admin.layout>
     <x-admin.navigation>
-        @if(session()->has('message'))
+    @if(session()->has('message'))
         <div x-data="{show: true}" x-init="setTimeout(() => show = false, 3000)" x-show="show" class="fixed m-10 bottom-0 right-0 bg-gray-200 border-l-8 border-green-700 text-green-700 px-5 py-2 shadow-lg">
             <p class="text-lg tracking-widest">
                 <i class="fa-solid fa-check mr-2"></i>{{session('message')}}
@@ -14,7 +14,14 @@
             <a href="/admin/received-applications" class="py-1 px-2 text-white tracking-widest bg-gray-700 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-gray-600 duration-300">
                 <i class="fa-solid fa-arrow-left mr-1"></i>Back
             </a>
-            @if($totalEdubg > 0 && $user->status == 'verified' && $user->application->status == 'verified')
+            
+            @if($user->status == 'verified'
+                && $user->application->status == 'verified'
+                && $user->undergrads->first()->status == 'verified'
+                && $user->prcs->first()->status == 'verified'
+                && $user->mpos->first()->status == 'verified'
+                && $user->trainings->first()->status == 'verified'
+                )
             <button 
                 type="submit"
                 class="py-1 px-2 text-white tracking-widest bg-green-700 rounded shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-green-600 duration-300"
@@ -154,9 +161,7 @@
                                 </span>
                             </p>
                             <div class="flex justify-between items-center">
-                                <p class="font-bold tracking-wide">
-                                    ID: {{$undergrad->id}}
-                                </p>
+                                
                                 <p class="font-bold tracking-wide">
                                     Submitted on {{date('F d, Y', strtotime($undergrad->created_at))}}
                                 </p>
@@ -185,9 +190,7 @@
                                 </span>
                             </p>
                             <div class="flex justify-between items-center">
-                                <p class="font-bold tracking-wide">
-                                    ID: {{$master->id}}
-                                </p>
+                               
                                 <p class="font-bold tracking-wide">
                                     Submitted on {{date('F d, Y', strtotime($master->created_at))}}
                                 </p>
@@ -216,9 +219,7 @@
                                 </span>
                             </p>
                             <div class="flex justify-between items-center">
-                                <p class="font-bold tracking-wide">
-                                    ID: {{$phd->id}}
-                                </p>
+                                
                                 <p class="font-bold tracking-wide">
                                     Submitted on {{date('F d, Y', strtotime($phd->created_at))}}
                                 </p>
@@ -256,9 +257,7 @@
                                 </span>
                             </p>
                             <div class="flex justify-between items-center">
-                                <p class="font-bold tracking-wide">
-                                    ID: {{$prc->id}}
-                                </p>
+                               
                                 <p class="font-bold tracking-wide">
                                     Submitted on {{date('F d, Y', strtotime($prc->created_at))}}
                                 </p>
@@ -296,9 +295,7 @@
                                 </span>
                             </p>
                             <div class="flex justify-between items-center">
-                                <p class="font-bold tracking-wide">
-                                    ID: {{$mpo->id}}
-                                </p>
+                                
                                 <p class="font-bold tracking-wide">
                                     Submitted on {{date('F d, Y', strtotime($mpo->created_at))}}
                                 </p>
@@ -336,9 +333,7 @@
                                 </span>
                             </p>
                             <div class="flex justify-between items-center">
-                                <p class="font-bold tracking-wide">
-                                    ID: {{$training->id}}
-                                </p>
+                                
                                 <p class="font-bold tracking-wide">
                                     Submitted on {{date('F d, Y', strtotime($training->created_at))}}
                                 </p>

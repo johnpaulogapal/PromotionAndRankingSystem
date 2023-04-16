@@ -9,16 +9,16 @@
             </div>
 
             <div class="flex flex-col items-center gap-y-1">
-                <a href="{{route('approved.index')}}" class="pl-2 {{ Route::is('approved.index') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:bg-white hover:text-gray-900 '}} w-full py-3 font-bold transition ease-in-out duration-300">
-                    <span class="tracking-wider"><i class="fa-solid fa-file-circle-check mr-2"></i>Approved Applications</span>
-                </a>
-                <a href="{{route('admin.basicEd')}}" class="pl-2 {{ Route::is('admin.basicEd') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:bg-white hover:text-gray-900'}} w-full py-3 font-bold transition ease-in-out duration-300">
-                    <span class="tracking-wider"><i class="fa-solid fa-list-ol mr-2"></i>Basic Education Ranking</span>
-                </a>
-                <a href="{{route('admin.college')}}" class="pl-2 {{ Route::is('admin.college') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:bg-white hover:text-gray-900'}} w-full py-3 font-bold transition ease-in-out duration-300">
-                    <span class="tracking-wider"><i class="fa-solid fa-list-ol mr-2"></i>College Ranking</span>
-                </a>
 
+                @if(auth()->user()->user_type == 'uro' || auth()->user()->user_type == 'oces')
+                    <a href="{{route('approved.index')}}" class="pl-2 {{ Route::is('approved.index') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:bg-white hover:text-gray-900 '}} w-full py-3 font-bold transition ease-in-out duration-300">
+                        <span class="tracking-wider"><i class="fa-solid fa-file-circle-check mr-2"></i>Approved Applications</span>
+                    </a>
+                @else
+                    <a href="{{route('admin.basicEd')}}" class="pl-2 {{ Route::is('admin.basicEd') ? 'border-l-4 text-white hover:text-white/60 hover:border-white/60' : 'text-white/60 hover:bg-white hover:text-gray-900'}} w-full py-3 font-bold transition ease-in-out duration-300">
+                        <span class="tracking-wider"><i class="fa-solid fa-list-ol mr-2"></i>Faculty Ranking</span>
+                    </a>
+                @endif
             </div>
         </div>
      

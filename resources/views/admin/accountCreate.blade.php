@@ -66,7 +66,7 @@
                 
             </div>
         </div>
-    </div>
+    
 
     </x-admin.navigation>
 </x-admin.layout>

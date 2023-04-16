@@ -12,19 +12,22 @@
                                 App No.
                             </th>
                             <th class="p-8 uppercase text-sm text-white tracking-widest">
+                                Faculty
+                            </th>
+                            <th class="p-8 uppercase text-sm text-white tracking-widest">
                                 Applicant
                             </th>
                             <th class="p-8 uppercase text-sm text-white tracking-widest">
                                 Submitted on
                             </th>
                             <th class="p-8 uppercase text-sm text-white tracking-widest">
-                                No. to Verify
+                                Pending
                             </th>
                             <th class="p-8 uppercase text-sm text-white tracking-widest">
-                                No. of Resubmit
+                                Resubmit
                             </th>
                             <th class="p-8 uppercase text-sm text-white tracking-widest">
-                                No. of Verified
+                                Verified
                             </th>
                             <th class="p-8 uppercase text-sm text-white tracking-widest">
                                 Options
@@ -36,6 +39,9 @@
                         <tr class="whitespace-nowrap">
                             <td class="px-6 py-4 font-bold text-sm text-center">
                                 {{$receivedApplication->id}}
+                            </td>
+                            <td class="px-6 py-4 font-bold text-center tracking-widest">
+                                {{$receivedApplication->user->user_type == 'basicEd' ? 'Basic Education' : 'College'}}
                             </td>
                             <td class="px-6 py-4 font-bold text-center tracking-widest">
                                 {{$receivedApplication->user->first_name . ' ' . $receivedApplication->user->last_name}}

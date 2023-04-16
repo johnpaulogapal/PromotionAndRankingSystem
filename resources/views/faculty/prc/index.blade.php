@@ -36,14 +36,14 @@
                             <a href="{{asset('uploads/' . $prc->prc_back)}}"><img src="{{asset('uploads/' . $prc->prc_back)}}" alt="" class="aspect-video transition ease-in-out delay-150 hover:scale-110 duration-300"></a>
                             <a href="{{asset('uploads/' . $prc->prc_certificate)}}"><img src="{{asset('uploads/' . $prc->prc_certificate)}}" alt="" class="aspect-video transition ease-in-out delay-150 hover:scale-110 duration-300"></a>
                         </div>
-                        <div class="md:pt-10 grid grid-cols-3 justify-items-center gap-y-4">
+                        <div class="md:pt-10 grid grid-cols-3 justify-items-center">
                             <div class="flex flex-col justify-start">
                                 <b class="font-bold uppercase text-hau tracking-widest">License Number</b>
                                 <p class="text-lg text-hau">{{$prc->prc_num}}</p>
                             </div>
                             <div class="flex flex-col justify-start">
                                 <b class="font-bold uppercase text-hau tracking-widest">Validity</b>
-                                <p class="text-lg text-hau">{{date('F d, Y', strtotime($prc->prc_num))}}</p>
+                                <p class="text-lg text-hau">{{date('F d, Y', strtotime($prc->validity))}}</p>
                             </div>
 
                             @if(auth()->user()->application->app_status == 'approved')

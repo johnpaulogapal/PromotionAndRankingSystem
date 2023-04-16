@@ -9,6 +9,7 @@ use App\Models\Application;
 use App\Models\Mpo;
 use App\Models\Phd;
 use App\Models\Prc;
+use App\Models\Score;
 use App\Models\Training;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -61,8 +62,15 @@ class UserController extends Controller
 
     public function store(Request $request, User $user)
     {
-        
-       $request->validate([
+
+        if(strtotime($request->date_hired) > strtotime($request->date_last_prom)){
+            return redirect()->back()->with('errorDate', 'Invalid Date');
+        }
+
+        $scoreInfo['user_id'] = auth()->user()->id;
+        Score::create($scoreInfo);
+
+        $request->validate([
             'emp_num' => 'required',
             'first_name' => 'required',
             'middle_name' => 'required',

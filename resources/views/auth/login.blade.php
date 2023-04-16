@@ -15,7 +15,7 @@
             <div class="bg-white py-8 px-6 border-t-4 border-color-hau rounded-b shadow-2xl space-y-8">
                 <div class="flex flex-col items-center text-hau gap-y-4">
                     <p class="font-bold uppercase text-center text-sm tracking-widest">Welcome to our</p>
-                    <p class="font-bold uppercase text-center text-xl tracking-widest">Faculty Promotion and Ranking System</p>    
+                    <p class="font-bold uppercase text-center text-xl tracking-widest">Faculty Promotion and Ranking Portal</p>    
                 </div>
                 
                 {{-- Login Form --}}

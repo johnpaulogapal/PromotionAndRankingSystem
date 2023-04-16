@@ -56,51 +56,32 @@ class AdminController extends Controller
         return redirect()->route('admin.account')->with('message', 'User ' . $user->first_name . ' ' . $user->last_name .' Successfully Deleted');
     }
 
-    public function score(User $user){
+    public function score(User $user)
+    {
         return view('admin.score', [
             'user' => $user,
         ]);
     }
 
-    public function scoreStore(Request $request, User $user){
-        
-        $userInfo = $request->validate([
-            'edu_attain' => 'required',
-            'teach_eval' => 'required',
-            'research' => 'required',
-            'com_ser' => 'required',
-            'train_sem' => 'required',
-            'mpo' => 'required',
-            'prof_exam' => '',
-            'masters' => '',
-            'teach_eval_min' => '',
-            'research_min' => '',
-        ]);
-
-       
+    public function scoreStore(Request $request, User $user)
+    {
 
         if($user->user_type == 'basicEd'){
-            $edu_attain = $request->edu_attain * 0.35;
-            $teach_eval = $request->teach_eval * 0.30;
-            $research = $request->research * 0.05;
-            $com_ser = $request->com_ser * 0.10;
-            $train_sem = $request->train_sem * 0.15;
-            $mpo = $request->mpo * 0.02;
-            $prof_exam = $request->prof_exam * 0.03; 
-
-            $userInfo['total'] = $edu_attain + $teach_eval + $research + $com_ser + $train_sem + $mpo + $prof_exam;
+            $userInfo = $request->validate([
+                'edu_attain' => 'required',
+                'teach_eval' => 'required',
+                'prof_exam' => 'required',
+            ]);
         }
-        elseif($user->user_type == 'college'){
-            $edu_attain = $request->edu_attain * 0.30;
-            $teach_eval = $request->teach_eval * 0.25;
-            $research = $request->research * 0.25;
-            $com_ser = $request->com_ser * 0.10;
-            $train_sem = $request->train_sem * 0.08;
-            $mpo = $request->mpo * 0.02;
-
-            $userInfo['total'] = $edu_attain + $teach_eval + $research + $com_ser + $train_sem + $mpo;
+        else{
+            $userInfo = $request->validate([
+                'edu_attain' => 'required',
+                'teach_eval' => 'required',
+                'masters' => 'required',
+                'teach_eval_min' => 'required',
+            ]);
         }
-       
+        
         $userInfo['user_id'] = $user->id;
         
         Score::create($userInfo);
@@ -108,48 +89,46 @@ class AdminController extends Controller
         return redirect()->route('admin.score', $user->id)->with('message', $user->first_name . ' ' . $user->last_name . ' Evaluation Score Information Successfully Added');
     }
 
-    public function scoreEdit(User $user){
+    public function scoreEdit(User $user)
+    {
         return view('admin.scoreEdit', [
             'user' => $user,
         ]);
     }
 
-    public function scoreUpdate(Request $request, User $user, Score $score){
+    public function scoreUpdate(Request $request, User $user, Score $score)
+    {
+       
         
-        $scoreInfo = $request->validate([
-            'edu_attain' => 'required',
-            'teach_eval' => 'required',
-            'research' => 'required',
-            'com_ser' => 'required',
-            'train_sem' => 'required',
-            'mpo' => 'required',
-            'prof_exam' => '',
-            'masters' => '',
-            'teach_eval_min' => '',
-            'research_min' => '',
-        ]);
-
+        
         if($user->user_type == 'basicEd'){
-            $edu_attain = $request->edu_attain * 0.35;
-            $teach_eval = $request->teach_eval * 0.30;
-            $research = $request->research * 0.05;
-            $com_ser = $request->com_ser * 0.10;
-            $train_sem = $request->train_sem * 0.15;
-            $mpo = $request->mpo * 0.02;
-            $prof_exam = $request->prof_exam * 0.03; 
-
-            $scoreInfo['total'] = $edu_attain + $teach_eval + $research + $com_ser + $train_sem + $mpo + $prof_exam;
+            $scoreInfo = $request->validate([
+                'edu_attain' => 'required',
+                'teach_eval' => 'required',
+                'prof_exam' => 'required',
+                'train_sem' => 'required',
+                'mpo' => 'required',
+            ]);
         }
-        elseif($user->user_type == 'college'){
-            $edu_attain = $request->edu_attain * 0.30;
-            $teach_eval = $request->teach_eval * 0.25;
-            $research = $request->research * 0.25;
-            $com_ser = $request->com_ser * 0.10;
-            $train_sem = $request->train_sem * 0.08;
-            $mpo = $request->mpo * 0.02;
-
-            $scoreInfo['total'] = $edu_attain + $teach_eval + $research + $com_ser + $train_sem + $mpo;
+        else{
+            $scoreInfo = $request->validate([
+                'edu_attain' => 'required',
+                'teach_eval' => 'required',
+                'train_sem' => 'required',
+                'mpo' => 'required',
+                'masters' => 'required',
+                'teach_eval_min' => 'required',
+            ]);
         }
+
+        if(!empty($score->research) && !empty($score->mpo)){
+            $scoreInfo['status'] = 'approved';
+            Application::where('user_id', $user->id)->update([
+                'app_status' => 'completed',
+                // Additional columns and values to update
+            ]);
+        }
+        
         
         $score->update($scoreInfo);
 
@@ -163,9 +142,23 @@ class AdminController extends Controller
         ]);
     }
 
+    public function basicEdShow(User $user)
+    {
+        return view('admin.ranking.basicEdShow', [
+            'user' => $user,
+        ]);
+    }
+
     public function college(){
         return view('admin.ranking.college', [
             'users' => User::where('user_type', 'college')->where('status', 'verified')->get(),
+        ]);
+    }
+
+    public function collegeShow(User $user)
+    {
+        return view('admin.ranking.collegeShow', [
+            'user' => $user,
         ]);
     }
 
